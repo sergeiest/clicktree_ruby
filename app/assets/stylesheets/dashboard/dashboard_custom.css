@@ -6,3 +6,16 @@
 	margin-top: -30px;
 }
 
+.login-form {
+	width:260px;
+	height: 200px;
+	background-color:white;
+	border: 1px gray solid;
+	position:absolute;
+	top:calc(50% - 100px);
+	top:-webkit-calc(50% - 100px);
+	left:calc(50% - 130px);
+	left:-webkit-calc(50% - 130px);
+	padding:20px 50px;
+}
+

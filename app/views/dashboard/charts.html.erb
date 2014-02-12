@@ -5,10 +5,12 @@
     <div class="cl-navblock">
       <div class="menu-space">
         <div class="content">
-          <div class="sidebar-logo" style="background-color:#4A4A4A">
-            <div class="logo">
+          <%= link_to ({:controller => "home", :action => "index"}) do %>
+            <div class="sidebar-logo" style="background-color:#4A4A4A">
+              <div class="logo">
+              </div>
             </div>
-          </div>
+          <% end %>
           <div class="side-user">
             <div class="avatar square-img"><img src="images/dashboard/avatarCG.png" alt="Avatar" style="border-radius:0" /></div>
 
@@ -35,8 +37,8 @@
 	<div class="cl-mcont">		
     <div class="page-head">
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
-			  <li class="active">Charts</li>
+			  <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
+			  <li><%= link_to "Logout", {:action => "logout"} %></li>
 			</ol>
 		</div>	
 

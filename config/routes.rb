@@ -5,6 +5,9 @@ Clicktree::Application.routes.draw do
 
   get "dashboard" => "dashboard#charts"
   get "dashboard/charts"
+  get "dashboard/login"
+  post "dashboard/check_login"
+  get "dashboard/logout"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

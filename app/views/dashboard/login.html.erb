@@ -1,0 +1,9 @@
+<div class="login-form">
+	<%= form_tag({:action => "check_login"}) do %>
+		<p> Email: </p>
+		<%= text_field_tag :email, @email %>
+		<p> Password: </p>
+		<%= password_field_tag :password %>
+		<%= submit_tag "login", :class => "btn btn-primary submit-but", :style => "margin-top:10px; float:right" %>
+	<% end %>
+</div>
