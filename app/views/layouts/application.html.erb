@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- META DATA -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="We track web scraping activities on your site to let you know how much data is scraped. Our analytics tools help you establish partnerships with companies using your info to generate additional revenue.">
+    
+    <title>Clicktree - Behavior-based Analytics</title>
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon.png">
+                    <link rel="apple-touch-icon-precomposed" href="favicon.png">
+                                   <link rel="shortcut icon" href="favicon.png">
+                                   
+    <!-- STYLESHEETS -->
+    <!-- <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %> -->
+    <%= stylesheet_link_tag    "landing/bootstrap.css", type: "text/css"%>
+    <%= stylesheet_link_tag    "landing/landingpage.css", type: "text/css" %>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+    <%= csrf_meta_tags %>
+    
+    <!-- GOOGLE WEB FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,700,600,300,800' rel='stylesheet' type='text/css'>
+
+  </head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

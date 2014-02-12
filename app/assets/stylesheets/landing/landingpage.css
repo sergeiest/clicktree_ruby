@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.blurb{font-size: 1 em;
+line-height:24px;
+text align: center;
+padding-left: 25%;
+padding-right: 25%;
+
+}
+
+.alternate{
+	text align: center;
+}
+
+.logo-custom{
+	padding-right:  0;
+	margin-right: -177px;
+
+}
+
+.profile-img{
+	width: 100%;
+}
+
+.submit-but{
+	margin:-12px 0 0 10px;
+}
