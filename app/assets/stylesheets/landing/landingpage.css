@@ -26,3 +26,22 @@ padding-right: 25%;
 .submit-but{
 	margin:-12px 0 0 10px;
 }
+
+.tomasz-picture{
+	background-image:url(/images/landing/tomasz2.jpg);
+	background-size:390px 390px;
+	opacity: 100%;
+
+}
+.ali-picture{
+	background-image:url(/images/landing/ali2.jpg);
+	opacity:1;filter:alpha(opacity=1);
+	background-size:390px 390px;
+
+}
+.sergey-picture{
+	background-image:url(/images/landing/sergey2.jpg);
+	opacity:1;filter:alpha(opacity=1);
+	background-size:390px 390px;
+
+}
