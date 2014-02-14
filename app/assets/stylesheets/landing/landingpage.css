@@ -29,19 +29,19 @@ padding-right: 25%;
 
 .tomasz-picture{
 	background-image:url(/images/landing/tomasz2.jpg);
-	background-size:390px 390px;
+	background-size:100% 100%;
 	opacity: 100%;
 
 }
 .ali-picture{
 	background-image:url(/images/landing/ali2.jpg);
 	opacity:1;filter:alpha(opacity=1);
-	background-size:390px 390px;
+	background-size:100% 100%;
 
 }
 .sergey-picture{
 	background-image:url(/images/landing/sergey2.jpg);
 	opacity:1;filter:alpha(opacity=1);
-	background-size:390px 390px;
+	background-size:100% 100%;
 
 }
