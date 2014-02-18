@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 1
+  name: MyString
+  value: 1.5
+  type_id: 1
+  rdate: 2014-02-17 16:13:29
+
+two:
+  company_id: 1
+  name: MyString
+  value: 1.5
+  type_id: 1
+  rdate: 2014-02-17 16:13:29

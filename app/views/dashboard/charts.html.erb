@@ -31,9 +31,8 @@
     </div>
   </div>
 	<div class="container-fluid" id="pcont">
-   <!-- TOP NAVBAR -->
-  
-    
+   <!-- TOP NAVBAR -->  
+
 	<div class="cl-mcont">		
     <div class="page-head">
 			<ol class="breadcrumb">
@@ -175,7 +174,8 @@
 
 <script type="text/javascript">
 
-  $(document).ready(function(){
+  $(window).load(function(){
+
     if (!jQuery.plot) {
       return;
     }
@@ -219,262 +219,64 @@
       return (Math.floor(Math.random() * (1 + 50 - 20))) + 10;
     }
 
-    var avgrequest = [
-    [1, 2.42],
-    [2, 41.54],
-    [3, 27.83],
-    [4, 103.42]
-    ];
-
-    var users = [
-    [1,1110],
-    [2,2159],
-    [3,1866],
-    [4,1878],
-    [5,1289],
-    [6,971],
-    [7,1524],
-    [8,1897],
-    [9,2234],
-    [10,2063],
-    [11,2269],
-    [12,2282],
-    [13,1855],
-    [14,2808],
-    [15,2986],
-    [16,4564],
-    [17,5270],
-    [18,2900],
-    [19,1983],
-    [20,1481],
-    [21,2095],
-    [22,2871],
-    [23,3390],
-    [24,2821],
-    [25,3333],
-    [26,2371],
-    [27,1858],
-    [28,2763],
-    [29,3052],
-    [30,3325],
-    [31,3061]
-    ];
-
-    var bots = [
-    [1,1244],
-  [2,2586],
-  [3,2713],
-  [4,2344],
-  [5,1700],
-  [6,2476],
-  [7,1664],
-  [8,1355],
-  [9,1185],
-  [10,1581],
-  [11,1512],
-  [12,2232],
-  [13,2740],
-  [14,1795],
-  [15,2064],
-  [16,3558],
-  [17,2520],
-  [18,2045],
-  [19,2421],
-  [20,742],
-  [21,1744],
-  [22,2734],
-  [23,1550],
-  [24,1587],
-  [25,2325],
-  [26,1719],
-  [27,3266],
-  [28,2138],
-  [29,1685],
-  [30,1899],
-  [31,3401]
-    ];
-
-    var indexingbots = [
-    [1,2345],
-    [2,2581],
-    [3,3219],
-    [4,2632],
-    [5,2112],
-    [6,1772],
-    [7,3036],
-    [8,2992],
-    [9,2816],
-    [10,3964],
-    [11,4373],
-    [12,1952],
-    [13,1916],
-    [14,2562],
-    [15,2725],
-    [16,3573],
-    [17,2212],
-    [18,2542],
-    [19,2919],
-    [20,3105],
-    [21,4285],
-    [22,2529],
-    [23,2735],
-    [24,3055],
-    [25,2670],
-    [26,3677],
-    [27,1895],
-    [28,2315],
-    [29,2747],
-    [30,3175],
-    [31,3564]
-    ];
-
-    var automated = [
-    [1,4699],
-    [2,7326],
-    [3,7798],
-    [4,6854],
-    [5,5101],
-    [6,5219],
-    [7,6224],
-    [8,6244],
-    [9,6235],
-    [10,7608],
-    [11,8154],
-    [12,6466],
-    [13,6511],
-    [14,7165],
-    [15,7775],
-    [16,11695],
-    [17,10002],
-    [18,7487],
-    [19,7323],
-    [20,5328],
-    [21,8124],
-    [22,8134],
-    [23,7675],
-    [24,7463],
-    [25,8328],
-    [26,7767],
-    [27,7019],
-    [28,7216],
-    [29,7484],
-    [30,8399],
-    [31,10026]
-    ];
-
-    var users1 = [
-    [1,3571],
-    [2,4083],
-    [3,4191],
-    [4,3702],
-    [5,3512],
-    [6,5245],
-    [7,4692],
-    [8,3898],
-    [9,2800],
-    [10,2319],
-    [11,2176],
-    [12,2393],
-    [13,1880],
-    [14,1988],
-    [15,1903],
-    [16,2353],
-    [17,2858],
-    [18,3137],
-    [19,3406],
-    [20,3630],
-    [21,3086],
-    [22,2984],
-    [23,3743],
-    [24,4022]
-    ];
-
-    var bots1 = [
-    [1,2758],
-    [2,2865],
-    [3,3373],
-    [4,3018],
-    [5,2440],
-    [6,2849],
-    [7,2715],
-    [8,2193],
-    [9,2954],
-    [10,1921],
-    [11,2266],
-    [12,2274],
-    [13,2108],
-    [14,2635],
-    [15,3103],
-    [16,2746],
-    [17,2867],
-    [18,3048],
-    [19,2858],
-    [20,3131],
-    [21,2676],
-    [22,2599],
-    [23,2931],
-    [24,3133]
-    ];
-
-    var indexingbots1 = [
-    [1,3746],
-    [2,3775],
-    [3,3660],
-    [4,3652],
-    [5,4392],
-    [6,4586],
-    [7,4624],
-    [8,3542],
-    [9,3595],
-    [10,3222],
-    [11,3409],
-    [12,3250],
-    [13,3331],
-    [14,3237],
-    [15,3080],
-    [16,3600],
-    [17,3984],
-    [18,3494],
-    [19,3496],
-    [20,3462],
-    [21,4819],
-    [22,3733],
-    [23,3618],
-    [24,4104]
-    ];
-
-    var automated1 = [
-    [1,10075],
-    [2,10723],
-    [3,11224],
-    [4,10372],
-    [5,10344],
-    [6,12680],
-    [7,12031],
-    [8,9633],
-    [9,9349],
-    [10,7462],
-    [11,7851],
-    [12,7917],
-    [13,7319],
-    [14,7860],
-    [15,8086],
-    [16,8699],
-    [17,9709],
-    [18,9679],
-    [19,9760],
-    [20,10223],
-    [21,10581],
-    [22,9316],
-    [23,10292],
-    [24,11259]
-    ];
-
     if ($('#site_statistics').size() != 0) {
 
       $('#site_statistics_loading').hide();
       $('#site_statistics_content').show();
       
+
+      /* Requests per day by class */
+
+      <%
+        dailyrequest_user_str = ""
+        dailyrequest_ticks_str = ""
+        i = 1 
+        @dailyrequests.select{|x| x.type_id == 1}.each do |dailyrequest|
+          dailyrequest_user_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
+          if i % 2 == 0
+            dailyrequest_ticks_str += '[' + i.to_s + ', "' + dailyrequest.rdate.strftime("%m/%d") + '"],'
+          end
+          i += 1
+        end
+        dailyrequest_user_str = dailyrequest_user_str[0..-1].html_safe if dailyrequest_user_str.length > 0
+        dailyrequest_ticks_str = dailyrequest_ticks_str[0..-1].html_safe if dailyrequest_ticks_str.length > 0
+      %>
+      var users = [<%= dailyrequest_user_str %>];
+      var dailyrequest_ticks = [<%= dailyrequest_ticks_str %>];
+
+      <%
+        dailyrequest_bot_str = ""
+        i = 1 
+        @dailyrequests.select{|x| x.type_id == 2}.each do |dailyrequest|
+          dailyrequest_bot_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
+          i += 1
+        end
+        dailyrequest_bot_str = dailyrequest_bot_str[0..-1].html_safe if dailyrequest_bot_str.length > 0
+      %>
+      var bots = [<%= dailyrequest_bot_str %>];
+
+      <%
+        dailyrequest_indexing_str = ""
+        i = 1 
+        @dailyrequests.select{|x| x.type_id == 3}.each do |dailyrequest|
+          dailyrequest_indexing_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
+          i += 1
+        end
+        dailyrequest_indexing_str = dailyrequest_indexing_str[0..-1].html_safe if dailyrequest_indexing_str.length > 0
+      %>
+      var indexingbots = [<%= dailyrequest_indexing_str %>];
+
+      <%
+        dailyrequest_automated_str = ""
+        i = 1 
+        @dailyrequests.select{|x| x.type_id == 4}.each do |dailyrequest|
+          dailyrequest_automated_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
+          i += 1
+        end
+        dailyrequest_automated_str = dailyrequest_automated_str[0..-1].html_safe if dailyrequest_automated_str.length > 0
+      %>
+      var automated = [<%= dailyrequest_automated_str %>];
+
       var plot_statistics = $.plot($("#site_statistics"), [
        {
         data: automated,
@@ -526,7 +328,7 @@
         },
         colors: ["#FFD93A", "#F58236", "#008B8B", "#FA8072"],
         xaxis: {
-           ticks:[[2, '1/8'], [4, '1/10'], [6, '1/12'],[8, '1/14'],[10, '1/16'],[12, '1/18'],[14, '1/20'],[16, '1/22'],[18, '1/24'],[20, '1/26'],[22, '1/28'],[24, '1/30'],[26, '2/1'],                [28, '2/3'],[30, '2/5']]
+           ticks: dailyrequest_ticks
         },
         yaxis: {
           ticks: 5,
@@ -534,7 +336,25 @@
         }
       });
       
-        /*BAR CHART - Average Daily Requests*/
+      /* Average Daily Requests - BAR CHART*/
+
+      <%
+        avgrequest_str = ""
+        avgrequest_ticks_str = ""
+        i = 1
+        @visitnumbers.each do |visitnumber|
+          avgrequest_str += '[' + i.to_s + ', ' + visitnumber.value.to_s + '],'
+          avgrequest_ticks_str += '[' + (i+0.3).to_s + ', "' + visitnumber.name + '"],'
+          i += 1
+        end
+        if avgrequest_str.length > 0
+          avgrequest_str = avgrequest_str[0..-1]
+          avgrequest_ticks_str = avgrequest_ticks_str[0..-1].html_safe
+        end
+      %>
+      var avgrequest = [<%= avgrequest_str %>];
+      var avgrequest_ticks = [<%= avgrequest_ticks_str %>];
+
 
       var plot_statistics2 = $.plot($("#site_statistics2"), [{
         data: avgrequest,
@@ -572,8 +392,7 @@
         },
         colors: ["#FD6A5E", "#FFFFFF", "#52e136"],
         xaxis: {
-          ticks:[[ 1.3, "Users" ], [ 2.3, "Bots" ],
-                                       [ 3.3, "Indexing" ], [ 4.3, "Automated" ]]
+          ticks: avgrequest_ticks
         },
         yaxis: {
           ticks: 6,
@@ -581,7 +400,57 @@
         }
       });
 
-/*Peak Hours*/
+      /*Peak Hours*/
+
+      <%
+        hourrequest_user_str = ""
+        hourrequest_ticks_str = ""
+        i = 1 
+        @hourrequests.select{|x| x.type_id == 1}.each do |hourrequest|
+          hourrequest_user_str += '[' + i.to_s + ', ' + hourrequest.value.to_s + '],'
+          if i % 3 == 0
+            hourrequest_ticks_str += '[' + i.to_s + ', "' + hourrequest.rdate.strftime("%H %p") + '"],'
+          end
+          i += 1
+        end
+        hourrequest_user_str = hourrequest_user_str[0..-1].html_safe if hourrequest_user_str.length > 0
+        hourrequest_ticks_str = hourrequest_ticks_str[0..-1].html_safe if hourrequest_ticks_str.length > 0
+      %>
+      var users1 = [<%= hourrequest_user_str %>];
+      var hourrequest_ticks = [<%= hourrequest_ticks_str %>];
+
+      <%
+        hourrequest_bot_str = ""
+        i = 1 
+        @hourrequests.select{|x| x.type_id == 2}.each do |hourrequest|
+          hourrequest_bot_str += '[' + i.to_s + ', ' + hourrequest.value.to_s + '],'
+          i += 1
+        end
+        hourrequest_bot_str = hourrequest_bot_str[0..-1].html_safe if hourrequest_bot_str.length > 0
+      %>
+      var bots1 = [<%= hourrequest_bot_str %>];
+
+      <%
+        hourrequest_indexing_str = ""
+        i = 1 
+        @hourrequests.select{|x| x.type_id == 3}.each do |hourrequest|
+          hourrequest_indexing_str += '[' + i.to_s + ', ' + hourrequest.value.to_s + '],'
+          i += 1
+        end
+        hourrequest_indexing_str = hourrequest_indexing_str[0..-1].html_safe if hourrequest_indexing_str.length > 0
+      %>
+      var indexingbots1 = [<%= hourrequest_indexing_str %>];
+
+      <%
+        hourrequest_automated_str = ""
+        i = 1 
+        @hourrequests.select{|x| x.type_id == 4}.each do |hourrequest|
+          hourrequest_automated_str += '[' + i.to_s + ', ' + hourrequest.value.to_s + '],'
+          i += 1
+        end
+        hourrequest_automated_str = hourrequest_automated_str[0..-1].html_safe if hourrequest_automated_str.length > 0
+      %>
+      var automated1 = [<%= hourrequest_automated_str %>];
 
       var plot_statistics = $.plot($("#site_statistics3"), [
        {
@@ -634,7 +503,7 @@
         },
         colors: ["#FFD93A", "#F58236", "#008B8B", "#FA8072"],
         xaxis: {
-           ticks:[[2, '2 AM'], [4, '4AM'], [6, '6AM'],[8, '8AM'],[10, '10AM'],[12, '12PM'],[14, '2PM'],[16, '4PM'],[18, '6PM'],[20, '8PM'],[22, '10PM'],[24, '12AM']]
+           ticks: hourrequest_ticks
         },
         yaxis: {
           ticks: 5,
@@ -644,15 +513,21 @@
       
 
 
-      /*Pie Chart*/
-      var data = [
-      { label: "Users", data: 20.76},
-      { label: "Bots", data: 32.96},
-      { label: "Indexing", data: 32.15},
-      { label: "Automated Requests", data: 14.13}
-      ]; 
+      /* Requests by Type - Pie chart */
 
-      $.plot('#piec', data, {
+      <%
+        requesttype_str = ""
+        @requesttypes.each do |requesttype|
+          requesttype_str += '{ label: "' + requesttype.name + '", data: ' + requesttype.value.to_s + '},'
+        end
+        if requesttype_str.length > 0
+          requesttype_str = requesttype_str[0..-1].html_safe
+        end
+      %>
+
+      var requesttype = [<%= requesttype_str %>]; 
+
+      $.plot('#piec', requesttype, {
         series: {
           pie: {
             show: true,
@@ -666,12 +541,12 @@
               width:0
             },
             label: {
-                        show: true,
-                        formatter: function (label, series) {
-                            return '<div style="font-size:12px;text-align:center;padding:2px;color:#333;">' + label + '</div>';
+              show: true,
+              formatter: function (label, series) {
+                  return '<div style="font-size:12px;text-align:center;padding:2px;color:#333;">' + label + '</div>';
 
-                        }
-                    },
+              }
+            },
             highlight:{
               opacity: 0.08
             }
@@ -687,15 +562,21 @@
         }
       });
 
-      /*Pie Chart #2*/
-      var data1 = [
-      { label: "Users - 80%", data: 80.42},
-      { label: "Bots", data: 7.45},
-      { label: "Indexing", data: 10.85},
-      { label: "Automated Requests", data: 1.28}
-      ]; 
+      /* IPs by Type - Pie chart */
 
-      $.plot('#piec1', data1, {
+      <%
+        iptype_str = ""
+        @iptypes.each do |iptype|
+          iptype_str += '{ label: "' + iptype.name + '", data: ' + iptype.value.to_s + '},'
+        end
+        if iptype_str.length > 0
+          iptype_str = iptype_str[0..-1].html_safe
+        end
+      %>
+
+      var iptype = [<%= iptype_str %>]; 
+
+      $.plot('#piec1', iptype, {
         series: {
           pie: {
             show: true,
@@ -792,7 +673,6 @@
       }); 
     }
 
-
-    });
+  });
 </script>
   

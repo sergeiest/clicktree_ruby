@@ -9,7 +9,11 @@ before_filter do
 end
 
 def charts
-
+	@visitnumbers = Visitnumber.where("company_id = ?", session[:id])
+	@requesttypes = Requesttype.where("company_id = ?", session[:id])
+	@iptypes = Iptype.where("company_id = ?", session[:id])
+	@dailyrequests = Dailyrequest.where("company_id = ?", session[:id])
+	@hourrequests = Hourrequest.where("company_id = ?", session[:id])
 end
 
 def login
