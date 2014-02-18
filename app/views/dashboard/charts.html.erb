@@ -241,7 +241,7 @@
         dailyrequest_user_str = dailyrequest_user_str[0..-1].html_safe if dailyrequest_user_str.length > 0
         dailyrequest_ticks_str = dailyrequest_ticks_str[0..-1].html_safe if dailyrequest_ticks_str.length > 0
       %>
-      var users = [<%= dailyrequest_user_str %>];
+      var dailyrequest_1 = [<%= dailyrequest_user_str %>];
       var dailyrequest_ticks = [<%= dailyrequest_ticks_str %>];
 
       <%
@@ -253,7 +253,7 @@
         end
         dailyrequest_bot_str = dailyrequest_bot_str[0..-1].html_safe if dailyrequest_bot_str.length > 0
       %>
-      var bots = [<%= dailyrequest_bot_str %>];
+      var dailyrequest_2 = [<%= dailyrequest_bot_str %>];
 
       <%
         dailyrequest_indexing_str = ""
@@ -264,7 +264,7 @@
         end
         dailyrequest_indexing_str = dailyrequest_indexing_str[0..-1].html_safe if dailyrequest_indexing_str.length > 0
       %>
-      var indexingbots = [<%= dailyrequest_indexing_str %>];
+      var dailyrequest_3 = [<%= dailyrequest_indexing_str %>];
 
       <%
         dailyrequest_automated_str = ""
@@ -275,24 +275,24 @@
         end
         dailyrequest_automated_str = dailyrequest_automated_str[0..-1].html_safe if dailyrequest_automated_str.length > 0
       %>
-      var automated = [<%= dailyrequest_automated_str %>];
+      var dailyrequest_4 = [<%= dailyrequest_automated_str %>];
 
       var plot_statistics = $.plot($("#site_statistics"), [
        {
-        data: automated,
-        label: "Automated Requests"
+        data: dailyrequest_1,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 1}.first.name %>"
       },
       {
-        data: users,
-        label: "Users"
+        data: dailyrequest_2,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 2}.first.name %>"
       },
       {
-        data: bots,
-        label: "Bots"
+        data: dailyrequest_3,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 3}.first.name %>"
       },
       {
-        data: indexingbots,
-        label: "Indexing"
+        data: dailyrequest_4,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 4}.first.name %>"
       }
      ],
        {
@@ -326,7 +326,7 @@
           tickColor: "rgba(0,0,0,0.15)",
           borderWidth: 0
         },
-        colors: ["#FFD93A", "#F58236", "#008B8B", "#FA8072"],
+        colors: ["#F58236", "#FA8072", "#008B8B", "#FFD93A"],
         xaxis: {
            ticks: dailyrequest_ticks
         },
@@ -336,7 +336,7 @@
         }
       });
       
-      /* Average Daily Requests - BAR CHART*/
+      /* Average Daily Requests - BAR CHART */
 
       <%
         avgrequest_str = ""
@@ -383,7 +383,7 @@
           show: false
         },
         grid: {
-        labelMargin: 10,
+          labelMargin: 10,
           axisMargin: 500,
           hoverable: true,
           clickable: true,
@@ -395,12 +395,13 @@
           ticks: avgrequest_ticks
         },
         yaxis: {
-          ticks: 6,
-          tickDecimals: 0
+          ticks: 3,
+          tickDecimals: 0,
+          transform: function (v) { return Math.log(v+1); }
         }
       });
 
-      /*Peak Hours*/
+      /* Peak Hours - Chart */
 
       <%
         hourrequest_user_str = ""
@@ -416,7 +417,7 @@
         hourrequest_user_str = hourrequest_user_str[0..-1].html_safe if hourrequest_user_str.length > 0
         hourrequest_ticks_str = hourrequest_ticks_str[0..-1].html_safe if hourrequest_ticks_str.length > 0
       %>
-      var users1 = [<%= hourrequest_user_str %>];
+      var hourrequest_1 = [<%= hourrequest_user_str %>];
       var hourrequest_ticks = [<%= hourrequest_ticks_str %>];
 
       <%
@@ -428,7 +429,7 @@
         end
         hourrequest_bot_str = hourrequest_bot_str[0..-1].html_safe if hourrequest_bot_str.length > 0
       %>
-      var bots1 = [<%= hourrequest_bot_str %>];
+      var hourrequest_2 = [<%= hourrequest_bot_str %>];
 
       <%
         hourrequest_indexing_str = ""
@@ -439,7 +440,7 @@
         end
         hourrequest_indexing_str = hourrequest_indexing_str[0..-1].html_safe if hourrequest_indexing_str.length > 0
       %>
-      var indexingbots1 = [<%= hourrequest_indexing_str %>];
+      var hourrequest_3 = [<%= hourrequest_indexing_str %>];
 
       <%
         hourrequest_automated_str = ""
@@ -450,24 +451,24 @@
         end
         hourrequest_automated_str = hourrequest_automated_str[0..-1].html_safe if hourrequest_automated_str.length > 0
       %>
-      var automated1 = [<%= hourrequest_automated_str %>];
+      var hourrequest_4 = [<%= hourrequest_automated_str %>];
 
       var plot_statistics = $.plot($("#site_statistics3"), [
        {
-        data: automated1,
-        label: "Automated Requests"
+        data: hourrequest_1,
+        label: "<%= @hourrequests.select{|x| x.type_id == 1}.first.name %>"
       },
       {
-        data: users1,
-        label: "Users"
+        data: hourrequest_2,
+        label: "<%= @hourrequests.select{|x| x.type_id == 2}.first.name %>"
       },
       {
-        data: bots1,
-        label: "Bots"
+        data: hourrequest_3,
+        label: "<%= @hourrequests.select{|x| x.type_id == 3}.first.name %>"
       },
       {
-        data: indexingbots1,
-        label: "Indexing"
+        data: hourrequest_4,
+        label: "<%= @hourrequests.select{|x| x.type_id == 4}.first.name %>"
       }
      ],
        {
@@ -501,7 +502,7 @@
           tickColor: "rgba(0,0,0,0.15)",
           borderWidth: 0
         },
-        colors: ["#FFD93A", "#F58236", "#008B8B", "#FA8072"],
+        colors: ["#F58236", "#FA8072", "#008B8B", "#FFD93A"],
         xaxis: {
            ticks: hourrequest_ticks
         },
