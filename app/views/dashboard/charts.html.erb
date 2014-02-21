@@ -46,7 +46,7 @@
     <div class="row">
       <div class="col-sm-6 col-md-6">
         <!--CHART Total Requests by User Type -->
-				<div class="block-flat">
+				<div class="block-flat" style="height: 440px;">
 					<div class="header">
 						<h3>Total Requests by User Type</h3>
 					</div>
@@ -58,7 +58,7 @@
       
 
       <!--CHART Unique IP Addresses by User Type -->
-       <div class="block-flat">
+       <div class="block-flat" style="height: 440px;">
           <div class="header">              
             <h3>Unique IP Addresses by User Type</h3>
           </div>
@@ -73,9 +73,9 @@
       
       <!--CHART Top Visitors per User Type--> 
       <div class="col-sm-6 col-md-6">
-        <div class="block-flat">
+        <div class="block-flat" style="height: 894px;">
           <div class="header">              
-            <h3>Top Visitors per User Type</h3>
+            <h3>Top Web Scrapers</h3>
           </div>
           <div class="content">
             <div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>    
@@ -84,54 +84,54 @@
  
       <!--CHART Top Visitors per User Type TEXT--> 
         
-          <div class="header"> 
-            <h4>Top Scrapers</h4>
+          <div class="header" style="padding-top: 30px;"> 
+            <h4>Top Web Scraper IP Details</h4>
           </div>
           <ol>
-            <div class = "col-md-6">
+            <div class = "col-md-6" style="padding-top: 20px;">
               <li>
-                <p><b>Microsoft</b>
+                <p><b>UPC Cablecom GmbH</b>
                 <br>
-                IP Address: ####
+                IP Address: 46.140.30.118
                  <br>
-                Total Requests: ##
+                Total Requests: 461
                 </p> 
               </li>
               <li>
-                <p><b>Company Name</b>
+                <p><b>IP Telefonica O2 Germany</b>
                 <br>
-                IP Address: ####
+                IP Address: 95.114.87.73
                  <br>
-                Total Requests: ##
+                Total Requests: 376
                 </p> 
               </li>
               <li>
-                <p><b>Company Name</b>
+                <p><b>ATI - Agence Tunisienne Internet</b>
                 <br>
-                IP Address: ####
+                IP Address: 41.224.253.42
                  <br>
-                Total Requests: ##
+                Total Requests: 355
                 </p> 
               </li>
               <li>
-                <p><b>Company Name</b>
+                <p><b>Amazon.com, Inc.</b>
                 <br>
-                IP Address: ####
+                IP Address: 72.21.198.64
                  <br>
-                Total Requests: ##
+                Total Requests: 248
                 </p> 
               </li>
               <li>
-                <p><b>Company Name</b>
+                <p><b>IP Telefonica O2 Germany</b>
                 <br>
-                IP Address: ####
+                IP Address: 95.114.0.185
                  <br>
-                Total Requests: ##
+                Total Requests: 218
                 </p> 
               </li>
             </div> 
-            
-            <div class="col-md-6">
+            <!--
+            <div class="col-md-6" style="padding-top: 20px;">
               <li>
                 <p><b>Company Name</b>
                 <br>
@@ -172,9 +172,10 @@
                 Total Requests: ##
                 </p> 
               </li>  
+
             </div>
             <div style="clear:both"></div>
-          </ol> 
+          </ol> -->
         </div>
       </div>  
      
@@ -312,7 +313,7 @@
 
       /* Charts and other dashboard */
 
-      color_scheme=["#005AE6", "#71D6C4", "#F58236", "#8ED143"];
+      color_scheme=["#2B82C0", "#7ACBBE", "#F58236", "#FEE95E", "#744B9E"];
 
       $('#site_statistics_loading').hide();
       $('#site_statistics_content').show();
@@ -431,7 +432,7 @@
         }
       });
       
-      /* Average Daily Requests - BAR CHART */
+      /* Top Web Scrapers- BAR CHART 
 
       <%
         avgrequest_str = ""
@@ -495,6 +496,61 @@
           transform: function (v) { return Math.log(v+1); }
         }
       });
+*/
+
+var pageviews = [
+    [1, 461],
+    [2, 376],
+    [3, 355],
+    [4, 248],
+    [5, 218]
+    ];
+
+    var plot_statistics2 = $.plot($("#site_statistics2"), [{
+        data: pageviews,
+        label: "Unique Visits"
+      }
+      ], {
+        series: {
+          bars: {
+            show: true,
+            barWidth: 0.6,
+            lineWidth: 0,
+            fill: true,
+            hoverable: true,
+            fillColor: {
+              colors: [{
+                opacity: 1
+              }, {
+                opacity: 1
+              }
+              ]
+            } 
+          },
+          shadowSize: 2
+        },
+        legend:{
+          show: false
+        },
+        grid: {
+        labelMargin: 10,
+           axisMargin: 500,
+          hoverable: true,
+          clickable: true,
+          tickColor: "rgba(0,0,0,0.15)",
+          borderWidth: 0
+        },
+        colors: ["#7ACBBE"],
+        xaxis: {
+          ticks: 11,
+          tickDecimals: 0
+        },
+        yaxis: {
+          ticks: 6,
+          tickDecimals: 0
+        }
+      });
+
 
       /* Peak Hours - Chart */
 
