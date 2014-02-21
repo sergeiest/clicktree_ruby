@@ -3,17 +3,24 @@ class DashboardController < ApplicationController
 layout "dashboard"
 
 before_filter do
-  	if session[:id].nil? and params[:action] == "charts"
-   		redirect_to :action => 'login' and return
+  	case params[:action]
+  	when "chart"
+  		if session[:id].nil?
+   			redirect_to :action => 'login' and return
+   		else
+			params[:id] = session[:id] if session[:id] != 0 		
+   		end
   	end
 end
 
 def charts
-	@visitnumbers = Visitnumber.where("company_id = ?", session[:id])
-	@requesttypes = Requesttype.where("company_id = ?", session[:id])
-	@iptypes = Iptype.where("company_id = ?", session[:id])
-	@dailyrequests = Dailyrequest.where("company_id = ?", session[:id])
-	@hourrequests = Hourrequest.where("company_id = ?", session[:id])
+	params[:id] = session[:id] if params[:id].nil?
+	@user = User.find_by_authentication_id(params[:id])
+	@visitnumbers = Visitnumber.where("company_id = ?", params[:id])
+	@requesttypes = Requesttype.where("company_id = ?", params[:id])
+	@iptypes = Iptype.where("company_id = ?", params[:id])
+	@dailyrequests = Dailyrequest.where("company_id = ?", params[:id])
+	@hourrequests = Hourrequest.where("company_id = ?", params[:id])
 end
 
 def login
@@ -26,15 +33,18 @@ def logout
 end	
 
 def check_login
-	if (params[:email] == "cghersi@snip2code.com" and params[:password] == "beta1") || (params[:email] == "team@clicktreelabs.com" and params[:password] == "it is me")
-		session[:id] = 1
-		redirect_to :action => 'charts' and return
-	end
+	user = Authentication.where("email = ? AND password = ?", params[:email], params[:password])
 
-	respond_to do |format|
+
+	if user.length > 0
+		session[:id] = user[0].id
+		redirect_to :action => 'charts' and return
+	else
 		@email = params[:email]
-     	format.html {render "login"}
-    end
+		respond_to do |format|
+			format.html {render "login"}
+		end
+	end   	
   	
 end
 

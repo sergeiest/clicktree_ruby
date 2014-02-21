@@ -7,11 +7,3 @@
 		<%= submit_tag "login", :class => "btn btn-primary submit-but", :style => "margin-top:10px; float:right" %>
 	<% end %>
 </div>
-
-<script>
-
-$(document).ajaxSend(function(){
-	0==$(".loading").length&&($("body").append('<div class="loading"><div class="progress progress-striped active"><div class="bar"></div></div></div>'),$(".loading").slideDown(),$(".loading .progress .bar").delay(300).css("width","100%"))
-});
-
-</script>
