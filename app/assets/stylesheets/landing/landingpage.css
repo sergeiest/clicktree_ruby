@@ -1,11 +1,23 @@
 @charset "UTF-8";
 /* CSS Document */
 
-.blurb{font-size: 1 em;
-line-height:24px;
-text align: center;
-padding-left: 25%;
-padding-right: 25%;
+
+.tagline{font-size: 20pt;
+
+font-weight: 700;
+text-align: center;
+padding-left: 20%;
+padding-right: 20%;
+line-height:28px;
+
+}
+
+
+.blurb{font-size: 14pt;
+	font-weight: 300;
+	text-transform: uppercase;
+
+
 
 }
 

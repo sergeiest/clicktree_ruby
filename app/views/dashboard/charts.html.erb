@@ -40,107 +40,196 @@
 			  <li><%= link_to "Logout", {:action => "logout"} %></li>
 			</ol>
 		</div>	
+  
 
-		<div class="row">
-			<div class="col-md-12">
-				<div class="block-flat">
-					<div class="header">
-						<h3>Daily Requests per Class</h3>
-					</div>
-					<div class="content">
-						<div id="site_statistics" style="height: 300px; padding: 0px; position: relative;"></div>
-					</div>
-				</div>
-      </div>  
-    </div> 
-			
+    <!-- PIE CHARTS COLUMN -->
     <div class="row">
       <div class="col-sm-6 col-md-6">
+        <!--CHART Total Requests by User Type -->
 				<div class="block-flat">
 					<div class="header">
-						<h3>Total Requests by Type</h3>
+						<h3>Total Requests by User Type</h3>
 					</div>
 					<div class="content overflow-hidden">
 						<div id="piec" style="height: 300px; padding: 0px; position: relative;">
 						</div>
 					</div>
 				</div>
-			</div>
-      <div class="col-sm-6 col-md-6">
-        <div class="block-flat">
+      
+
+      <!--CHART Unique IP Addresses by User Type -->
+       <div class="block-flat">
           <div class="header">              
-            <h3>Unique IP Addresses by Type</h3>
+            <h3>Unique IP Addresses by User Type</h3>
           </div>
           <div class="content">
             <div id="piec1" style="height: 300px; padding: 0px; position: relative;">
             </div>              
           </div>
         </div>
-      </div>  
-    </div>  
-		
-    <div class="row">		
-  		<div class="col-sm-6 col-md-6">
-  			<div class="block-flat">
-  				<div class="header">							
-  					<h3>Avg Daily Requests per Class</h3>
-  				</div>
-  				<div class="content">
-  					<div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>		
-  				</div>
-  			</div>
-  		</div>
+      </div>
+     
 
+      
+      <!--CHART Top Visitors per User Type--> 
       <div class="col-sm-6 col-md-6">
+        <div class="block-flat">
+          <div class="header">              
+            <h3>Top Visitors per User Type</h3>
+          </div>
+          <div class="content">
+            <div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>    
+          </div>
+        
+ 
+      <!--CHART Top Visitors per User Type TEXT--> 
+        
+          <div class="header"> 
+            <h4>Top Scrapers</h4>
+          </div>
+          <ol>
+            <div class = "col-md-6">
+              <li>
+                <p><b>Microsoft</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>
+            </div> 
+            
+            <div class="col-md-6">
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li> 
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>
+              <li>
+                <p><b>Company Name</b>
+                <br>
+                IP Address: ####
+                 <br>
+                Total Requests: ##
+                </p> 
+              </li>  
+            </div>
+            <div style="clear:both"></div>
+          </ol> 
+        </div>
+      </div>  
+     
+
+      
+    </div> 		
+
+    <!--CHART Daily Requests per Class-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block-flat">
+          <div class="header">
+            <h3>Daily Requests per Class</h3>
+          </div>
+          <div class="content">
+            <div id="site_statistics" style="height: 380px; padding: 0px; position: relative;"></div>
+          </div>
+        </div>
+      </div>  
+    </div> 
+
+
+
+
+    <div class="row">
+      <!--Hourly Requests per Class-->   
+      <div class="col-md-12">
         <div class="block-flat">
           <div class="header">
             <h3>Hourly Requests per Class</h3>
           </div>
           <div class="content">
-            <div id="site_statistics3" style="height: 180px; padding: 0px; position: relative;"></div>
+            <div id="site_statistics3" style="height: 380px; padding: 0px; position: relative;"></div>
           </div>
         </div>
       </div>
     </div>  
-  </div>
 
-	</div> 
+    <div class="row">
+        <div class="col-md-12">
+          <div class="block-flat">
+            <div class="header">
+            <h3>Request Locations</h3>
+          </div>
+            <div class="content" id="world-map" style="height: 480px;">
+            </div>
+          </div>        
+        </div>
+    </div>
+      
+<!--THESE CLOSING DIVS TAGS ARE THE END-->
+    </div>
+  </div>
+</div> 
 	
-</div>
-<!-- Right Chat-->
-<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right side-chat">
-	<div class="header">
-    <h3>Chat</h3>
-  </div>
-  <div class="sub-header" href="#">
-    <div class="icon"><i class="fa fa-user"></i></div> <p>Online (4)</p>
-  </div>
-  <div class="content">
-    <p class="title">Family</p>
-    <ul class="nav nav-pills nav-stacked contacts">
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Michael Smith</a></li>
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> John Doe</a></li>
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Richard Avedon</a></li>
-      <li class="busy"><a href="#"><i class="fa fa-circle-o"></i> Allen Collins</a></li>
-    </ul>
-    
-    <p class="title">Friends</p>
-    <ul class="nav nav-pills nav-stacked contacts">
-      <li class="online"><a href="#"><i class="fa fa-circle-o"></i> Jaime Garzon</a></li>
-      <li class="outside"><a href="#"><i class="fa fa-circle-o"></i> Dave Grohl</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Victor Jara</a></li>
-    </ul>   
-    
-    <p class="title">Work</p>
-    <ul class="nav nav-pills nav-stacked contacts">
-      <li><a href="#"><i class="fa fa-circle-o"></i> Ansel Adams</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Gustavo Cerati</a></li>
-    </ul>
-    
-  </div>
-</nav>
-
-
   <script type="text/javascript">
     var link = $('link[href="css/style.css"]');
     
@@ -220,6 +309,10 @@
     }
 
     if ($('#site_statistics').size() != 0) {
+
+      /* Charts and other dashboard */
+
+      color_scheme=["#005AE6", "#71D6C4", "#F58236", "#8ED143"];
 
       $('#site_statistics_loading').hide();
       $('#site_statistics_content').show();
@@ -326,7 +419,9 @@
           tickColor: "rgba(0,0,0,0.15)",
           borderWidth: 0
         },
-        colors: ["#F58236", "#FA8072", "#008B8B", "#FFD93A"],
+
+      /* USERS: "#"  BOTS: "#" AUTOMATED: "#" INDEXING:"#"  DEVELOPERS:"#" */
+        colors: color_scheme,
         xaxis: {
            ticks: dailyrequest_ticks
         },
@@ -390,7 +485,7 @@
           tickColor: "rgba(0,0,0,0.15)",
           borderWidth: 0
         },
-        colors: ["#FD6A5E", "#FFFFFF", "#52e136"],
+        colors: color_scheme,
         xaxis: {
           ticks: avgrequest_ticks
         },
@@ -502,7 +597,7 @@
           tickColor: "rgba(0,0,0,0.15)",
           borderWidth: 0
         },
-        colors: ["#F58236", "#FA8072", "#008B8B", "#FFD93A"],
+        colors: color_scheme,
         xaxis: {
            ticks: hourrequest_ticks
         },
@@ -557,7 +652,7 @@
           hoverable: true,
           clickable: true
         },
-        colors: ["#F58236", "#008B8B", "#FA8072", "#FFD93A"],
+        colors: color_scheme,
         legend: {
           show: false
         }
@@ -606,7 +701,7 @@
           hoverable: true,
           clickable: true
         },
-        colors: ["#F58236", "#008B8B", "#FA8072", "#FFD93A"],
+        colors: color_scheme,
         legend: {
           show: false
         }
@@ -672,8 +767,44 @@
           previousPoint = null;
         }
       }); 
-    }
+    };
+
+
+
+    /*Map*/
+    $('#world-map').vectorMap({
+        map: 'world_mill_en',
+        backgroundColor: '#FFFFFF',
+        regionStyle: {
+          initial: {
+            fill: '#58595b',
+          },
+          hover: {
+            "fill-opacity": 0.8
+          }
+        },
+        markerStyle:{
+            initial:{
+              r: 8
+            },
+             hover: {
+              r: 12,
+              stroke: 'rgba(88,89,91,0.3)',
+              "stroke-width": 6
+            }
+          },
+          markers: [
+              {latLng: [41.90, 12.45], name: '1.512 Visits', style: {fill: '#f58236',stroke:'rgba(245,130,54,0.3)',"stroke-width": 3}},
+
+              {latLng: [1.3, 103.8], name: '940 Visits', style: {fill: '#1DD2AF',stroke:'rgba(29,210,175,0.3)',"stroke-width": 3}},
+
+              {latLng: [51.511214, -0.119824], name: '530 Visits', style: {fill: '#1DD2AF',stroke:'rgba(29,210,175,0.3)',"stroke-width": 3}},
+
+              {latLng: [40.714353, -74.005973], name: '340 Visits', style: {fill: '#1DD2AF',stroke:'rgba(29,210,175,0.3)',"stroke-width": 3}},
+
+              {latLng: [-22.913395, -43.200710], name: '1.800 Visits', style: {fill: '#1DD2AF',stroke:'rgba(29,210,175,0.3)',"stroke-width": 3}}
+          ]
+      });      
 
   });
 </script>
-  
