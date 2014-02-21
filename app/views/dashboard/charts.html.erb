@@ -85,92 +85,31 @@
             </div>
             <ol>
               <div class = "col-md-6" style="padding-top: 20px;">
-                <li>
-                  <p><b>UPC Cablecom GmbH</b>
-                  <br>
-                  IP Address: 46.140.30.118
-                   <br>
-                  Total Requests: 461
-                  </p> 
-                </li>
-                <li>
-                  <p><b>IP Telefonica O2 Germany</b>
-                  <br>
-                  IP Address: 95.114.87.73
-                   <br>
-                  Total Requests: 376
-                  </p> 
-                </li>
-                <li>
-                  <p><b>ATI - Agence Tunisienne Internet</b>
-                  <br>
-                  IP Address: 41.224.253.42
-                   <br>
-                  Total Requests: 355
-                  </p> 
-                </li>
-                <li>
-                  <p><b>Amazon.com, Inc.</b>
-                  <br>
-                  IP Address: 72.21.198.64
-                   <br>
-                  Total Requests: 248
-                  </p> 
-                </li>
-                <li>
-                  <p><b>IP Telefonica O2 Germany</b>
-                  <br>
-                  IP Address: 95.114.0.185
-                   <br>
-                  Total Requests: 218
-                  </p> 
-                </li>
-              </div> 
-              <!--
-              <div class="col-md-6" style="padding-top: 20px;">
-                <li>
-                  <p><b>Company Name</b>
-                  <br>
-                  IP Address: ####
-                   <br>
-                  Total Requests: ##
-                  </p> 
-                </li>
-                <li>
-                  <p><b>Company Name</b>
-                  <br>
-                  IP Address: ####
-                   <br>
-                  Total Requests: ##
-                  </p> 
-                </li> 
-                <li>
-                  <p><b>Company Name</b>
-                  <br>
-                  IP Address: ####
-                   <br>
-                  Total Requests: ##
-                  </p> 
-                </li>
-                <li>
-                  <p><b>Company Name</b>
-                  <br>
-                  IP Address: ####
-                   <br>
-                  Total Requests: ##
-                  </p> 
-                </li>
-                <li>
-                  <p><b>Company Name</b>
-                  <br>
-                  IP Address: ####
-                   <br>
-                  Total Requests: ##
-                  </p> 
-                </li>  
-
+                <% @topips[0..4].each do |topip| %>
+                  <li>
+                    <p><b><%= topip.title %></b>
+                    <br>
+                    IP Address: <%= topip.ipaddress %>
+                     <br>
+                    Total Requests: <%= topip.request %>
+                    </p> 
+                  </li>
+                <% end %>
               </div>
-              <div style="clear:both"></div>-->
+              <% if @topips.length > 5 %>
+                <div class = "col-md-6" style="padding-top: 20px;">
+                  <% @topips[0..4].each do |topip| %>
+                    <li>
+                      <p><b><%= topip.title %></b>
+                      <br>
+                      IP Address: <%= topip.ipaddress %>
+                       <br>
+                      Total Requests: <%= topip.request %>
+                      </p> 
+                    </li>
+                  <% end %>
+                </div>
+              <% end %>
             </ol> 
           </div>
         </div>    
@@ -487,13 +426,16 @@
       });
 */
 
-var pageviews = [
-    [1, 461],
-    [2, 376],
-    [3, 355],
-    [4, 248],
-    [5, 218]
-    ];
+
+    <%
+      pageviews_str = "" 
+      i = 1
+      @topips[0..4].each do |topip|
+        pageviews_str += '[' + i.to_s + ',' + topip.request.to_s + '],'
+        i += 1
+      end
+    %>
+    var pageviews = [<%= pageviews_str[0..-1] %>];
 
     var plot_statistics2 = $.plot($("#site_statistics2"), [{
         data: pageviews,
