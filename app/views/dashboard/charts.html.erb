@@ -625,14 +625,15 @@ var pageviews = [
        {
         series: {
           lines: {
+            lineColor: color_scheme,
             show: true,
             lineWidth: 0.25, 
             fill: true,
             fillColor: {
               colors: [{
-                opacity: 0.05
+                opacity: 0.0
               }, {
-                opacity: 0.05
+                opacity: 0.0
               }
               ]
             } 
@@ -653,7 +654,7 @@ var pageviews = [
           tickColor: "rgba(0,0,0,0.15)",
           borderWidth: 0
         },
-        colors: color_scheme,
+        //colors: color_scheme,
         xaxis: {
            ticks: hourrequest_ticks
         },

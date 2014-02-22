@@ -2,23 +2,34 @@
 /* CSS Document */
 
 
-.tagline{font-size: 20pt;
 
-font-weight: 700;
-text-align: center;
-padding-left: 20%;
-padding-right: 20%;
-line-height:28px;
+.tagline{
+	font-size: 20pt;
+	font-weight: 500;
+	text-align: center;
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-top:5%;
+	line-height:36px;
 
 }
 
 
-.blurb{font-size: 14pt;
-	font-weight: 300;
+.about_title{
+	font-size: 12pt;
+	font-weight: 700;
 	text-transform: uppercase;
+	margin-bottom: 4px;
+}
 
+.overlay:after {
+	opacity: 0.6;
+	background-image:url(/images/landing/crossed_stripes.png);
 
+}
 
+.cutBy10 {
+	margin: 0px 4%;
 }
 
 .alternate{
