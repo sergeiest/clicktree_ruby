@@ -1,6 +1,13 @@
 @charset "UTF-8";
 /* CSS Document */
 
+.submenu{
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 20px;
+
+}
+
 
 
 .tagline{
@@ -23,7 +30,7 @@
 }
 
 .overlay:after {
-	opacity: 0.6;
+	opacity: 0.4;
 	background-image:url(/images/landing/crossed_stripes.png);
 
 }
