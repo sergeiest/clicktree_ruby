@@ -40,8 +40,7 @@
   			  <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
   			  <li><%= link_to "Logout", {:action => "logout"} %></li>
   			</ol>
-  		</div>	
-    
+  		</div>
 
       <!-- PIE CHARTS COLUMN -->
       <div class="row">
@@ -102,18 +101,22 @@
             <ol>
               <div class = "col-md-6" style="padding-top: 20px;">
                 <div id="top-visitors-0">
-                  <% @topips[0..4].each do |topip| %>
-                    <li>
-                      <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
-                    </li>
-                  <% end %>
-                </div>
-                <% for i in 1..5 %>
-                  <div id="top-visitors-<%= i %>" hidden = true>
-                    <% @topips.select{|x| x.type_id == i}[0..4].each do |topip| %>
+                  <% if !@topips.nil? %>
+                    <% @topips[0..4].each do |topip| %>
                       <li>
                         <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
                       </li>
+                    <% end %>
+                  <% end %> 
+                </div>
+                <% for i in 1..5 %>
+                  <div id="top-visitors-<%= i %>" hidden = true>
+                    <% if !@topips.nil? and !@topips.select{|x| x.type_id == i}.nil? %>
+                      <% @topips.select{|x| x.type_id == i}[0..4].each do |topip| %>
+                        <li>
+                          <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
+                        </li>
+                      <% end %>
                     <% end %>
                   </div>
                 <% end %>
@@ -121,20 +124,8 @@
 
               <div class = "col-md-6" style="padding-top: 20px;">
                 <div id="top-visitors-0-more">
-                  <% @topips[5..9].each do |topip| %>
-                    <li>
-                      <p><b><%= topip.title %></b>
-                      <br>
-                      IP Address: <%= topip.ipaddress %>
-                       <br>
-                      Total Requests: <%= topip.request %>
-                      </p> 
-                    </li>
-                  <% end %>
-                </div>
-                <% for i in 1..5 %>
-                  <div id="top-visitors-<%= i %>-more" hidden>
-                    <% @topips.select{|x| x.type_id == i}[5..9].each do |topip| %>
+                  <% if !@topips.nil? and @topips.length > 5 %>
+                    <% @topips[5..9].each do |topip| %>
                       <li>
                         <p><b><%= topip.title %></b>
                         <br>
@@ -143,6 +134,22 @@
                         Total Requests: <%= topip.request %>
                         </p> 
                       </li>
+                    <% end %>
+                  <% end %>
+                </div>
+                <% for i in 1..5 %>
+                  <div id="top-visitors-<%= i %>-more" hidden>
+                    <% if !@topips.nil? and !@topips.select{|x| x.type_id == i}.nil? and @topips.select{|x| x.type_id == i}.length > 5%>
+                      <% @topips.select{|x| x.type_id == i}[5..9].each do |topip| %>
+                        <li>
+                          <p><b><%= topip.title %></b>
+                          <br>
+                          IP Address: <%= topip.ipaddress %>
+                           <br>
+                          Total Requests: <%= topip.request %>
+                          </p> 
+                        </li>
+                      <% end %>
                     <% end %>
                   </div>
                 <% end %>
@@ -196,37 +203,6 @@
     </div>
   </div>
 </div> 
-	
-  <script type="text/javascript">
-    var link = $('link[href="css/style.css"]');
-    
-    if($.cookie("css")) {
-      link.attr("href",'css/skin-' + $.cookie("css") + '.css');
-    }
-    
-    $(function(){
-      $("#color-switcher .toggle").click(function(){
-        var s = $(this).parent();
-        if(s.hasClass("open")){
-          s.animate({'margin-right':'-109px'},400).toggleClass("open");
-        }else{
-          s.animate({'margin-right':'0'},400).toggleClass("open");
-        }
-      });
-      
-      $("#color-switcher .color").click(function(){
-        var color = $(this).data("color");
-        $("body").fadeOut(function(){
-          //link.attr('href','css/skin-' + color + '.css');
-          $.cookie("css", color, {expires: 365, path: '/'});
-          window.location.href = "";
-          $(this).fadeIn("slow");
-        });
-      });
-    });
-
-
-</script> 
 
 <script type="text/javascript">
 
@@ -288,49 +264,11 @@
   }
 
   $(window).load(function(){
-
     if (!jQuery.plot) {
       return;
     }
     var data = [];
     var totalPoints = 250;
-    // random data generator for plot charts
-
-    function getRandomData() {
-      if (data.length > 0) data = data.slice(1);
-      // do a random walk
-      while (data.length < totalPoints) {
-      var prev = data.length > 0 ? data[data.length - 1] : 50;
-      var y = prev + Math.random() * 10 - 5;
-      if (y < 0) y = 0;
-      if (y > 100) y = 100;
-      data.push(y);
-      }
-      // zip the generated y values with the x values
-      var res = [];
-      for (var i = 0; i < data.length; ++i) res.push([i, data[i]])
-      return res;
-    }
-
-    function showTooltip(x, y, contents) {
-      $("<div id='tooltip'>" + contents + "</div>").css({
-        position: "absolute",
-        display: "none",
-        top: y + 5,
-        left: x + 5,
-        border: "1px solid #000",
-        padding: "5px",
-        'color':'#fff',
-        'border-radius':'2px',
-        'font-size':'11px',
-        "background-color": "#000",
-        opacity: 0.80
-      }).appendTo("body").fadeIn(200);
-    } 
-
-    function randValue() {
-      return (Math.floor(Math.random() * (1 + 50 - 20))) + 10;
-    }
 
     if ($('#site_statistics').size() != 0) {
 
@@ -357,11 +295,7 @@
         end
         dailyrequest_user_str = dailyrequest_user_str[0..-1].html_safe if dailyrequest_user_str.length > 0
         dailyrequest_ticks_str = dailyrequest_ticks_str[0..-1].html_safe if dailyrequest_ticks_str.length > 0
-      %>
-      var dailyrequest_1 = [<%= dailyrequest_user_str %>];
-      var dailyrequest_ticks = [<%= dailyrequest_ticks_str %>];
 
-      <%
         dailyrequest_bot_str = ""
         i = 1 
         @dailyrequests.select{|x| x.type_id == 2}.each do |dailyrequest|
@@ -369,10 +303,7 @@
           i += 1
         end
         dailyrequest_bot_str = dailyrequest_bot_str[0..-1].html_safe if dailyrequest_bot_str.length > 0
-      %>
-      var dailyrequest_2 = [<%= dailyrequest_bot_str %>];
 
-      <%
         dailyrequest_indexing_str = ""
         i = 1 
         @dailyrequests.select{|x| x.type_id == 3}.each do |dailyrequest|
@@ -380,10 +311,7 @@
           i += 1
         end
         dailyrequest_indexing_str = dailyrequest_indexing_str[0..-1].html_safe if dailyrequest_indexing_str.length > 0
-      %>
-      var dailyrequest_3 = [<%= dailyrequest_indexing_str %>];
 
-      <%
         dailyrequest_automated_str = ""
         i = 1 
         @dailyrequests.select{|x| x.type_id == 4}.each do |dailyrequest|
@@ -392,7 +320,12 @@
         end
         dailyrequest_automated_str = dailyrequest_automated_str[0..-1].html_safe if dailyrequest_automated_str.length > 0
       %>
+
+      var dailyrequest_1 = [<%= dailyrequest_user_str %>];
+      var dailyrequest_2 = [<%= dailyrequest_bot_str %>];
+      var dailyrequest_3 = [<%= dailyrequest_indexing_str %>];
       var dailyrequest_4 = [<%= dailyrequest_automated_str %>];
+      var dailyrequest_ticks = [<%= dailyrequest_ticks_str %>];
 
       var plot_statistics = $.plot($("#site_statistics"), [
        {
@@ -455,72 +388,6 @@
         }
       });
       
-      /* Top Web Scrapers- BAR CHART 
-
-      <%
-        avgrequest_str = ""
-        avgrequest_ticks_str = ""
-        i = 1
-        @visitnumbers.each do |visitnumber|
-          avgrequest_str += '[' + i.to_s + ', ' + visitnumber.value.to_s + '],'
-          avgrequest_ticks_str += '[' + (i+0.3).to_s + ', "' + visitnumber.name + '"],'
-          i += 1
-        end
-        if avgrequest_str.length > 0
-          avgrequest_str = avgrequest_str[0..-1]
-          avgrequest_ticks_str = avgrequest_ticks_str[0..-1].html_safe
-        end
-      %>
-      var avgrequest = [<%= avgrequest_str %>];
-      var avgrequest_ticks = [<%= avgrequest_ticks_str %>];
-
-
-      var plot_statistics2 = $.plot($("#site_statistics2"), [{
-        data: avgrequest,
-        label: "Unique Visits"
-      }
-      ], {
-        series: {
-          bars: {
-            show: true,
-            barWidth: 0.6,
-            lineWidth: 0,
-            fill: true,
-            hoverable: true,
-            fillColor: {
-              colors: [{
-                opacity: 1
-              }, {
-                opacity: 1
-              }
-              ]
-            } 
-          },
-          shadowSize: 2
-        },
-        legend:{
-          show: false
-        },
-        grid: {
-          labelMargin: 10,
-          axisMargin: 500,
-          hoverable: true,
-          clickable: true,
-          tickColor: "rgba(0,0,0,0.15)",
-          borderWidth: 0
-        },
-        colors: color_scheme,
-        xaxis: {
-          ticks: avgrequest_ticks
-        },
-        yaxis: {
-          ticks: 3,
-          tickDecimals: 0,
-          //transform: function (v) { return Math.log(v+1); }
-        }
-      });
-*/
-
 
     <%
       pageviews_str = "" 
@@ -593,11 +460,7 @@
         end
         hourrequest_user_str = hourrequest_user_str[0..-1].html_safe if hourrequest_user_str.length > 0
         hourrequest_ticks_str = hourrequest_ticks_str[0..-1].html_safe if hourrequest_ticks_str.length > 0
-      %>
-      var hourrequest_1 = [<%= hourrequest_user_str %>];
-      var hourrequest_ticks = [<%= hourrequest_ticks_str %>];
 
-      <%
         hourrequest_bot_str = ""
         i = 1 
         @hourrequests.select{|x| x.type_id == 2}.each do |hourrequest|
@@ -605,10 +468,7 @@
           i += 1
         end
         hourrequest_bot_str = hourrequest_bot_str[0..-1].html_safe if hourrequest_bot_str.length > 0
-      %>
-      var hourrequest_2 = [<%= hourrequest_bot_str %>];
 
-      <%
         hourrequest_indexing_str = ""
         i = 1 
         @hourrequests.select{|x| x.type_id == 3}.each do |hourrequest|
@@ -616,10 +476,6 @@
           i += 1
         end
         hourrequest_indexing_str = hourrequest_indexing_str[0..-1].html_safe if hourrequest_indexing_str.length > 0
-      %>
-      var hourrequest_3 = [<%= hourrequest_indexing_str %>];
-
-      <%
         hourrequest_automated_str = ""
         i = 1 
         @hourrequests.select{|x| x.type_id == 4}.each do |hourrequest|
@@ -628,7 +484,12 @@
         end
         hourrequest_automated_str = hourrequest_automated_str[0..-1].html_safe if hourrequest_automated_str.length > 0
       %>
+      
+      var hourrequest_1 = [<%= hourrequest_user_str %>];
+      var hourrequest_2 = [<%= hourrequest_bot_str %>];
+      var hourrequest_3 = [<%= hourrequest_indexing_str %>];
       var hourrequest_4 = [<%= hourrequest_automated_str %>];
+      var hourrequest_ticks = [<%= hourrequest_ticks_str %>];
 
       var plot_statistics = $.plot($("#site_statistics3"), [
        {
@@ -690,7 +551,6 @@
         }
       });
       
-
 
       /* Requests by Type - Pie chart */
 
@@ -790,66 +650,6 @@
         }
       });
       
-     
-      /*Tooltips*/
-      
-      var previousPoint = null;
-      $("#site_statistics").bind("plothover", function (event, pos, item) {
-      
-        var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
-
-        if (item) {
-          if (previousPoint != item.dataIndex) {
-            previousPoint = item.dataIndex;
-            $("#tooltip").remove();
-            var x = item.datapoint[0].toFixed(2),
-            y = item.datapoint[1].toFixed(2);
-            showTooltip(item.pageX, item.pageY,
-            item.series.label + " of " + x + " = " + y);
-          }
-        } else {
-          $("#tooltip").remove();
-          previousPoint = null;
-        }
-      }); 
-      
-      $("#site_statistics2").bind("plothover", function (event, pos, item) {
-      
-        var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
-
-        if (item) {
-          if (previousPoint != item.dataIndex) {
-            previousPoint = item.dataIndex;
-            $("#tooltip").remove();
-            var x = item.datapoint[0],
-            y = item.datapoint[1];
-            showTooltip(item.pageX, item.pageY,
-            item.series.label + "" + x + " = " + y + "%");
-          }
-        } else {
-          $("#tooltip").remove();
-          previousPoint = null;
-        }
-      }); 
-      
-      $("#chart3").bind("plothover", function (event, pos, item) {
-      
-        var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
-
-        if (item) {
-          if (previousPoint != item.dataIndex) {
-            previousPoint = item.dataIndex;
-            $("#tooltip").remove();
-            var x = item.datapoint[0].toFixed(2),
-            y = item.datapoint[1].toFixed(2);
-            showTooltip(item.pageX, item.pageY,
-            item.series.label + " of " + x + " = " + y);
-          }
-        } else {
-          $("#tooltip").remove();
-          previousPoint = null;
-        }
-      }); 
     };
 
 
