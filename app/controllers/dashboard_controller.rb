@@ -21,7 +21,7 @@ def charts
 	@iptypes = Iptype.where("company_id = ?", params[:id])
 	@dailyrequests = Dailyrequest.where("company_id = ?", params[:id])
 	@hourrequests = Hourrequest.where("company_id = ?", params[:id])
-	@topips = Topip.where("company_id = ? AND type_id = 3", params[:id]).sort{|x,y| y.request <=> x.request }
+	@topips = Topip.where("company_id = ?", params[:id]).sort{|x,y| y.request <=> x.request }
 end
 
 def login

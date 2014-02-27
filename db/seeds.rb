@@ -38,8 +38,10 @@ end
 topip_list = Array.new()
 for k in 1..3
 	for i in 1..5
-		topip_list << [ k, "Company " + i.to_s, rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s,
-		  			rand(1000), 3]
+		for j in 1..5
+			topip_list << [ k, "Company " + i.to_s, rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s,
+		  			rand(1000), j]
+		end
 	end
 end
 

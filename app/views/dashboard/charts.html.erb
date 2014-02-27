@@ -69,36 +69,59 @@
             </div>
           </div>
         </div>
+
         <!--CHART Top Visitors per User Type--> 
         <div class="col-sm-6 col-md-6">
           <div class="block-flat" style="height: 894px;">
             <div class="header">              
-              <h3>Top Web Scrapers</h3>
+              <h3 id="visitor-title">Top Visitors</h3>
             </div>
+
+          
+
             <div class="content">
               <div id="site_statistics2" style="height: 180px; padding: 0px; position: relative;"></div>    
             </div>
    
             <!--CHART Top Visitors per User Type TEXT--> 
             <div class="header" style="padding-top: 30px;"> 
-              <h4>Top Web Scraper IP Details</h4>
+              <h4><span id="visitor-details-title">Top Visitor Details</span>
+                <select onchange="changeType(this)">
+                  <option selected value=0>Overall</option>
+                  <option value=1>Users</option>
+                  <option value=2>Bots</option>
+                  <option value=3>Indexing</option>
+                  <option value=4>Automated</option>
+                  <option value=5>Developers</option>            
+                </select> 
+              </h4>
             </div>
+
+            
+
             <ol>
               <div class = "col-md-6" style="padding-top: 20px;">
-                <% @topips[0..4].each do |topip| %>
-                  <li>
-                    <p><b><%= topip.title %></b>
-                    <br>
-                    IP Address: <%= topip.ipaddress %>
-                     <br>
-                    Total Requests: <%= topip.request %>
-                    </p> 
-                  </li>
+                <div id="top-visitors-0">
+                  <% @topips[0..4].each do |topip| %>
+                    <li>
+                      <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
+                    </li>
+                  <% end %>
+                </div>
+                <% for i in 1..5 %>
+                  <div id="top-visitors-<%= i %>" hidden = true>
+                    <% @topips.select{|x| x.type_id == i}[0..4].each do |topip| %>
+                      <li>
+                        <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
+                      </li>
+                    <% end %>
+                  </div>
                 <% end %>
               </div>
-              <% if @topips.length > 5 %>
-                <div class = "col-md-6" style="padding-top: 20px;">
-                  <% @topips[0..4].each do |topip| %>
+
+              <div class = "col-md-6" style="padding-top: 20px;">
+                <div id="top-visitors-0-more">
+                  <% @topips[5..9].each do |topip| %>
                     <li>
                       <p><b><%= topip.title %></b>
                       <br>
@@ -109,7 +132,22 @@
                     </li>
                   <% end %>
                 </div>
-              <% end %>
+                <% for i in 1..5 %>
+                  <div id="top-visitors-<%= i %>-more" hidden>
+                    <% @topips.select{|x| x.type_id == i}[5..9].each do |topip| %>
+                      <li>
+                        <p><b><%= topip.title %></b>
+                        <br>
+                        IP Address: <%= topip.ipaddress %>
+                         <br>
+                        Total Requests: <%= topip.request %>
+                        </p> 
+                      </li>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+
             </ol> 
           </div>
         </div>    
@@ -191,6 +229,63 @@
 </script> 
 
 <script type="text/javascript">
+
+  function changeType(elementNode){
+
+    document.getElementById("top-visitors-0").hidden = true;
+    document.getElementById("top-visitors-1").hidden = true;
+    document.getElementById("top-visitors-2").hidden = true;
+    document.getElementById("top-visitors-3").hidden = true;
+    document.getElementById("top-visitors-4").hidden = true;
+    document.getElementById("top-visitors-5").hidden = true;
+
+    document.getElementById("top-visitors-0-more").hidden = true;
+    document.getElementById("top-visitors-1-more").hidden = true;
+    document.getElementById("top-visitors-2-more").hidden = true;
+    document.getElementById("top-visitors-3-more").hidden = true;
+    document.getElementById("top-visitors-4-more").hidden = true;
+    document.getElementById("top-visitors-5-more").hidden = true;
+
+    
+    switch(elementNode.value)
+    {
+    case "1":
+      document.getElementById('visitor-details-title').innerHTML = "Top User Details";
+      // document.getElementById('visitor-title').innerHTML = "Top Users";
+      document.getElementById("top-visitors-1").hidden = false;
+      document.getElementById("top-visitors-1-more").hidden = false;
+      break;
+    case "2":
+      document.getElementById('visitor-details-title').innerHTML = "Top Scraper Details";
+      // document.getElementById('visitor-title').innerHTML = "Top Scrapers";
+      document.getElementById("top-visitors-2").hidden = false;
+      document.getElementById("top-visitors-2-more").hidden = false;
+      break;
+    case "3":
+      document.getElementById('visitor-details-title').innerHTML = "Top Indexing Details";
+      // document.getElementById('visitor-title').innerHTML = "Top Indexing visitors";
+      document.getElementById("top-visitors-3").hidden = false;
+      document.getElementById("top-visitors-3-more").hidden = false;
+      break;
+    case "4":
+      document.getElementById('visitor-details-title').innerHTML = "Top Automated Details";
+      // document.getElementById('visitor-title').innerHTML = "Top Automated visitors";
+      document.getElementById("top-visitors-4").hidden = false;
+      document.getElementById("top-visitors-4-more").hidden = false;
+      break;
+    case "5":
+      document.getElementById('visitor-details-title').innerHTML = "Top Developers Details";
+      // document.getElementById('visitor-title').innerHTML = "Top Developers";
+      document.getElementById("top-visitors-5").hidden = false;
+      document.getElementById("top-visitors-5-more").hidden = false;
+      break;
+    default:
+      document.getElementById('visitor-details-title').innerHTML = "Top Visitor Details";
+      // document.getElementById('visitor-title').innerHTML = "Top Visitors";
+      document.getElementById("top-visitors-0").hidden = false;
+      document.getElementById("top-visitors-0-more").hidden = false;
+    }
+  }
 
   $(window).load(function(){
 
@@ -430,7 +525,7 @@
     <%
       pageviews_str = "" 
       i = 1
-      @topips[0..4].each do |topip|
+      @topips.select{|x| x.type_id == 3}[0..4].each do |topip|
         pageviews_str += '[' + i.to_s + ',' + topip.request.to_s + '],'
         i += 1
       end
