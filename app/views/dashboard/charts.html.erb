@@ -525,7 +525,7 @@
     <%
       pageviews_str = "" 
       i = 1
-      @topips.select{|x| x.type_id == 3}[0..4].each do |topip|
+      @topips[0..4].each do |topip|
         pageviews_str += '[' + i.to_s + ',' + topip.request.to_s + '],'
         i += 1
       end
