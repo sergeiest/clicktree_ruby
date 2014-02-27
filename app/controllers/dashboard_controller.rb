@@ -4,11 +4,11 @@ layout "dashboard"
 
 before_filter do
   	case params[:action]
-  	when "chart"
+  	when "charts"
   		if session[:id].nil?
    			redirect_to :action => 'login' and return
    		else
-			params[:id] = session[:id] if session[:id] != 0 		
+			params[:id] = session[:id] if session[:id] != 1 		
    		end
   	end
 end
@@ -36,9 +36,8 @@ end
 def check_login
 	user = Authentication.where("email = ? AND password = ?", params[:email], params[:password])
 
-
 	if user.length > 0
-		session[:id] = user[0].id
+		session[:id] = user.first.id
 		redirect_to :action => 'charts' and return
 	else
 		@email = params[:email]
