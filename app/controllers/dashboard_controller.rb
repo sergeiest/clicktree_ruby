@@ -24,6 +24,21 @@ def charts
 	@topips = Topip.where("company_id = ?", params[:id]).sort{|x,y| y.request <=> x.request }
 end
 
+def demo
+	params[:id] = User.first.authentication_id
+	@user = User.find_by_authentication_id(params[:id])
+	@visitnumbers = Visitnumber.where("company_id = ?", params[:id])
+	@requesttypes = Requesttype.where("company_id = ?", params[:id])
+	@iptypes = Iptype.where("company_id = ?", params[:id])
+	@dailyrequests = Dailyrequest.where("company_id = ?", params[:id])
+	@hourrequests = Hourrequest.where("company_id = ?", params[:id])
+	@topips = Topip.where("company_id = ?", params[:id]).sort{|x,y| y.request <=> x.request }	
+
+	respond_to do |format|
+		format.html {render "charts"}
+	end
+end
+
 def login
 	@email = ""
 end	

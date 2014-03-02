@@ -9,6 +9,7 @@ Clicktree::Application.routes.draw do
   get "dashboard/login"
   post "dashboard/check_login"
   get "dashboard/logout"
+  get "dashboard/demo"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
