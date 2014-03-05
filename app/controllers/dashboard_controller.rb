@@ -16,18 +16,18 @@ end
 def charts
 	params[:id] = session[:id] if params[:id].nil?
 	@user = User.find_by_authentication_id(params[:id])
-	@visitnumbers = Visitnumber.where("company_id = ?", params[:id])
-	@requesttypes = Requesttype.where("company_id = ?", params[:id])
-	@iptypes = Iptype.where("company_id = ?", params[:id])
-	@dailyrequests = Dailyrequest.where("company_id = ?", params[:id])
-	@hourrequests = Hourrequest.where("company_id = ?", params[:id])
+	# @visitnumbers = Visitnumber.where("company_id = ?", params[:id])
+	@requesttypes = Requesttype.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
+	@iptypes = Iptype.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
+	@dailyrequests = Dailyrequest.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
+	@hourrequests = Hourrequest.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
 	@topips = Topip.where("company_id = ?", params[:id]).sort{|x,y| y.request <=> x.request }
 end
 
 def demo
 	params[:id] = User.first.authentication_id
 	@user = User.find_by_authentication_id(params[:id])
-	@visitnumbers = Visitnumber.where("company_id = ?", params[:id])
+	# @visitnumbers = Visitnumber.where("company_id = ?", params[:id])
 	@requesttypes = Requesttype.where("company_id = ?", params[:id])
 	@iptypes = Iptype.where("company_id = ?", params[:id])
 	@dailyrequests = Dailyrequest.where("company_id = ?", params[:id])
