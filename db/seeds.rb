@@ -65,14 +65,35 @@ for k in 0..2
 	for i in 1..5
 		for j in 1..5
 			topip_list << [ authentications[k].id, "Company " + i.to_s, rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s,
-		  			rand(1000), j]
+		  			rand(1000), j, "US"]
 		end
 	end
 end
 
 Topip.destroy_all
-topip_list.each do |company_id, title, ipaddress, request, type_id|
+topip_list.each do |company_id, title, ipaddress, request, type_id, country|
   Topip.create( company_id: company_id, title: title, ipaddress: ipaddress, request: request, type_id: type_id)
+end
+
+page_list = Array.new()
+page_list << ["bots/galore", 32]
+page_list << ["users/good", 43]
+page_list << ["bots/bad", 54]
+page_list << ["fun/times" ,3243]
+page_list << ["who/dat", 4323]
+page_list << ["whats/up", 4352]
+page_list << ["whats/happening", 5654]
+page_list << ["all/you", 3233]
+page_list << ["what/who", 3231]
+page_list << ["why/where", 429]
+
+page_list.each do |url, freq|
+	Topip.all do |topip_one|
+		topip_one.pages.create(url:url,freq:freq)
+	end	
+	for k in 0..1
+		Page.create(url:url,freq:freq, type_id:k)
+	end
 end
 
 requesttype_list = Array.new()
