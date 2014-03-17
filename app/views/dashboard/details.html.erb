@@ -1,0 +1,601 @@
+<div id="cl-wrapper">
+
+  <div class="cl-sidebar">
+    <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+      <div class="cl-navblock">
+        <div class="menu-space">
+          <div class="content">
+            <%= link_to ({:controller => "home", :action => "index"}) do %>
+              <div class="sidebar-logo" style="background-color:#4A4A4A">
+                <div class="logo">
+                </div>
+              </div>
+            <% end %>
+            <div class="side-user">
+              <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
+              <div class="info info-align">
+                <p>
+                  <b><%= @user.company %></b><br/><%= @user.name %>
+                </p>
+              </div>
+            </div>
+            <ul class="cl-vnavigation">
+            </ul>
+          </div>
+        </div>
+        <div class="text-right collapse-button" style="padding:7px 9px;">
+          <input type="text" class="form-control search" placeholder="Search..." />
+          <button id="sidebar-collapse" class="btn btn-default" style=""><i style="color:#fff;" class="fa fa-angle-left"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" id="pcont">
+   <!-- TOP NAVBAR -->  
+
+    <div class="cl-mcont">    
+      <div class="page-head">
+        <ol class="breadcrumb">
+          <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
+          <li><%= link_to "Logout", {:action => "logout"} %></li>
+        </ol>
+      </div>  
+
+      <!--TOP 10 SCRAPERS BAR CHART-->
+      <div class="block-flat block-flat-details">
+        <div class="row">
+          <div class="col-md-12">
+        
+              <div class="header">              
+                <h3 id="visitor-title">About Your Top Scraper</h3>
+              </div>
+              <div class="content">
+                <div id="scraper_statistics2" style="height: 300px; padding: 20px; position: relative;"></div>    
+              </div>
+            </div>
+          </div>     
+        
+
+        <!--TOP Visitor 1--> 
+          <!--SCRAPER DETAIL TEXT-->
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+
+              <div class="content">
+                <p class="detail-text">
+                1. Company Name <br>
+                IP Address<br>
+                500 Requests<br>
+                Some info<br>
+                <p>
+              </div>  
+            </div>
+
+            <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
+            <div class="col-sm-6 col-md-6">
+              <div id="scraper-request-over-time">
+                <div class="content">
+                  <div id="scraper_statistics" style="height: 200px; padding: 20px; position: relative;"></div>
+                </div>
+              </div>  
+            </div>
+         </div> 
+
+        <div class="row">    
+          <div class="col-sm-6 col-md-6">
+            <!--SCRAPER TOP URL VISITS TEXT-->
+            <div id="top-scraper-pages">
+            <!--I HAVE NO IDEA WHAT GOES HERE, BUT IT'S TEXT -->          
+            </div>  
+          </div>
+
+          <div class="col-sm-6 col-md-6">
+            <div id="scraper-request-pattern">
+              <!--OCTAVE IMAGE-->
+            </div>  
+          </div>
+        </div>
+      </div>  
+    </div>
+          
+          
+
+        
+          
+            
+<!--Data for list?
+            <ol>
+              <div class = "col-md-6" style="padding-top: 20px;">
+                <div id="top-visitors-0">
+                  <% @topips[0..4].each do |topip| %>
+                    <li>
+                      <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
+                    </li>
+                  <% end %>
+                </div>
+                <% for i in 1..5 %>
+                  <div id="top-visitors-<%= i %>" hidden = true>
+                    <% @topips.select{|x| x.type_id == i}[0..4].each do |topip| %>
+                      <li>
+                        <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
+                      </li>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class = "col-md-6" style="padding-top: 20px;">
+                <div id="top-visitors-0-more">
+                  <% @topips[5..9].each do |topip| %>
+                    <li>
+                      <p><b><%= topip.title %></b>
+                      <br>
+                      IP Address: <%= topip.ipaddress %>
+                       <br>
+                      Total Requests: <%= topip.request %>
+                      </p> 
+                    </li>
+                  <% end %>
+                </div>
+                <% for i in 1..5 %>
+                  <div id="top-visitors-<%= i %>-more" hidden>
+                    <% @topips.select{|x| x.type_id == i}[5..9].each do |topip| %>
+                      <li>
+                        <p><b><%= topip.title %></b>
+                        <br>
+                        IP Address: <%= topip.ipaddress %>
+                         <br>
+                        Total Requests: <%= topip.request %>
+                        </p> 
+                      </li>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </ol>
+
+      -->     
+          </div>
+
+       
+  
+
+    </div>
+  </div>
+</div> 
+  
+  <script type="text/javascript">
+    var link = $('link[href="css/style.css"]');
+    
+    if($.cookie("css")) {
+      link.attr("href",'css/skin-' + $.cookie("css") + '.css');
+    }
+    
+    $(function(){
+      $("#color-switcher .toggle").click(function(){
+        var s = $(this).parent();
+        if(s.hasClass("open")){
+          s.animate({'margin-right':'-109px'},400).toggleClass("open");
+        }else{
+          s.animate({'margin-right':'0'},400).toggleClass("open");
+        }
+      });
+      
+      $("#color-switcher .color").click(function(){
+        var color = $(this).data("color");
+        $("body").fadeOut(function(){
+          //link.attr('href','css/skin-' + color + '.css');
+          $.cookie("css", color, {expires: 365, path: '/'});
+          window.location.href = "";
+          $(this).fadeIn("slow");
+        });
+      });
+    });
+
+
+</script> 
+
+<script type="text/javascript">
+
+  $(window).load(function(){
+
+    if (!jQuery.plot) {
+      return;
+    }
+    var data = [];
+    var totalPoints = 250;
+    // random data generator for plot charts
+
+    function getRandomData() {
+      if (data.length > 0) data = data.slice(1);
+      // do a random walk
+      while (data.length < totalPoints) {
+      var prev = data.length > 0 ? data[data.length - 1] : 50;
+      var y = prev + Math.random() * 10 - 5;
+      if (y < 0) y = 0;
+      if (y > 100) y = 100;
+      data.push(y);
+      }
+      // zip the generated y values with the x values
+      var res = [];
+      for (var i = 0; i < data.length; ++i) res.push([i, data[i]])
+      return res;
+    }
+
+    function showTooltip(x, y, contents) {
+      $("<div id='tooltip'>" + contents + "</div>").css({
+        position: "absolute",
+        display: "none",
+        top: y + 5,
+        left: x + 5,
+        border: "1px solid #000",
+        padding: "5px",
+        'color':'#fff',
+        'border-radius':'2px',
+        'font-size':'11px',
+        "background-color": "#000",
+        opacity: 0.80
+      }).appendTo("body").fadeIn(200);
+    } 
+
+    function randValue() {
+      return (Math.floor(Math.random() * (1 + 50 - 20))) + 10;
+    }
+
+    if ($('#scraper_statistics').size() != 0) {
+
+      /* Charts and other dashboard */
+
+      color_scheme=["#2B82C0", "#7ACBBE", "#F58236", "#FEE95E", "#744B9E"];
+
+      $('#scraper_statistics_loading').hide();
+      $('#scraper_statistics_content').show();
+      
+
+      /* Requests per day by class */
+
+      <%
+        dailyrequest_user_str = ""
+        dailyrequest_ticks_str = ""
+        i = 1 
+        @dailyrequests.select{|x| x.type_id == 1}.each do |dailyrequest|
+          dailyrequest_user_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
+          if i % 2 == 0
+            dailyrequest_ticks_str += '[' + i.to_s + ', "' + dailyrequest.rdate.strftime("%m/%d") + '"],'
+          end
+          i += 1
+        end
+        dailyrequest_user_str = dailyrequest_user_str[0..-1].html_safe if dailyrequest_user_str.length > 0
+        dailyrequest_ticks_str = dailyrequest_ticks_str[0..-1].html_safe if dailyrequest_ticks_str.length > 0
+      %>
+      var dailyrequest_1 = [<%= dailyrequest_user_str %>];
+      var dailyrequest_ticks = [<%= dailyrequest_ticks_str %>];
+
+      <%
+        dailyrequest_bot_str = ""
+        i = 1 
+        @dailyrequests.select{|x| x.type_id == 2}.each do |dailyrequest|
+          dailyrequest_bot_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
+          i += 1
+        end
+        dailyrequest_bot_str = dailyrequest_bot_str[0..-1].html_safe if dailyrequest_bot_str.length > 0
+      %>
+      var dailyrequest_2 = [<%= dailyrequest_bot_str %>];
+
+      <%
+        dailyrequest_indexing_str = ""
+        i = 1 
+        @dailyrequests.select{|x| x.type_id == 3}.each do |dailyrequest|
+          dailyrequest_indexing_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
+          i += 1
+        end
+        dailyrequest_indexing_str = dailyrequest_indexing_str[0..-1].html_safe if dailyrequest_indexing_str.length > 0
+      %>
+      var dailyrequest_3 = [<%= dailyrequest_indexing_str %>];
+
+      <%
+        dailyrequest_automated_str = ""
+        i = 1 
+        @dailyrequests.select{|x| x.type_id == 4}.each do |dailyrequest|
+          dailyrequest_automated_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
+          i += 1
+        end
+        dailyrequest_automated_str = dailyrequest_automated_str[0..-1].html_safe if dailyrequest_automated_str.length > 0
+      %>
+      var dailyrequest_4 = [<%= dailyrequest_automated_str %>];
+
+      var plot_statistics = $.plot($("#scraper_statistics"), [
+       {
+        data: dailyrequest_1,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 1}.first.name %>"
+      },
+      {
+        data: dailyrequest_2,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 2}.first.name %>"
+      },
+      {
+        data: dailyrequest_3,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 3}.first.name %>"
+      },
+      {
+        data: dailyrequest_4,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 4}.first.name %>"
+      }
+     ],
+       {
+        series: {
+          lines: {
+            show: true,
+            lineWidth: 0.25, 
+            fill: true,
+            fillColor: {
+              colors: [{
+                opacity: 0.05
+              }, {
+                opacity: 0.05
+              }
+              ]
+            } 
+          },
+          points: {
+            show: true
+          },
+          shadowSize: 2
+        },
+        legend:{
+          show: false
+        },
+        grid: {
+        labelMargin: 10,
+           axisMargin: 500,
+          hoverable: true,
+          clickable: true,
+          tickColor: "rgba(0,0,0,0.15)",
+          borderWidth: 0
+        },
+
+      /* USERS: "#"  BOTS: "#" AUTOMATED: "#" INDEXING:"#"  DEVELOPERS:"#" */
+        colors: color_scheme,
+        xaxis: {
+           ticks: dailyrequest_ticks
+        },
+        yaxis: {
+          ticks: 5,
+          tickDecimals: 0
+        }
+      });
+      
+
+
+    <%
+      pageviews_str = "" 
+      i = 1
+      @topips.select{|x| x.type_id == 3}[0..4].each do |topip|
+        pageviews_str += '[' + i.to_s + ',' + topip.request.to_s + '],'
+        i += 1
+      end
+    %>
+    var pageviews = [<%= pageviews_str[0..-1] %>];
+
+    var plot_statistics2 = $.plot($("#scraper_statistics2"), [{
+        data: pageviews,
+        label: "Unique Visits"
+      }
+      ], {
+        series: {
+          bars: {
+            show: true,
+            barWidth: 0.6,
+            lineWidth: 0,
+            fill: true,
+            hoverable: true,
+            fillColor: {
+              colors: [{
+                opacity: 1
+              }, {
+                opacity: 1
+              }
+              ]
+            } 
+          },
+          shadowSize: 2
+        },
+        legend:{
+          show: false
+        },
+        grid: {
+        labelMargin: 10,
+           axisMargin: 500,
+          hoverable: true,
+          clickable: true,
+          tickColor: "rgba(0,0,0,0.15)",
+          borderWidth: 0
+        },
+        colors: ["#7ACBBE"],
+        xaxis: {
+          ticks: [[1.3, 1], [2.3, 2], [3.3, 3],[4.3, 4], [5.3, 5], [6.3, 6], [7.3, 7], [8.3, 8],[9.3, 9], [10.3, ]],
+          tickDecimals: 0
+        },
+        yaxis: {
+          ticks: 6,
+          tickDecimals: 0
+        }
+      });
+
+
+      /* Peak Hours - Chart */
+
+      <%
+        hourrequest_user_str = ""
+        hourrequest_ticks_str = ""
+        i = 1 
+        @hourrequests.select{|x| x.type_id == 1}.each do |hourrequest|
+          hourrequest_user_str += '[' + i.to_s + ', ' + hourrequest.value.to_s + '],'
+          if i % 3 == 0
+            hourrequest_ticks_str += '[' + i.to_s + ', "' + hourrequest.rdate.strftime("%H %p") + '"],'
+          end
+          i += 1
+        end
+        hourrequest_user_str = hourrequest_user_str[0..-1].html_safe if hourrequest_user_str.length > 0
+        hourrequest_ticks_str = hourrequest_ticks_str[0..-1].html_safe if hourrequest_ticks_str.length > 0
+      %>
+      var hourrequest_1 = [<%= hourrequest_user_str %>];
+      var hourrequest_ticks = [<%= hourrequest_ticks_str %>];
+
+      <%
+        hourrequest_bot_str = ""
+        i = 1 
+        @hourrequests.select{|x| x.type_id == 2}.each do |hourrequest|
+          hourrequest_bot_str += '[' + i.to_s + ', ' + hourrequest.value.to_s + '],'
+          i += 1
+        end
+        hourrequest_bot_str = hourrequest_bot_str[0..-1].html_safe if hourrequest_bot_str.length > 0
+      %>
+      var hourrequest_2 = [<%= hourrequest_bot_str %>];
+
+      <%
+        hourrequest_indexing_str = ""
+        i = 1 
+        @hourrequests.select{|x| x.type_id == 3}.each do |hourrequest|
+          hourrequest_indexing_str += '[' + i.to_s + ', ' + hourrequest.value.to_s + '],'
+          i += 1
+        end
+        hourrequest_indexing_str = hourrequest_indexing_str[0..-1].html_safe if hourrequest_indexing_str.length > 0
+      %>
+      var hourrequest_3 = [<%= hourrequest_indexing_str %>];
+
+      <%
+        hourrequest_automated_str = ""
+        i = 1 
+        @hourrequests.select{|x| x.type_id == 4}.each do |hourrequest|
+          hourrequest_automated_str += '[' + i.to_s + ', ' + hourrequest.value.to_s + '],'
+          i += 1
+        end
+        hourrequest_automated_str = hourrequest_automated_str[0..-1].html_safe if hourrequest_automated_str.length > 0
+      %>
+      var hourrequest_4 = [<%= hourrequest_automated_str %>];
+
+      var plot_statistics = $.plot($("#site_statistics3"), [
+       {
+        data: hourrequest_1,
+        label: "<%= @hourrequests.select{|x| x.type_id == 1}.first.name %>"
+      },
+      {
+        data: hourrequest_2,
+        label: "<%= @hourrequests.select{|x| x.type_id == 2}.first.name %>"
+      },
+      {
+        data: hourrequest_3,
+        label: "<%= @hourrequests.select{|x| x.type_id == 3}.first.name %>"
+      },
+      {
+        data: hourrequest_4,
+        label: "<%= @hourrequests.select{|x| x.type_id == 4}.first.name %>"
+      }
+     ],
+       {
+        series: {
+          lines: {
+            lineColor: color_scheme,
+            show: true,
+            lineWidth: 0.25, 
+            fill: true,
+            fillColor: {
+              colors: [{
+                opacity: 0.0
+              }, {
+                opacity: 0.0
+              }
+              ]
+            } 
+          },
+          points: {
+            show: true
+          },
+          shadowSize: 2
+        },
+        legend:{
+          show: false
+        },
+        grid: {
+        labelMargin: 10,
+           axisMargin: 500,
+          hoverable: true,
+          clickable: true,
+          tickColor: "rgba(0,0,0,0.15)",
+          borderWidth: 0
+        },
+        //colors: color_scheme,
+        xaxis: {
+           ticks: hourrequest_ticks
+        },
+        yaxis: {
+          ticks: 5,
+          tickDecimals: 0
+        }
+      });
+    
+      /*Tooltips*/
+      
+      var previousPoint = null;
+      $("#scraper_statistics").bind("plothover", function (event, pos, item) {
+      
+        var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+
+        if (item) {
+          if (previousPoint != item.dataIndex) {
+            previousPoint = item.dataIndex;
+            $("#tooltip").remove();
+            var x = item.datapoint[0].toFixed(2),
+            y = item.datapoint[1].toFixed(2);
+            showTooltip(item.pageX, item.pageY,
+            item.series.label + " of " + x + " = " + y);
+          }
+        } else {
+          $("#tooltip").remove();
+          previousPoint = null;
+        }
+      }); 
+      
+      $("#scraper_statistics2").bind("plothover", function (event, pos, item) {
+      
+        var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+
+        if (item) {
+          if (previousPoint != item.dataIndex) {
+            previousPoint = item.dataIndex;
+            $("#tooltip").remove();
+            var x = item.datapoint[0],
+            y = item.datapoint[1];
+            showTooltip(item.pageX, item.pageY,
+            item.series.label + "" + x + " = " + y + "%");
+          }
+        } else {
+          $("#tooltip").remove();
+          previousPoint = null;
+        }
+      }); 
+      
+      $("#chart3").bind("plothover", function (event, pos, item) {
+      
+        var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+
+        if (item) {
+          if (previousPoint != item.dataIndex) {
+            previousPoint = item.dataIndex;
+            $("#tooltip").remove();
+            var x = item.datapoint[0].toFixed(2),
+            y = item.datapoint[1].toFixed(2);
+            showTooltip(item.pageX, item.pageY,
+            item.series.label + " of " + x + " = " + y);
+          }
+        } else {
+          $("#tooltip").remove();
+          previousPoint = null;
+        }
+      }); 
+    };
+
+
+  });
+</script>

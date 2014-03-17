@@ -7,6 +7,7 @@ Clicktree::Application.routes.draw do
   get "dashboard" => "dashboard#charts"
   get "dashboard/charts"
   get "dashboard/login"
+  get "dashboard/details"
   post "dashboard/check_login"
   get "dashboard/logout"
   get "dashboard/demo"

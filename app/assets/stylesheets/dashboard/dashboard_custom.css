@@ -76,6 +76,17 @@ select {
 }
 
 
+/* basic positioning */
+.legend { list-style: none; }
+.legend li { float: left; margin-right: 10px; }
+.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+/* your colors */
+.legend .users { background-color: #ff00ff; }
+.legend .bots { background-color: #00ffff; }
+.legend .indexing { background-color: #000000; }
+.legend .automated { background-color: #0000ff; }
+.legend .dev { background-color: #0000ff; }
+
 
 
 

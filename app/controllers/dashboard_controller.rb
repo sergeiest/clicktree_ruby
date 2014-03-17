@@ -4,7 +4,7 @@ layout "dashboard"
 
 before_filter do
   	case params[:action]
-  	when "charts"
+  	when "charts", "details"
   		if session[:id].nil?
    			redirect_to :action => 'login' and return
    		else
@@ -17,6 +17,16 @@ def charts
 	params[:id] = session[:id] if params[:id].nil?
 	@user = User.find_by_authentication_id(params[:id])
 	# @visitnumbers = Visitnumber.where("company_id = ?", params[:id])
+	@requesttypes = Requesttype.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
+	@iptypes = Iptype.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
+	@dailyrequests = Dailyrequest.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
+	@hourrequests = Hourrequest.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
+	@topips = Topip.where("company_id = ?", params[:id]).sort{|x,y| y.request <=> x.request }
+end
+
+def details
+	params[:id] = session[:id] if params[:id].nil?
+	@user = User.find_by_authentication_id(params[:id])
 	@requesttypes = Requesttype.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
 	@iptypes = Iptype.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
 	@dailyrequests = Dailyrequest.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }

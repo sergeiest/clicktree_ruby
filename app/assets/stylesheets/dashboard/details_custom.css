@@ -1,0 +1,9 @@
+.block-flat-details {
+	padding: 20px 50px 20px 50px;
+	box-shadow: 0;
+}
+
+.detail-text{
+	font-size: 28px;
+	line-height: 32px;
+}
