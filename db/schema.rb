@@ -11,13 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140221225746) do
+ActiveRecord::Schema.define(version: 20140317220029) do
 
   create_table "authentications", force: true do |t|
     t.string   "email"
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "blockedips", force: true do |t|
+    t.string "ip"
   end
 
   create_table "dailyrequests", force: true do |t|
@@ -49,6 +53,13 @@ ActiveRecord::Schema.define(version: 20140221225746) do
     t.datetime "updated_at"
   end
 
+  create_table "pages", force: true do |t|
+    t.integer "topip_id"
+    t.string  "url"
+    t.integer "freq"
+    t.integer "type_id"
+  end
+
   create_table "requesttypes", force: true do |t|
     t.integer  "company_id"
     t.string   "name"
@@ -56,6 +67,19 @@ ActiveRecord::Schema.define(version: 20140221225746) do
     t.integer  "type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "sigmamus", force: true do |t|
+    t.integer  "topip_id"
+    t.float    "sigma"
+    t.float    "mu"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "timerequests", force: true do |t|
+    t.integer  "topip_id"
+    t.datetime "request_time"
   end
 
   create_table "topips", force: true do |t|
@@ -66,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140221225746) do
     t.integer  "type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country"
   end
 
   create_table "users", force: true do |t|
