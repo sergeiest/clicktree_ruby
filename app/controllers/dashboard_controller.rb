@@ -32,25 +32,31 @@ def details
 
 	usersorbots = params[:class_botuser]
 	type = (2 if usersorbots == "bot") || 1
-	@topips = Topip.where("company_id = ? AND type_id = ?", params[:id], type).sort_by{|e| -e[:request]}
+	@topips = Topip.where("company_id = ? AND type_id = ?", params[:id], type).sort_by{|e| -e[:request]}[0..9]
 	
 	@topip_str = ""
+	@topip_name_str = ""
 	@pages_str = Hash.new
+	@pages_name_str = Hash.new
 	i = 1
 	@topips.each do |ip|
 		@topip_str += '[' + i.to_s + ',' + ip.request.to_s + '],'
+		@topip_name_str += ('[' + (i + 0.3).to_s + ',"' + ip.title + '"],')
 		i += 1
-
 		@pages_str[ip.ipaddress] = ""
-
+		@pages_name_str[ip.ipaddress] = ""
 		j = 1
+		k = 1 
 		ip.pages.all.sort_by{|e| -e[:freq]}.slice(0,5).each do |x|
-			@pages_str[ip.ipaddress] += '[' + i.to_s + ',' + x.freq.to_s + '],'
+			@pages_str[ip.ipaddress] += '[' + k.to_s + ',' + x.freq.to_s + '],'
+			@pages_name_str[ip.ipaddress] += '[' + (k+0.3).to_s + ',"' + x.url.to_s + '"],'
+			k += 1
 		end
+		@pages_name_str[ip.ipaddress] = @pages_name_str[ip.ipaddress].html_safe
 	end
 
-
-
+	@topip_name_str = @topip_name_str.html_safe
+	
 
 	@requesttypes = Requesttype.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
 	@iptypes = Iptype.where("company_id = ?", params[:id]).sort{|x,y| x.type_id <=> y.type_id }
