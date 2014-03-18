@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 20140317220029) do
   end
 
   create_table "blocked_ips", force: true do |t|
-    t.string "ip"
+    t.string   "ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "dailyrequests", force: true do |t|
