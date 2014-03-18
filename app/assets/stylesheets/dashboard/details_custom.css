@@ -6,10 +6,19 @@
 .detail-text{
 	font-size: 18px;
 	line-height: 32px;
+
 }
 
 .header-details {
-	font-size: 20px;
+	font-size: 16px;
 	text-transform: uppercase;
-	font-weight: 700px;
+	font-weight: 600;
+	
+}
+
+
+
+.detail-separator {
+	border-width: 2px;
+
 }
