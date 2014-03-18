@@ -58,6 +58,7 @@
           
         <!--TOP Visitor 1--> 
           <!--SCRAPER DETAIL TEXT-->
+            <% i = 0 %>
             <% @topips.slice(0,10).each do |ip| %>
               <div class="row left-detail">
                 <div class="col-sm-5 col-md-5">
@@ -115,8 +116,9 @@
                 </div>
                 <div id="scraper-request-pattern">
                     <div class="content">
-                      <div id="scraper_statistics3" data-ip="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>    
+                      <div class="scraper_statistics3" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>    
                     </div>
+                    <% i += 1 %>
                 </div>  
               </div>
             </div>
@@ -297,9 +299,9 @@
         }
       });
       
+    
 
-
-    var pageviews = [<%= @topip_str %>];
+    pageviews = [<%= @topip_str %>];
 
     var plot_statistics2 = $.plot($("#scraper_statistics2"), [{
         data: pageviews,
@@ -346,50 +348,79 @@
         }
       });
 
-var plot_statistics3 = $.plot($("#scraper_statistics3"), [{
-        data: [<%= @pages_str[@topips[0].ipaddress] %>],
-        label: "Unique Visits"
-      }
-      ], {
-        series: {
-          bars: {
-            show: true,
-            barWidth: 0.6,
-            lineWidth: 0,
-            fill: true,
-            hoverable: true,
-            fillColor: {
-              colors: [{
-                opacity: 1
-              }, {
-                opacity: 1
-              }
-              ]
-            } 
-          },
-          shadowSize: 2
-        },
-        legend:{
-          show: false
-        },
-        grid: {
-        labelMargin: 10,
-           axisMargin: 500,
-          hoverable: true,
-          clickable: true,
-          tickColor: "rgba(0,0,0,0.15)",
-          borderWidth: 0
-        },
-        colors: ["#7ACBBE"],
-        xaxis: {
-          ticks: [<%= @pages_name_str[@topips[0].ipaddress] %>],
-          tickDecimals: 0
-        },
-        yaxis: {
-          ticks: 6,
-          tickDecimals: 0
-        }
+
+
+
+    elements = $(".scraper_statistics3");
+    stringstouse = "<%= escape_javascript @pages_str.to_json.html_safe %>";
+    json_strings = JSON.parse(stringstouse)
+
+    
+
+
+
+    for (var i=0; i<elements.length; i++){
+
+      var current_ip = $(elements[i]).data('index');
+      var current_string = json_strings[current_ip];
+
+      var array_fordata = Array()
+
+      splitbycolon = json_strings[current_ip].split(';').slice(0, elements.length)
+
+      splitbycolon.forEach(function(each){
+        var temp_array = Array()
+        console.log(each)
+        temp_array.push(parseInt(each.split('[')[1].split(']')[0].split(',')[0]));
+        temp_array.push(parseInt(each.split('[')[1].split(']')[0].split(',')[1]));
+        array_fordata.push(temp_array);
       });
+
+      var plot_statistics3 = $.plot($(elements[i]), [{
+            data:  array_fordata,
+            label: "Unique Visits"
+          }
+          ], {
+            series: {
+              bars: {
+                show: true,
+                barWidth: 0.6,
+                lineWidth: 0,
+                fill: true,
+                hoverable: true,
+                fillColor: {
+                  colors: [{
+                    opacity: 1
+                  }, {
+                    opacity: 1
+                  }
+                  ]
+                } 
+              },
+              shadowSize: 2
+            },
+            legend:{
+              show: false
+            },
+            grid: {
+            labelMargin: 10,
+               axisMargin: 500,
+              hoverable: true,
+              clickable: true,
+              tickColor: "rgba(0,0,0,0.15)",
+              borderWidth: 0
+            },
+            colors: ["#7ACBBE"],
+            xaxis: {
+              ticks: [<%= @pages_name_str[@topips[0].ipaddress] %>],
+              tickDecimals: 0
+            },
+            yaxis: {
+              ticks: 6,
+              tickDecimals: 0
+            }
+          });
+      }
 
 
       /* Peak Hours - Chart */
