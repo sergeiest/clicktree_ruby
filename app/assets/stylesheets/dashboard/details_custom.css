@@ -4,21 +4,46 @@
 }
 
 .detail-text{
-	font-size: 18px;
-	line-height: 32px;
+	font-size: 14px;
+	line-height: 22px;
 
 }
 
 .header-details {
-	font-size: 16px;
+	font-size: 14px;
 	text-transform: uppercase;
-	font-weight: 600;
-	
+	font-weight: 500;
+	border-bottom: 1px solid #dadada;
+	width:60%;
+	padding: 5px;
 }
 
 
 
 .detail-separator {
 	border-width: 2px;
+
+
+}
+
+.cl-vnavigation-custom{
+	font-size: 24px;
+	font-weight: 700;
+
+}
+
+.cl-vnavigation-custom li {margin: 0;}
+
+.flot-overlay {
+	 
+	direction: ltr; 
+	position: absolute; 
+	left: 0px; 
+	top: 0px; 
+	width: 20px; 
+	height: 20px;} 
+
+.detail_chart_custom{
+	padding: 0 20px 0 0;
 
 }

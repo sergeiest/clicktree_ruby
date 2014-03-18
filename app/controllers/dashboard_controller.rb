@@ -47,7 +47,7 @@ def details
 		@pages_name_str[ip.ipaddress] = ""
 		j = 1
 		k = 1 
-		ip.pages.all.sort_by{|e| -e[:freq]}.slice(0,5).each do |x|
+		ip.pages.all.sort_by{|e| -e[:freq]}.slice(0,10).each do |x|
 			@pages_str[ip.ipaddress] += '[' + k.to_s + ',' + x.freq.to_s + '],'
 			@pages_name_str[ip.ipaddress] += '[' + (k+0.3).to_s + ',"' + x.url.to_s + '"],'
 			k += 1
