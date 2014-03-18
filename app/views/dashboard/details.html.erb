@@ -125,61 +125,8 @@
   </ol>      
           
 
-        
-          
-            
-<!--Data for list?
-            <ol>
-              <div class = "col-md-6" style="padding-top: 20px;">
-                <div id="top-visitors-0">
-                  <% @topips[0..4].each do |topip| %>
-                    <li>
-                      <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
-                    </li>
-                  <% end %>
-                </div>
-                <% for i in 1..5 %>
-                  <div id="top-visitors-<%= i %>" hidden = true>
-                    <% @topips.select{|x| x.type_id == i}[0..4].each do |topip| %>
-                      <li>
-                        <p><b><%= topip.title %></b><br> IP Address: <%= topip.ipaddress %><br> Total Requests: <%= topip.request %></p> 
-                      </li>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-
-              <div class = "col-md-6" style="padding-top: 20px;">
-                <div id="top-visitors-0-more">
-                  <% @topips[5..9].each do |topip| %>
-                    <li>
-                      <p><b><%= topip.title %></b>
-                      <br>
-                      IP Address: <%= topip.ipaddress %>
-                       <br>
-                      Total Requests: <%= topip.request %>
-                      </p> 
-                    </li>
-                  <% end %>
-                </div>
-                <% for i in 1..5 %>
-                  <div id="top-visitors-<%= i %>-more" hidden>
-                    <% @topips.select{|x| x.type_id == i}[5..9].each do |topip| %>
-                      <li>
-                        <p><b><%= topip.title %></b>
-                        <br>
-                        IP Address: <%= topip.ipaddress %>
-                         <br>
-                        Total Requests: <%= topip.request %>
-                        </p> 
-                      </li>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </ol>
-
-      -->     
+      
+           
           </div>
 
        
@@ -188,7 +135,10 @@
     </div>
   </div>
 </div> 
-  
+</div>
+</div>
+</div>
+
   <script type="text/javascript">
     var link = $('link[href="css/style.css"]');
     
@@ -392,15 +342,7 @@
       
 
 
-    <%
-      pageviews_str = "" 
-      i = 1
-      @topips.select{|x| x.type_id == 3}[0..4].each do |topip|
-        pageviews_str += '[' + i.to_s + ',' + topip.request.to_s + '],'
-        i += 1
-      end
-    %>
-    var pageviews = [<%= pageviews_str[0..-1] %>];
+    var pageviews = [<%= @topip_str %>];
 
     var plot_statistics2 = $.plot($("#scraper_statistics2"), [{
         data: pageviews,
