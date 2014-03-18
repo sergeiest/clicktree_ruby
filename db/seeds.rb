@@ -62,7 +62,7 @@ end
 
 topip_list = Array.new()
 for k in 0..2
-	for i in 1..5
+	for i in 1..20
 		for j in 1..5
 			topip_list << [ authentications[k].id, "Company " + i.to_s, rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s + '.' + rand(255).to_s,
 		  			rand(1000), j, "US"]

@@ -46,7 +46,7 @@
         <div class="row">
           <div class="col-md-12">
         
-              <div class="header header-details">              
+              <div class="header">              
                 <h3 id="visitor-title">Top Visitors</h3>
               </div>
               <div class="content">
@@ -55,73 +55,86 @@
             </div>
           </div>     
         
-          <div class="header">              
-            <h3>Top Visitor Details</h3>
-            <br>
-
-          </div>
+          
         <!--TOP Visitor 1--> 
           <!--SCRAPER DETAIL TEXT-->
             <% @topips.slice(0,10).each do |ip| %>
-              <div class="row">
+              <div class="row left-detail">
                 <div class="col-sm-5 col-md-5">
+                  <div>              
+                    <h5 class="header-details left-detail">Visitor Details</h5>
+                  </div>
+                    <div class="content">
+                      <ol> 
+                        <li class="detail-text">
+                          <b><%= ip.title %></b> <br>
+                          <%= ip.ipaddress %>, <%= ip.country %><br>
+                          Total Requests: <%= ip.request %><br>
+                        </li> 
+                      </ol>  
+                    </div>  
                   <div class="content">
                   
                     <ol> 
                       <li class="detail-text">
                         <b><%= ip.title %></b> <br>
-                        <%= ip.ipaddress %>, <%= ip.country %><br>
+                        <%= ip.ipaddress %>, 
+                        <% if ip.country.nil? || ip.country == "" %>
+                          <%= 'no country info' %>
+                        <% else %>
+                          <%= ip.country %>
+                        <% end %>
+                        <br>
                         Total Requests: <%= ip.request %><br>
                       </li> 
                   </div>  
                 </div>
 
                 <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
-                <div class="col-sm-7 col-md-7">
-                  <div class="header header-details">              
-                    <h5>Top Scraper Daily Average Requests</h5>
+                <div class="col-sm-6 col-md-6">
+                  <div>              
+                    <h5 class="header-details">Daily Average Requests</h5>
                   </div>
                   <div id="scraper-request-over-time">
                     <div class="content">
-                      <div id="scraper_statistics" style="height: 300px; padding: 20px; position: relative;"></div>
+                      <div id="scraper_statistics" style="height: 200px; padding: 20px; position: relative;"></div>
                     </div>
                   </div>  
                 </div>
              </div> 
 
 
-            <div class="row">    
-                <div class="col-sm-5 col-md-5">
-                  <!--SCRAPER TOP URL VISITS TEXT-->
-                  <div class="header header-details">              
-                    <h5>Top URLs Visited</h5>
-                  </div>
-                  <div id="top-scraper-pages">
-                    <ol class="detail-text">
-                      <% ip.pages.all.sort_by{|e| -e[:freq]}.slice(0,5).each do |page| %>
-                        <li>URL: <%= page.url %><br>
-                        Count: <%= page.freq %></li>
-                      <% end %>
-                    </ol>  
-                  </div>  
+            <div class="row left-detail">    
+              <div class="col-sm-5 col-md-5">
+                <!--SCRAPER TOP URL VISITS TEXT-->
+                <div>              
+                  <h5 class="header-details left-detail">Top URLs Visited</h5>
                 </div>
-
-              <div class="col-sm-7 col-md-7">
-                 <div class="header header-details">              
-                  <h5>Top URLs Request Counts</h5>
+                <div id="top-scraper-pages">
+                  <ol class="detail-text">
+                    <% ip.pages.all.sort_by{|e| -e[:freq]}.slice(0,5).each do |page| %>
+                      <li>URL: <%= page.url %><br>
+                      Count: <%= page.freq %></li>
+                    <% end %>
+                  </ol>  
+                </div>  
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <div>              
+                  <h5 class="header-details">Top URLs Request Counts</h5>
                 </div>
-                  <div id="scraper-request-pattern">
-                      <div class="content">
-                        <div id="scraper_statistics3" data-ip="<%= ip.ipaddress %>" style="height: 350px; padding: 20px; position: relative;"></div>    
+                <div id="scraper-request-pattern">
+                    <div class="content">
+                      <div id="scraper_statistics3" data-ip="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>    
                     </div>
-                  </div>  
+                </div>  
               </div>
             </div>
+            <hr class="detail-separator">
           <% end %>
         </div>  
       </div>
-    </li>
-  </ol>      
+     
           
 
       
@@ -245,55 +258,10 @@
       var dailyrequest_1 = [<%= dailyrequest_user_str %>];
       var dailyrequest_ticks = [<%= dailyrequest_ticks_str %>];
 
-      <%
-        dailyrequest_bot_str = ""
-        i = 1 
-        @dailyrequests.select{|x| x.type_id == 2}.each do |dailyrequest|
-          dailyrequest_bot_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
-          i += 1
-        end
-        dailyrequest_bot_str = dailyrequest_bot_str[0..-1].html_safe if dailyrequest_bot_str.length > 0
-      %>
-      var dailyrequest_2 = [<%= dailyrequest_bot_str %>];
-
-      <%
-        dailyrequest_indexing_str = ""
-        i = 1 
-        @dailyrequests.select{|x| x.type_id == 3}.each do |dailyrequest|
-          dailyrequest_indexing_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
-          i += 1
-        end
-        dailyrequest_indexing_str = dailyrequest_indexing_str[0..-1].html_safe if dailyrequest_indexing_str.length > 0
-      %>
-      var dailyrequest_3 = [<%= dailyrequest_indexing_str %>];
-
-      <%
-        dailyrequest_automated_str = ""
-        i = 1 
-        @dailyrequests.select{|x| x.type_id == 4}.each do |dailyrequest|
-          dailyrequest_automated_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
-          i += 1
-        end
-        dailyrequest_automated_str = dailyrequest_automated_str[0..-1].html_safe if dailyrequest_automated_str.length > 0
-      %>
-      var dailyrequest_4 = [<%= dailyrequest_automated_str %>];
-
       var plot_statistics = $.plot($("#scraper_statistics"), [
        {
         data: dailyrequest_1,
         label: "<%= @dailyrequests.select{|x| x.type_id == 1}.first.name %>"
-      },
-      {
-        data: dailyrequest_2,
-        label: "<%= @dailyrequests.select{|x| x.type_id == 2}.first.name %>"
-      },
-      {
-        data: dailyrequest_3,
-        label: "<%= @dailyrequests.select{|x| x.type_id == 3}.first.name %>"
-      },
-      {
-        data: dailyrequest_4,
-        label: "<%= @dailyrequests.select{|x| x.type_id == 4}.first.name %>"
       }
      ],
        {
@@ -379,7 +347,7 @@
         },
         colors: ["#7ACBBE"],
         xaxis: {
-          ticks: [[1.3, 1], [2.3, 2], [3.3, 3],[4.3, 4], [5.3, 5], [6.3, 6], [7.3, 7], [8.3, 8],[9.3, 9], [10.3, ]],
+          ticks: [<%= @topip_name_str %>],
           tickDecimals: 0
         },
         yaxis: {
@@ -389,7 +357,7 @@
       });
 
 var plot_statistics3 = $.plot($("#scraper_statistics3"), [{
-        data: pageviews,
+        data: [<%= @pages_str[@topips[0].ipaddress] %>],
         label: "Unique Visits"
       }
       ], {
@@ -424,7 +392,7 @@ var plot_statistics3 = $.plot($("#scraper_statistics3"), [{
         },
         colors: ["#7ACBBE"],
         xaxis: {
-          ticks: [[1.3, 1], [2.3, 2], [3.3, 3],[4.3, 4], [5.3, 5], [6.3, 6], [7.3, 7], [8.3, 8],[9.3, 9], [10.3, ]],
+          ticks: [<%= @pages_name_str[@topips[0].ipaddress] %>],
           tickDecimals: 0
         },
         yaxis: {
