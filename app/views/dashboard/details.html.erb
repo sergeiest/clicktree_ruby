@@ -62,63 +62,62 @@
           </div>
         <!--TOP Visitor 1--> 
           <!--SCRAPER DETAIL TEXT-->
-         
-            <div class="row">
-              <div class="col-sm-5 col-md-5">
-                <div class="content">
-                
-                  <ol> 
-                    <li class="detail-text">
-                      <b>Company Name</b> <br>
-                      Germany, 11.1212.1212.1<br>
-                      Averages 500 daily requests<br>
-                      Some other info<br>
-                    </li> 
-                </div>  
-              </div>
-
-              <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
-              <div class="col-sm-7 col-md-7">
-                <div class="header header-details">              
-                  <h5>Top Scraper Daily Average Requests</h5>
-                </div>
-                <div id="scraper-request-over-time">
+            <% @topips.slice(0,10).each do |ip| %>
+              <div class="row">
+                <div class="col-sm-5 col-md-5">
                   <div class="content">
-                    <div id="scraper_statistics" style="height: 300px; padding: 20px; position: relative;"></div>
+                  
+                    <ol> 
+                      <li class="detail-text">
+                        <b><%= ip.title %></b> <br>
+                        <%= ip.ipaddress %>, <%= ip.country %><br>
+                        Total Requests: <%= ip.request %><br>
+                      </li> 
+                  </div>  
+                </div>
+
+                <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
+                <div class="col-sm-7 col-md-7">
+                  <div class="header header-details">              
+                    <h5>Top Scraper Daily Average Requests</h5>
                   </div>
-                </div>  
-              </div>
-           </div> 
-
-
-          <div class="row">    
-            <div class="col-sm-5 col-md-5">
-              <!--SCRAPER TOP URL VISITS TEXT-->
-              <div class="header header-details">              
-                <h5>Top URLs Visited</h5>
-              </div>
-              <div id="top-scraper-pages">
-                <ol class="detail-text">
-                  <li>This is a URL</li>
-                  <li>That is SO popular</li>
-                  <li>Because it has amazing content</li>
-                  <li>And it's accessible</li>
-                  <li>And scrapable.</li>
-                </ol>  
-              </div>  
-            </div>
-
-            <div class="col-sm-7 col-md-7">
-               <div class="header header-details">              
-                <h5>Top URLs Average Requests</h5>
-              </div>
-                <div id="scraper-request-pattern">
+                  <div id="scraper-request-over-time">
                     <div class="content">
-                      <div id="scraper_statistics3" style="height: 350px; padding: 20px; position: relative;"></div>    
+                      <div id="scraper_statistics" style="height: 300px; padding: 20px; position: relative;"></div>
+                    </div>
+                  </div>  
+                </div>
+             </div> 
+
+
+            <div class="row">    
+                <div class="col-sm-5 col-md-5">
+                  <!--SCRAPER TOP URL VISITS TEXT-->
+                  <div class="header header-details">              
+                    <h5>Top URLs Visited</h5>
                   </div>
-                </div>  
+                  <div id="top-scraper-pages">
+                    <ol class="detail-text">
+                      <% ip.pages.all.sort_by{|e| -e[:freq]}.slice(0,5).each do |page| %>
+                        <li>URL: <%= page.url %><br>
+                        Count: <%= page.freq %></li>
+                      <% end %>
+                    </ol>  
+                  </div>  
+                </div>
+
+              <div class="col-sm-7 col-md-7">
+                 <div class="header header-details">              
+                  <h5>Top URLs Request Counts</h5>
+                </div>
+                  <div id="scraper-request-pattern">
+                      <div class="content">
+                        <div id="scraper_statistics3" style="height: 350px; padding: 20px; position: relative;"></div>    
+                    </div>
+                  </div>  
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>  
       </div>
     </li>

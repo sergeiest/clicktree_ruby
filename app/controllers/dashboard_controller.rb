@@ -35,13 +35,18 @@ def details
 	@topips = Topip.where("company_id = ? AND type_id = ?", params[:id], type).sort_by{|e| -e[:request]}
 	
 	@topip_str = ""
-	@pages = Hash.new
+	@pages_str = Hash.new
 	i = 1
 	@topips.each do |ip|
 		@topip_str += '[' + i.to_s + ',' + ip.request.to_s + '],'
 		i += 1
 
-		@pages[ip.ipaddress] = ip.pages.all.sort_by{|e| -e[:freq]}
+		@pages_str[ip.ipaddress] = ""
+
+		j = 1
+		ip.pages.all.sort_by{|e| -e[:freq]}.slice(0,5).each do |x|
+			@pages_str[ip.ipaddress] += '[' + i.to_s + ',' + x.freq.to_s + '],'
+		end
 	end
 
 

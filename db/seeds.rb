@@ -87,12 +87,12 @@ page_list << ["all/you", 3233]
 page_list << ["what/who", 3231]
 page_list << ["why/where", 429]
 
-page_list.each do |url, freq|
-	Topip.all do |topip_one|
-		topip_one.pages.create(url:url,freq:freq)
+page_list.each do |url_, freq_|
+	Topip.all.each do |topip_one|
+		topip_one.pages.create(url:url_,freq:freq_)
 	end	
 	for k in 0..1
-		Page.create(url:url,freq:freq, type_id:k)
+		Page.create(url:url_,freq:freq_, type_id:k)
 	end
 end
 
