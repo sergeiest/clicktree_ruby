@@ -8,6 +8,7 @@
             <%= link_to ({:controller => "home", :action => "index"}) do %>
               <div class="sidebar-logo" style="background-color:#4A4A4A">
                 <div class="logo">
+                  <a href="index.html.erb"></a>
                 </div>
               </div>
             <% end %>
@@ -19,8 +20,10 @@
                 </p>
               </div>
             </div>
-            <ul class="cl-vnavigation">
-            </ul>
+            <ul class="cl-vnavigation cl-vnavigation-custom">
+              <li><%= link_to ({:controller => "dashboard", :action => "charts"}) do %><span>Traffic Overview</span><% end %></li>
+              <li><%= link_to ({:controller => "dashboard", :action => "details"}) do %><span>Top Visitor Details</span><% end %></li>
+          </ul>
           </div>
         </div>
         <div class="text-right collapse-button" style="padding:7px 9px;">
@@ -49,9 +52,14 @@
               <div class="header">              
                 <h3 id="visitor-title">Top Visitors</h3>
               </div>
-              <div class="content">
+              <div class="content content-custom">
                 <div id="scraper_statistics2" style="height: 350px; padding: 20px; position: relative;"></div>    
               </div>
+            </div>
+            <br>
+            <br>
+            <div class="header">              
+              <h3 id="visitor-title">Top Visitor Details</h3>
             </div>
           </div>     
         
@@ -60,44 +68,57 @@
           <!--SCRAPER DETAIL TEXT-->
             <% i = 0 %>
             <% @topips.slice(0,10).each do |ip| %>
+              <% i += 1 %>
               <div class="row left-detail">
-                <div class="col-sm-5 col-md-5">
+                <div class="col-sm-3 col-md-3">
                   <div>              
-                    <h5 class="header-details left-detail">Visitor Details</h5>
+                    <h5 class="header-details left-detail"> About User #<%= i %></h5>
                   </div>
-                  <div class="content">
-                    <ol> 
-                      <li class="detail-text">
+
+                  <div class="content"> 
+                      <div class="detail-text">
                         <b><%= ip.title %></b> <br>
-                        <%= ip.ipaddress %>, 
+                        <%= ip.ipaddress %> <br> 
                         <% if ip.country.nil? || ip.country == "" %>
-                          <%= 'no country info' %>
+                          <%= 'No country info' %>
                         <% else %>
                           <%= ip.country %>
                         <% end %>
                         <br>
                         Total Requests: <%= ip.request %><br>
-                      </li> 
+                      </div> 
                   </div>  
                 </div>
 
-                <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-9 col-md-9">
                   <div>              
-                    <h5 class="header-details">Daily Average Requests</h5>
+                    <h5 class="header-details">Top URLs Requested</h5>
+                  </div>
+                    <div id="scraper-request-pattern">
+                        <div class="content">
+                          <div id="scraper_statistics3" style="height: 200px; padding: 20px; position: relative;"></div>    
+                        </div>
+                    </div>  
+                  </div>
+                </div>
+                 
+
+               <div class="row left-detail">
+                
+                <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
+                <div class="col-sm-6 col-md-6 detail_chart_custom">
+                  <div>              
+                    <h5 class="header-details">Avg Daily Requests</h5>
                   </div>
                   <div id="scraper-request-over-time">
-                    <div class="content">
+                    <div class="content content-custom">
                       <div id="scraper_statistics" style="height: 200px; padding: 20px; position: relative;"></div>
                     </div>
                   </div>  
                 </div>
-             </div> 
 
-
-            <div class="row left-detail">    
-              <div class="col-sm-5 col-md-5">
-                <!--SCRAPER TOP URL VISITS TEXT-->
+              <!--BOO <div class="col-sm-4 col-md-4">
+                SCRAPER TOP URL VISITS TEXT
                 <div>              
                   <h5 class="header-details left-detail">Top URLs Visited</h5>
                 </div>
@@ -108,20 +129,23 @@
                       Count: <%= page.freq %></li>
                     <% end %>
                   </ol>  
-                </div>  
-              </div>
-              <div class="col-sm-6 col-md-6">
-                <div>              
-                  <h5 class="header-details">Top URLs Request Counts</h5>
-                </div>
-                <div id="scraper-request-pattern">
-                    <div class="content">
-                      <div class="scraper_statistics3" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>    
+                </div> -->  
+              
+              
+
+                <div class="col-sm-6 col-md-6 detail_chart_custom">
+                  <div>              
+                    <h5 class="header-details">Avg Hourly Requests</h5>
+                  </div>
+                  <div id="scraper-request-over-time-hour">
+                    <div class="content content-custom">
+                      <div id="scraper_statistics_hour" style="height: 200px; padding: 20px; position: relative;"></div>
                     </div>
-                    <% i += 1 %>
-                </div>  
-              </div>
+                  </div>  
+                </div>
+
             </div>
+            
             <hr class="detail-separator">
           <% end %>
         </div>  
@@ -251,6 +275,55 @@
       var dailyrequest_ticks = [<%= dailyrequest_ticks_str %>];
 
       var plot_statistics = $.plot($("#scraper_statistics"), [
+       {
+        data: dailyrequest_1,
+        label: "<%= @dailyrequests.select{|x| x.type_id == 1}.first.name %>"
+      }
+     ],
+       {
+        series: {
+          lines: {
+            show: true,
+            lineWidth: 0.25, 
+            fill: true,
+            fillColor: {
+              colors: [{
+                opacity: 0.05
+              }, {
+                opacity: 0.05
+              }
+              ]
+            } 
+          },
+          points: {
+            show: true
+          },
+          shadowSize: 2
+        },
+        legend:{
+          show: false
+        },
+        grid: {
+        labelMargin: 10,
+           axisMargin: 500,
+          hoverable: true,
+          clickable: true,
+          tickColor: "rgba(0,0,0,0.15)",
+          borderWidth: 0
+        },
+
+      /* USERS: "#"  BOTS: "#" AUTOMATED: "#" INDEXING:"#"  DEVELOPERS:"#" */
+        colors: color_scheme,
+        xaxis: {
+           ticks: dailyrequest_ticks
+        },
+        yaxis: {
+          ticks: 5,
+          tickDecimals: 0
+        }
+      });
+
+      var plot_statistics = $.plot($("#scraper_statistics_hour"), [
        {
         data: dailyrequest_1,
         label: "<%= @dailyrequests.select{|x| x.type_id == 1}.first.name %>"

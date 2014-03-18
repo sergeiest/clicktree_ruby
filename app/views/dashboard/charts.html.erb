@@ -8,7 +8,8 @@
           <%= link_to ({:controller => "home", :action => "index"}) do %>
             <div class="sidebar-logo" style="background-color:#4A4A4A">
               <div class="logo">
-              </div>
+                  <a href="index.html.erb"></a>
+                </div>
             </div>
           <% end %>
           <div class="side-user">
@@ -20,7 +21,9 @@
               </p>
             </div>
           </div>
-          <ul class="cl-vnavigation">
+          <ul class="cl-vnavigation cl-vnavigation-custom">
+              <li><%= link_to ({:controller => "dashboard", :action => "charts"}) do %><span>Traffic Overview</span><% end %></li>
+              <li><%= link_to ({:controller => "dashboard", :action => "details"}) do %><span>Top Visitor Details</span><% end %></li>
           </ul>
         </div>
       </div>
