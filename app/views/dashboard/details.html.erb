@@ -46,8 +46,8 @@
         <div class="row">
           <div class="col-md-12">
         
-              <div class="header">              
-                <h3 id="visitor-title">About Your Top Scrapers</h3>
+              <div class="header header-details">              
+                <h3 id="visitor-title">Top Visitors</h3>
               </div>
               <div class="content">
                 <div id="scraper_statistics2" style="height: 350px; padding: 20px; position: relative;"></div>    
@@ -55,14 +55,18 @@
             </div>
           </div>     
         
+          <div class="header">              
+            <h3>Top Visitor Details</h3>
+            <br>
 
+          </div>
         <!--TOP Visitor 1--> 
           <!--SCRAPER DETAIL TEXT-->
          
             <div class="row">
-              <div class="col-sm-4 col-md-4">
-
+              <div class="col-sm-5 col-md-5">
                 <div class="content">
+                
                   <ol> 
                     <li class="detail-text">
                       <b>Company Name</b> <br>
@@ -74,7 +78,10 @@
               </div>
 
               <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
-              <div class="col-sm-8 col-md-8">
+              <div class="col-sm-7 col-md-7">
+                <div class="header header-details">              
+                  <h5>Top Scraper Daily Average Requests</h5>
+                </div>
                 <div id="scraper-request-over-time">
                   <div class="content">
                     <div id="scraper_statistics" style="height: 300px; padding: 20px; position: relative;"></div>
@@ -85,23 +92,31 @@
 
 
           <div class="row">    
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-5 col-md-5">
               <!--SCRAPER TOP URL VISITS TEXT-->
+              <div class="header header-details">              
+                <h5>Top URLs Visited</h5>
+              </div>
               <div id="top-scraper-pages">
                 <ol class="detail-text">
-                  <li>BLAH</li>
-                  <li>BLAH</li>
-                  <li>BLAH</li>
-                  <li>BLAH</li>
-                  <li>BLAH</li>
+                  <li>This is a URL</li>
+                  <li>That is SO popular</li>
+                  <li>Because it has amazing content</li>
+                  <li>And it's accessible</li>
+                  <li>And scrapable.</li>
                 </ol>  
               </div>  
             </div>
 
-            <div class="col-sm-6 col-md-6">
-              <div id="scraper-request-pattern">
-                <img src="BLAH">
-              </div>  
+            <div class="col-sm-7 col-md-7">
+               <div class="header header-details">              
+                <h5>Top URLs Average Requests</h5>
+              </div>
+                <div id="scraper-request-pattern">
+                    <div class="content">
+                      <div id="scraper_statistics3" style="height: 350px; padding: 20px; position: relative;"></div>    
+                  </div>
+                </div>  
             </div>
           </div>
         </div>  
@@ -388,6 +403,51 @@
     var pageviews = [<%= pageviews_str[0..-1] %>];
 
     var plot_statistics2 = $.plot($("#scraper_statistics2"), [{
+        data: pageviews,
+        label: "Unique Visits"
+      }
+      ], {
+        series: {
+          bars: {
+            show: true,
+            barWidth: 0.6,
+            lineWidth: 0,
+            fill: true,
+            hoverable: true,
+            fillColor: {
+              colors: [{
+                opacity: 1
+              }, {
+                opacity: 1
+              }
+              ]
+            } 
+          },
+          shadowSize: 2
+        },
+        legend:{
+          show: false
+        },
+        grid: {
+        labelMargin: 10,
+           axisMargin: 500,
+          hoverable: true,
+          clickable: true,
+          tickColor: "rgba(0,0,0,0.15)",
+          borderWidth: 0
+        },
+        colors: ["#7ACBBE"],
+        xaxis: {
+          ticks: [[1.3, 1], [2.3, 2], [3.3, 3],[4.3, 4], [5.3, 5], [6.3, 6], [7.3, 7], [8.3, 8],[9.3, 9], [10.3, ]],
+          tickDecimals: 0
+        },
+        yaxis: {
+          ticks: 6,
+          tickDecimals: 0
+        }
+      });
+
+var plot_statistics3 = $.plot($("#scraper_statistics3"), [{
         data: pageviews,
         label: "Unique Visits"
       }
