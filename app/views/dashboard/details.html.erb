@@ -96,7 +96,7 @@
                   </div>
                     <div id="scraper-request-pattern">
                         <div class="content">
-                          <div id="scraper_statistics3" style="height: 200px; padding: 20px; position: relative;"></div>    
+                          <div class="scraper_statistics3" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>    
                         </div>
                     </div>  
                   </div>
@@ -424,33 +424,24 @@
 
 
 
-    elements = $(".scraper_statistics3");
-    stringstouse = "<%= escape_javascript @pages_str.to_json.html_safe %>";
-    json_strings = JSON.parse(stringstouse)
-
+    var elements = $(".scraper_statistics3");
+    var stringstouse = "<%= escape_javascript @pages_str.to_json.html_safe %>";
+    var stringstouse_ticks = "<%= escape_javascript @pages_name_str.to_json.html_safe %>";
     
-
-
+    var json_strings = JSON.parse(stringstouse);
+    var json_strings_ticks = JSON.parse(stringstouse_ticks);
 
     for (var i=0; i<elements.length; i++){
-
       var current_ip = $(elements[i]).data('index');
+      
       var current_string = json_strings[current_ip];
+      var array_fordata = convertToJSString(current_string, true);
 
-      var array_fordata = Array()
-
-      splitbycolon = json_strings[current_ip].split(';').slice(0, elements.length)
-
-      splitbycolon.forEach(function(each){
-        var temp_array = Array()
-        console.log(each)
-        temp_array.push(parseInt(each.split('[')[1].split(']')[0].split(',')[0]));
-        temp_array.push(parseInt(each.split('[')[1].split(']')[0].split(',')[1]));
-        array_fordata.push(temp_array);
-      });
+      var current_string_ticks = json_strings_ticks[current_ip];
+      var array_forticks = convertToJSString(current_string_ticks, false);
 
       var plot_statistics3 = $.plot($(elements[i]), [{
-            data:  array_fordata,
+            data:  array_fordata.slice(0,6),
             label: "Unique Visits"
           }
           ], {
@@ -485,7 +476,7 @@
             },
             colors: ["#7ACBBE"],
             xaxis: {
-              ticks: [<%= @pages_name_str[@topips[0].ipaddress] %>],
+              ticks: array_forticks,
               tickDecimals: 0
             },
             yaxis: {
@@ -671,4 +662,29 @@
 
 
   });
+
+  var convertToJSString = function(string_to_parse, convert){
+    
+    var splitbycolon = string_to_parse.split(';')
+    var return_array = Array()
+
+    splitbycolon.forEach(function(each){
+      if(each.length > 1){
+        var temp_array = Array();
+        if(convert == true){
+          temp_array.push(parseFloat(each.split('[')[1].split(']')[0].split(',')[0]));
+          temp_array.push(parseFloat(each.split('[')[1].split(']')[0].split(',')[1]));
+        }
+        else
+        {
+          temp_array.push(parseFloat(each.split('[')[1].split(']')[0].split(',')[0]));
+          temp_array.push(each.split('[')[1].split(']')[0].split(',')[1].replace(/"/g,""));
+        }
+        return_array.push(temp_array);
+      }
+    });
+
+    return return_array;
+  }
+
 </script>
