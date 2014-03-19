@@ -39,6 +39,12 @@ def details
 	@pages_str = Hash.new
 	@pages_name_str = Hash.new
 	i = 1
+
+	@hourlyip_str = Hash.new
+	@hourlyip_name_str = Hash.new
+	@dailyip_str = Hash.new
+	@dailyip_name_str = Hash.new
+
 	@topips.each do |ip|
 		@topip_str += '[' + i.to_s + ',' + ip.request.to_s + '],'
 		@topip_name_str += ('[' + (i + 0.3).to_s + ',"' + ip.title + '"],')
@@ -53,6 +59,26 @@ def details
 			k += 1
 		end
 		@pages_name_str[ip.ipaddress] = @pages_name_str[ip.ipaddress].html_safe
+
+		k = 0
+		@hourlyip_str[ip.ipaddress] = ""
+		@hourlyip_name_str[ip.ipaddress] = ""
+		ip.hourlyips.all.sort_by{|e| e[:hour]}.slice(0,24).each do |x|
+			@hourlyip_str[ip.ipaddress] += '[' + k.to_s + ',' + x.count.to_s + '];'
+			@hourlyip_name_str[ip.ipaddress] += '[' + (k).to_s + ',"' + k.to_s + '];'
+			k += 1
+		end
+		@hourlyip_name_str[ip.ipaddress] = @hourlyip_name_str[ip.ipaddress].html_safe
+
+		k = 1
+		@dailyip_str[ip.ipaddress] = ""
+		@dailyip_name_str[ip.ipaddress] = ""
+		ip.dailyips.all.sort_by(&:day).each do |x|
+			@dailyip_str[ip.ipaddress] += '[' + k.to_s + ',' + x.count.to_s + '];'
+			@dailyip_name_str[ip.ipaddress] += '[' + (k).to_s + ',"' + x.day.strftime('%m/%d') + '];'
+			k += 1
+		end
+		@dailyip_name_str[ip.ipaddress] = @dailyip_name_str[ip.ipaddress].html_safe
 	end
 
 	@topip_name_str = @topip_name_str.html_safe
