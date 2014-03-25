@@ -4,6 +4,11 @@ Clicktree::Application.routes.draw do
   get "home/index"
   get "home/blog"
 
+  get "apitool" => "apitool#dashboard"
+  get "apitool/new"
+  get "apitool/dashboard"
+  get "apitool/login"
+
   get "dashboard" => "dashboard#charts"
   get "dashboard/charts"
   get "dashboard/login"

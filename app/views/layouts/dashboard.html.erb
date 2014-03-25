@@ -28,6 +28,9 @@
     <%= stylesheet_link_tag "dashboard/style.css", media: "all", type: "text/css" %>
     <%= stylesheet_link_tag "dashboard/dashboard_custom.css", media: "all"%>
     <%= stylesheet_link_tag "dashboard/details_custom.css", media: "all"%>
+    <% if params[:controller] == "apitool" %>
+    	<%= stylesheet_link_tag "apitool/details_custom.css", media: "all"%>
+   	<% end %>
 
    	<%= stylesheet_link_tag  "dashboard/jquery-jvectormap-1.2.2.css", type:"text/css", media:"screen"%>  
 
