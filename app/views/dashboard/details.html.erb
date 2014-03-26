@@ -646,7 +646,7 @@
       /*Tooltips*/
       
       var previousPoint = null;
-      $(".scraper_statistics")[0].bind("plothover", function (event, pos, item) {
+      $($(".scraper_statistics")[0]).bind("plothover", function (event, pos, item) {
       
         var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
 

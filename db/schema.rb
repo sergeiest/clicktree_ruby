@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317220029) do
+ActiveRecord::Schema.define(version: 20140326012448) do
+
+  create_table "apiattrs", force: true do |t|
+    t.integer "api_id"
+    t.string  "attribute"
+  end
+
+  create_table "apis", force: true do |t|
+    t.string "name"
+    t.string "maindiv"
+    t.string "url"
+  end
 
   create_table "authentications", force: true do |t|
     t.string   "email"
@@ -20,8 +31,17 @@ ActiveRecord::Schema.define(version: 20140317220029) do
     t.datetime "updated_at"
   end
 
-  create_table "blocked_ips", force: true do |t|
+  create_table "blockedips", force: true do |t|
     t.string   "ip"
+    t.integer  "lastid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dailyips", force: true do |t|
+    t.integer  "topip_id"
+    t.datetime "day"
+    t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,6 +52,14 @@ ActiveRecord::Schema.define(version: 20140317220029) do
     t.float    "value"
     t.integer  "type_id"
     t.datetime "rdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "hourlyips", force: true do |t|
+    t.integer  "topip_id"
+    t.integer  "hour"
+    t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,12 +84,10 @@ ActiveRecord::Schema.define(version: 20140317220029) do
   end
 
   create_table "pages", force: true do |t|
-    t.integer  "topip_id"
-    t.string   "url"
-    t.integer  "freq"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "type_id"
+    t.integer "topip_id"
+    t.string  "url"
+    t.integer "freq"
+    t.integer "type_id"
   end
 
   create_table "requesttypes", force: true do |t|
@@ -84,8 +110,6 @@ ActiveRecord::Schema.define(version: 20140317220029) do
   create_table "timerequests", force: true do |t|
     t.integer  "topip_id"
     t.datetime "request_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "topips", force: true do |t|

@@ -14,5 +14,13 @@ class ApplicationController < ActionController::Base
   		data = {"userid"=>"-1", "host"=>"clicktreelabs.com", "url"=>request.original_url, "method"=>request.request_method, "useragent"=>request.user_agent, "ip"=>request.remote_ip}.to_json
 
   		response = http.post("#{uri.path}?#{uri.query}",data,headers)
+
+      @allblocks = Blockedip.pluck(:ip)
+
+      if @allblocks.include? request.remote_ip
+        render :text => "You are not authorized"
+        return 
+      end
+
   end
 end
