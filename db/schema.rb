@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20140325235928) do
+ActiveRecord::Schema.define(version: 20140326012448) do
 
   create_table "apiattrs", force: true do |t|
     t.integer "api_id"
@@ -28,6 +27,13 @@ ActiveRecord::Schema.define(version: 20140325235928) do
   create_table "authentications", force: true do |t|
     t.string   "email"
     t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blockedips", force: true do |t|
+    t.string   "ip"
+    t.integer  "lastid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

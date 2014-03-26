@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
 
   		response = http.post("#{uri.path}?#{uri.query}",data,headers)
 
-    #  @allblocks = Blockedip.pluck(:ip)
-#
- #     if @allblocks.include? request.remote_ip
-  #      render :text => "You are not authorized"
-   #     return 
-   #   end
+      @allblocks = Blockedip.pluck(:ip)
+
+      if @allblocks.include? request.remote_ip
+        render :text => "You are not authorized"
+        return 
+      end
 
   end
 end
