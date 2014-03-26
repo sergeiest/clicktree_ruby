@@ -32,11 +32,6 @@ ActiveRecord::Schema.define(version: 20140325235928) do
     t.datetime "updated_at"
   end
 
-  create_table "blockedips", force: true do |t|
-    t.string  "ip"
-    t.integer "apiid"
-  end
-
   create_table "dailyips", force: true do |t|
     t.integer  "topip_id"
     t.datetime "day"
