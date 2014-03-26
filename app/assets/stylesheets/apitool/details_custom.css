@@ -1,5 +1,5 @@
 #api-content, website-preview {
-	min-height: 200px;
+	min-height: 280px;
 	padding: 0px;
 	position: relative;
 
@@ -29,100 +29,47 @@
     white-space: nowrap;
 }
 
+#api-content p {font-size: 12px; line-height: 18px}
+#api-content select {font-size: 12px}
+
 .api-btn{
 	margin-top:10px; 
 	clear:both;
 	float:right
 }
 
-#body-cover {
-    background-color:orange; 
+.check-select th {
+    text-align: center;
+    background-color: #7761A7;
+    color:white;
+    line-height: 30px;
+    border: 1px solid #DADADA;
+    font-weight: normal;
+}
+.check-select td {
+    background-color: white;
+    color:inherit;
+}
+
+.split-preview {
+    cursor:pointer;
+    background-color:transparent; 
     width: -webkit-calc(100% - 60px);
-    width: calc(100% - 60px); 
+    width:         calc(100% - 60px); 
     height:100%; 
-    height: -webkit-calc(100% - 120px);
-    height: calc(100% - 120px); 
-    position: absolute;
-    top:90px;
+    height: -webkit-calc(100% - 110px);
+    height:         calc(100% - 110px); 
+    position: absolute;    
+    top: -webkit-calc(0% + 85px);
+    top:         calc(0% + 85px);
+}
+.split-preview table {width:100%;height: 100%}
+.split-preview tr {background-color:transparent;}
+.split-preview td {
+    border:0px solid black;
+    height: 33%;
+    width: 33%;
+    background-color:transparent;
     opacity: 0.2;
-}
-
-#lists-cover {
-    background-color:orange; 
-    width: -webkit-calc(100% - 60px);
-    width: calc(100% - 60px); 
-    height:100%; 
-    height: -webkit-calc(57% - 80px);
-    height: calc(57% - 80px); 
-    position: absolute;
-    top:-webkit-calc(20% + 70px);
-    top:calc(20% + 70px);
-    opacity: 0.2;   
-}
-
-#active-cover {
-    background-color:orange; 
-    width: -webkit-calc(50% - 30px);
-    width: calc(50% - 30px); 
-    height:100%; 
-    height: -webkit-calc(30% - 70px);
-    height: calc(30% - 70px); 
-    position: absolute;
-    top:-webkit-calc(77% - 5px);
-    top:calc(77% - 5px);
-    opacity: 0.2;   
-}
-
-#popular-cover {
-    background-color:orange; 
-    left: -webkit-calc(50% - 10px);
-    left:         calc(50% - 10px); 
-    width: -webkit-calc(50% - 30px);
-    width:        calc(50% - 30px); 
-    height:100%; 
-    height: -webkit-calc(30% - 70px);
-    height:         calc(30% - 70px); 
-    position: absolute;
-    top: -webkit-calc(77% - 5px);
-    top:         calc(77% - 5px);
-    opacity: 0.2;   
-}
-
-#statistics-cover {
-    background-color:orange; 
-    width: -webkit-calc(100% - 60px);
-    width: calc(100% - 60px); 
-    height:100%; 
-    height: -webkit-calc(6% - 10px);
-    height: calc(6% - 10px); 
-    position: absolute;
-    top:-webkit-calc(5% + 80px);
-    top:calc(5% + 80px);
-    opacity: 0.2; 
-}
-
-#description-cover {
-    background-color:orange; 
-    width: -webkit-calc(100% - 60px);
-    width:         calc(100% - 60px); 
-    height:100%; 
-    height: -webkit-calc(30% - 10px);
-    height:         calc(30% - 10px); 
-    position: absolute;
-    top:-webkit-calc(10% + 70px);
-    top:        calc(10% + 70px);
-    opacity: 0.2;    
-}
-
-#items-cover {
-    background-color:orange; 
-    width: -webkit-calc(100% - 60px);
-    width:         calc(100% - 60px); 
-    height:100%; 
-    height: -webkit-calc(35% - 10px);
-    height:         calc(35% - 10px); 
-    position: absolute;
-    top:-webkit-calc(40% + 60px);
-    top:        calc(40% + 60px);
-    opacity: 0.2;     
+    padding:0;
 }
