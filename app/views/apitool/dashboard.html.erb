@@ -61,7 +61,7 @@
                       API call #1. Top lists
                       <br/>
                       <p class = "api-description">Request call:</p>
-                      <p><pre class="api-call" id="api-request">curl http://localhost:8000/api/virtualapi/listnerd/</pre></p>
+                      <p><pre class="api-call" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=frontpage</pre></p>
                     </a>
                     <br/>
                   </div>
@@ -77,10 +77,10 @@
                 <div class="accordion-group">
                   <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                      API call #2. Info about one lists
+                      API call #2. Info about one list
                       <br/>
                       <p class = "api-description">Request call:</p>
-                      <p><pre class="api-call" id="api-request">curl http://localhost:8000/api/virtualapi/listnerd/</pre></p>
+                      <p><pre class="api-call" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=list\&path=top-10-songs-by-savant</pre></p>
                     </a>
                     <br/>
                   </div>
@@ -88,6 +88,23 @@
                     <div class="accordion-inner">
                       <p>Call response example:</p>
                       <p><pre class="api-call"><%= @response2 %></pre></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                      API call #3. Search a query
+                      <br/>
+                      <p class = "api-description">Request call:</p>
+                      <p><pre class="api-call" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=search\&path=fun</pre></p>
+                    </a>
+                    <br/>
+                  </div>
+                  <div id="collapseThree" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p>Call response example:</p>
+                      <p><pre class="api-call"><%= @response3 %></pre></p>
                     </div>
                   </div>
                 </div>
