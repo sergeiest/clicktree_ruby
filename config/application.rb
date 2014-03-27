@@ -22,5 +22,6 @@ module Clicktree
     config.assets.enabled = true
     config.assets.precompile += %w( landing/* )
     config.assets.precompile += %w( dashboard/* )
+    config.assets.precompile += %w( apitool/* )
   end
 end
