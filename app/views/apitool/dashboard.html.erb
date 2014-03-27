@@ -58,15 +58,17 @@
                 <div class="accordion-group">
                   <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                      API call #1. Top lists
-                      <br/>
-                      <p class = "api-description">Request call:</p>
-                      <p><pre class="api-call" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=frontpage</pre></p>
+                      <div class="api-request">
+                        API call #1. Top lists
+                        <br/>
+                        <p class = "api-description">Request call:</p>
+                        <p><pre class="api-call api-call-hover">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=frontpage</pre></p>
+                      </div>
                     </a>
                     <br/>
                   </div>
                   <div id="collapseOne" class="accordion-body collapse">
-                    <div class="accordion-inner">
+                    <div class="accordion-inner accord-pad">
                       <p>This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
                       <br/>
                       <p>Call response example:</p>
@@ -77,15 +79,17 @@
                 <div class="accordion-group">
                   <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                     <div class="api-request">
                       API call #2. Info about one list
                       <br/>
                       <p class = "api-description">Request call:</p>
-                      <p><pre class="api-call" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=list\&path=top-10-songs-by-savant</pre></p>
+                      <p><pre class="api-call api-call-hover" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=list\&path=top-10-songs-by-savant</pre></p>
+                    </div>
                     </a>
                     <br/>
                   </div>
                   <div id="collapseTwo" class="accordion-body collapse">
-                    <div class="accordion-inner">
+                    <div class="accordion-inner accord-pad">
                       <p>Call response example:</p>
                       <p><pre class="api-call"><%= @response2 %></pre></p>
                     </div>
@@ -94,15 +98,17 @@
                 <div class="accordion-group">
                   <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                     <div class="api-request">
                       API call #3. Search a query
                       <br/>
                       <p class = "api-description">Request call:</p>
-                      <p><pre class="api-call" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=search\&path=fun</pre></p>
+                      <p><pre class="api-call api-call-hover" id="api-request api-call-hover">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=search\&path=fun</pre></p>
+                    </div>
                     </a>
                     <br/>
                   </div>
                   <div id="collapseThree" class="accordion-body collapse">
-                    <div class="accordion-inner">
+                    <div class="accordion-inner accord-pad">
                       <p>Call response example:</p>
                       <p><pre class="api-call"><%= @response3 %></pre></p>
                     </div>
