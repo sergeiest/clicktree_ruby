@@ -51,7 +51,7 @@
        
       <div class="row">
         <!--Hourly Requests per Class-->   
-        <div class="col-md-6">
+        <div class="col-md-5" id="attribute-col">
           <div class="block-flat">
             <div class="header">
               <h3>Attribute selection</h3>
@@ -59,13 +59,18 @@
             <div class="content"> 
               <div id="api-content">
                 <p> Page: 
-                  <select onchange="changePage(this)" class="input-api">
+                  <select onchange="changePage(this)" id="page-select" class="input-api">
                     <option selected value=0>Search</option>
                     <option value=1>Popular/top lists</option>
                     <option value=2>One list</option>   
                   </select>
                 </p>
                 <br/>                
+                <br/>
+                <p id="pathSelect"> Path/Query:
+                  <input id="path-sel-input" class="input-api" type="text" name="path-query">
+                </p>
+                <br/>
                 <br/>
                 <p id="opt1"> Call type: 
                   <select onchange="changeType(this.value)" class="input-api">
@@ -112,14 +117,14 @@
                   </tr>
                 </table>
                 <br/>
-                <%= submit_tag "create", :class => "btn btn-primary api-btn" %>
+                <button class="btn btn-primary api-btn" onClick="submitClicked()">create</button>
                 <div style="clear:both"></div>
               </div>
             </div>
           </div>
         </div>
      
-        <div class="col-md-6">
+        <div class="col-md-7" id="preview-col">
           <div class="block-flat">
             <div class="header">
             <h3>Website preview </h3>
@@ -218,7 +223,7 @@
     var allDivs = $('.top-lists, .active-users, .popular-users, .author-list, .statistics-list, .description-list, .full-list');
     for (var i=0; i < allDivs.length; i++) {
       if (allDivs[i].style.background != checkColor) { 
-        allDivs[i].style.background="transparent"; 
+        allDivs[i].style.background="white"; 
       }
     };
   }
@@ -244,6 +249,13 @@
       changeType('body-list');
       break;
     }
+    if(elementNode.value == "1"){
+      $('#path-sel-input')[0].disabled = true;
+    }
+    else{
+      $('#path-sel-input')[0].disabled = false;
+    }
+
   }
 
   function changeType(className) {
@@ -299,6 +311,41 @@
       $('#atrb4')[0].innerHTML = "Picture (link)";
       break;
     }
+  }
+
+  function submitClicked(){
+    var value_page = $('#page-select')[0].value;
+    var value_query = $('#path-sel-input')[0].value;
+
+    name_string = "frontpage";
+    
+    if(value_page == 0){
+      name_string = "search";
+    }
+    else if(value_page == 1){
+      name_string = "frontpage"
+    }
+    else{
+      name_string = "list"
+    }
+
+    var for_call = "";
+
+    if (value_page == 1){
+      for_call = "curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=" + name_string;
+    }
+    else{
+      for_call = "curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=" + name_string + "&path=" + value_query;
+    }
+
+    if ($('.api-call').length > 0){
+      $('.api-call')[0].remove();
+    }
+        if ($('.api-description').length > 0){
+      $('.api-description')[0].remove();
+    }
+
+    $('#api-content')[0].innerHTML = $('#api-content')[0].innerHTML + '<div class="api-description">API request example:</div><pre class="api-call">'+for_call+'</pre>';
   }
 
 </script>
