@@ -73,3 +73,14 @@
     opacity: 0.2;
     padding:0;
 }
+
+.api-call {
+    background-color: #FFFFCC;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.api-description p {
+    color:  #000;
+    font-size: 12px;
+    font-weight: lighter;
+}

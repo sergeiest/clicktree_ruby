@@ -22,7 +22,7 @@
             </div>
           </div>
           <ul class="cl-vnavigation cl-vnavigation-custom">
-              <li><%= link_to ({:controller => "apitool", :action => "dashboard"}) do %><span>Dashboard</span><% end %></li>
+              <li><%= link_to ({:controller => "apitool", :action => "dashboard"}) do %><span>APIs</span><% end %></li>
               <li><%= link_to ({:controller => "apitool", :action => "new"}) do %><span>Create new</span><% end %></li>
           </ul>
         </div>
@@ -209,7 +209,7 @@
     var elementsToShow = document.getElementsByClassName(className);
     for (var i=0; i < elementsToShow.length; i++) {
       if (elementsToShow[i].style.background != checkColor) { 
-        elementsToShow[i].style.background=colorStr; 
+        elementsToShow[i].style.background=colorStr;
       }; 
     };
   }
