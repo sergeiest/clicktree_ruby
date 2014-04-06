@@ -124,15 +124,17 @@
 
               <div class = "col-md-6" style="padding-top: 20px;">
                 <div id="top-visitors-0-more">
-                  <% @topips[5..9].each do |topip| %>
-                    <li>
-                      <p><b><%= topip.title %></b>
-                      <br>
-                      IP Address: <%= topip.ipaddress %>
-                       <br>
-                      Total Requests: <%= topip.request %>
-                      </p> 
-                    </li>
+                  <% if @topips.length > 5 %>
+                    <% @topips[5..9].each do |topip| %>
+                      <li>
+                        <p><b><%= topip.title %></b>
+                        <br>
+                        IP Address: <%= topip.ipaddress %>
+                         <br>
+                        Total Requests: <%= topip.request %>
+                        </p> 
+                      </li>
+                    <% end %>
                   <% end %>
                 </div>
                 <% for i in 1..5 %>
