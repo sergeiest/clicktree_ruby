@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326012448) do
+ActiveRecord::Schema.define(version: 20140407231846) do
 
   create_table "apiattrs", force: true do |t|
     t.integer "api_id"
     t.string  "attribute"
+  end
+
+  create_table "apicalls", force: true do |t|
+    t.integer  "user_id"
+    t.string   "website"
+    t.string   "method"
+    t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "apis", force: true do |t|
@@ -129,6 +138,8 @@ ActiveRecord::Schema.define(version: 20140326012448) do
     t.integer  "authentication_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "apikey"
+    t.integer  "status"
   end
 
   create_table "visitnumbers", force: true do |t|
