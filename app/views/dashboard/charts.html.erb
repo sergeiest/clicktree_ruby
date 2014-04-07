@@ -123,8 +123,8 @@
               </div>
 
               <div class = "col-md-6" style="padding-top: 20px;">
-                <div id="top-visitors-0-more">
-                  <% if @topips.length > 5 %>
+                <% if @topips.length > 5 %>
+                  <div id="top-visitors-0-more">
                     <% @topips[5..9].each do |topip| %>
                       <li>
                         <p><b><%= topip.title %></b>
@@ -135,21 +135,23 @@
                         </p> 
                       </li>
                     <% end %>
-                  <% end %>
-                </div>
-                <% for i in 1..5 %>
-                  <div id="top-visitors-<%= i %>-more" hidden>
-                    <% @topips.select{|x| x.type_id == i}[5..9].each do |topip| %>
-                      <li>
-                        <p><b><%= topip.title %></b>
-                        <br>
-                        IP Address: <%= topip.ipaddress %>
-                         <br>
-                        Total Requests: <%= topip.request %>
-                        </p> 
-                      </li>
-                    <% end %>
                   </div>
+                  <% for i in 1..5 %>
+                    <div id="top-visitors-<%= i %>-more" hidden>
+                      <% if @topips.select{|x| x.type_id == i}.length > 5 %>
+                        <% @topips.select{|x| x.type_id == i}[5..9].each do |topip| %>
+                          <li>
+                            <p><b><%= topip.title %></b>
+                            <br>
+                            IP Address: <%= topip.ipaddress %>
+                             <br>
+                            Total Requests: <%= topip.request %>
+                            </p> 
+                          </li>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  <% end %>
                 <% end %>
               </div>
 
