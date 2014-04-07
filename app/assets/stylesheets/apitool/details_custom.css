@@ -5,8 +5,18 @@
 
 }
 
-#api-request:hover{
-    background-color: rgba(122,203,190,.6);
+.api-request {
+    padding:10px;
+}
+.api-request:hover{
+    background-color: rgba(122,203,190,.3);
+}
+.api-request:hover .api-call-hover{
+    background-color: rgba(122,203,190,.3);
+}
+
+.accord-pad{
+    padding:10px;
 }
 
 .input-api {
