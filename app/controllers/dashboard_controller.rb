@@ -29,7 +29,21 @@ def details
 	@user = User.find_by_authentication_id(params[:id])
 
 	usersorbots = params[:class_botuser]
-	type = (2 if usersorbots == "bot") || 1
+	case usersorbots
+	when 'users'
+		type = 1
+		@main_name = "user"
+	when 'bots'
+		type = 2
+		@main_name = "bot"
+	when 'indexing'
+		type = 3
+		@main_name = "indexing"
+	else
+		type = 1
+		@main_name = "user"
+	end
+
 	@topips = Topip.where("company_id = ? AND type_id = ?", params[:id], type).sort_by{|e| -e[:request]}[0..9]
 	
 	@topip_str = ""

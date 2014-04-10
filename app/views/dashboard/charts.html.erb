@@ -22,8 +22,26 @@
             </div>
           </div>
           <ul class="cl-vnavigation cl-vnavigation-custom">
-              <li><%= link_to ({:controller => "dashboard", :action => "charts"}) do %><span>Traffic Overview</span><% end %></li>
-              <li><%= link_to ({:controller => "dashboard", :action => "details"}) do %><span>Top Visitor Details</span><% end %></li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "charts", :id => params[:id]}) do %>
+                <span>Traffic Overview</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "users"}) do %>
+                <span>Top Users Details</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "bots"}) do %>
+                <span>Top Bots Details</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "indexing"}) do %>
+                <span>Top Indexing Details</span>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>
