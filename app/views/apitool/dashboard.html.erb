@@ -1,6 +1,6 @@
 <div id="cl-wrapper">
 
-  <div class="cl-sidebar">
+  <div class="cl-sidebar cl-sidebar_custom">
     <div class="cl-toggle"><i class="fa fa-bars"></i></div>
     <div class="cl-navblock">
       <div class="menu-space">
@@ -13,17 +13,21 @@
             </div>
           <% end %>
           <div class="side-user">
-            <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
+          
 
-            <div class="info info-align">
-              <p>
-                <b><%= @user.company %></b><br/><%= @user.name %>
-              </p>
+            <div class="info-custom bold_uppercase">
+             <div class="sidebar_title">
+              Choose an API
+             </div>
             </div>
           </div>
           <ul class="cl-vnavigation cl-vnavigation-custom">
-              <li><%= link_to ({:controller => "apitool", :action => "dashboard"}) do %><span>APIs</span><% end %></li>
-              <li><%= link_to ({:controller => "apitool", :action => "new"}) do %><span>Create new</span><% end %></li>
+              <li><a href="#call-1">Top Lists</a> </li>
+              <li><a href="#call-2">Top Something Else</a> </li>
+              <li><a href="#call-3">Another Thing</a> </li>
+              <li><a href="#call-4">Top What Else</a> </li>
+              <li><a href="#call-5">More Stuff</a> </li>
+
           </ul>
         </div>
       </div>
@@ -37,86 +41,209 @@
 	<div class="container-fluid" id="pcont">
    <!-- TOP NAVBAR -->  
 
-  	<div class="cl-mcont">		
-      <div class="page-head">
+  	<div class="cl-mcont cl-mont_custom main-bkg">		
+      <div class="page-head page-head_custom">
   			<ol class="breadcrumb">
   			  <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
   			  <li><%= link_to "Logout", {:controller => "dashboard", :action => "logout"} %></li>
   			</ol>
   		</div>
-      <h2>List of API calls for www.listnerd.com</h2>	
+      <h2 class="main_header content_custom">Listnerd API Calls</h2>	
        
-      <div class="row">
-        <!--Hourly Requests per Class-->   
+      <div class="row content_custom">
+        <!--API CALL 1-->   
         <div class="col-md-12">
-          <div class="block-flat">
-            <div class="header">
-              <h3>API calls</h3>
-            </div>
+          
+          
             <div class="content"> 
-              <div class="accordion api-description" id="accordion2">
+              
+              <div class="accordion" id="accordion2">
+                
                 <div class="accordion-group">
                   <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                      <div class="api-request">
-                        API call #1. Top lists
+                    <div class="api-request" id="call-1">
+                      <div class="call_title">1. Top lists</div>
                         <br/>
-                        <p class = "api-description">Request call:</p>
+                        <p class="api-description">This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
+                        <br/>
+                        <p class="call_section_title">Request call:</p>
                         <p><pre class="api-call api-call-hover">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=frontpage</pre></p>
-                      </div>
-                    </a>
+                    </div>       
+                  </div>
+                  <div class="accordion-inner accord-pad">
+                    <p class="call_section_title">Call response example:</p>
+                    <p><pre class="api-call response-overflow"><%= @response1 %></pre></p>
+                    <br/>
+                    <p class="call_section_title">API Parameters:</p>
+                    <div class="documentation_table">
+                        <table>
+                            <tr>
+                                <td>
+                                    Name
+                                </td>
+                                <td >
+                                    Values & Notes
+                                </td>
+                         
+                            </tr>
+                            <tr>
+                                <td>
+                                    list_name
+                                </td>
+                                <td>
+                                    This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Row 2
+                                </td>
+                                <td>
+                                    This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Row 3
+                                </td>
+                                <td>
+                                    This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <br/>
                     <br/>
                   </div>
-                  <div id="collapseOne" class="accordion-body collapse">
-                    <div class="accordion-inner accord-pad">
+                </div>
+
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                     <div class="api-request" id="call-2">
+                        <div class="call_title">2. List Details</div>
+                        <br/>
+                        <p>This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
+                        <br/>
+                        <p class = "call_section_title">Request call:</p>
+                        <p><pre class="api-call api-call-hover api-description" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=list\&path=top-10-songs-by-savant</pre></p>
+                    </div>
+                  </div>
+                  <div class="accordion-inner accord-pad">
+                    <p class="call_section_title">Call response example:</p>
+                    <p><pre class="api-call response-overflow"><%= @response2 %></pre></p>
+                    <br/>
+                    <p class="call_section_title">API Parameters:</p>
+                    <div class="documentation_table">
+                      <table>
+                          <tr>
+                              <td>
+                                  Name
+                              </td>
+                              <td >
+                                  Values & Notes 
+                              </td>
+                       
+                          </tr>
+                          <tr>
+                              <td>
+                                  list_name
+                              </td>
+                              <td>
+                                  This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  Row 2
+                              </td>
+                              <td>
+                                  This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  Row 3
+                              </td>
+                              <td>
+                                  This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                              </td>
+                          </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <br/>
+                <br/>
+
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    
+                     <div class="api-request" id="call-3">
+                      <div class="call_title">3. Search Query</div>
+                      <br/>
                       <p>This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
                       <br/>
-                      <p>Call response example:</p>
-                      <p><pre class="api-call"><%= @response1 %></pre></p>
+                      <p class="call_section_title">Request call:</p>
+                      <p><pre class="api-call api-call-hover api-description" id="api-request api-call-hover">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=search\&path=fun</pre></p>
                     </div>
                   </div>
-                </div>
-                <div class="accordion-group">
-                  <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                     <div class="api-request">
-                      API call #2. Info about one list
-                      <br/>
-                      <p class = "api-description">Request call:</p>
-                      <p><pre class="api-call api-call-hover" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=list\&path=top-10-songs-by-savant</pre></p>
-                    </div>
-                    </a>
-                    <br/>
-                  </div>
-                  <div id="collapseTwo" class="accordion-body collapse">
                     <div class="accordion-inner accord-pad">
-                      <p>Call response example:</p>
-                      <p><pre class="api-call"><%= @response2 %></pre></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-group">
-                  <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-                     <div class="api-request">
-                      API call #3. Search a query
+                      <p class="call_section_title">Call response example:</p>
+                      <p><pre class="api-call response-overflow"><%= @response3 %></pre></p>
                       <br/>
-                      <p class = "api-description">Request call:</p>
-                      <p><pre class="api-call api-call-hover" id="api-request api-call-hover">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=search\&path=fun</pre></p>
+                      <p class="call_section_title">API Parameters:</p>
+                      <div class="documentation_table">
+                          <table>
+                              <tr>
+                                  <td>
+                                      Name
+                                  </td>
+                                  <td >
+                                      Values & Notes 
+                                  </td>
+                           
+                              </tr>
+                              <tr>
+                                  <td>
+                                      list_name
+                                  </td>
+                                  <td>
+                                      This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      Row 2
+                                  </td>
+                                  <td>
+                                      This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      Row 3
+                                  </td>
+                                  <td>
+                                      This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                                  </td>
+                              </tr>
+                          </table>
+                      </div>
+
                     </div>
-                    </a>
-                    <br/>
-                  </div>
-                  <div id="collapseThree" class="accordion-body collapse">
-                    <div class="accordion-inner accord-pad">
-                      <p>Call response example:</p>
-                      <p><pre class="api-call"><%= @response3 %></pre></p>
-                    </div>
-                  </div>
                 </div>
+                
+
+                <br/>
+                <br/>
+
+            
+
+
               </div>
             </div>
-          </div>
+         
         </div>
       </div>    
   
