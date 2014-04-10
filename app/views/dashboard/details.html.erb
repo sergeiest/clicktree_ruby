@@ -2,31 +2,49 @@
 
   <div class="cl-sidebar">
     <div class="cl-toggle"><i class="fa fa-bars"></i></div>
-      <div class="cl-navblock">
-        <div class="menu-space">
-          <div class="content">
-            <%= link_to ({:controller => "home", :action => "index"}) do %>
-              <div class="sidebar-logo" style="background-color:#4A4A4A">
-                <div class="logo">
-                  <a href="index.html.erb"></a>
-                </div>
-              </div>
-            <% end %>
-            <div class="side-user">
-              <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
-              <div class="info info-align">
-                <p>
-                  <b><%= @user.company %></b><br/><%= @user.name %>
-                </p>
+    <div class="cl-navblock">
+      <div class="menu-space">
+        <div class="content">
+          <%= link_to ({:controller => "home", :action => "index"}) do %>
+            <div class="sidebar-logo" style="background-color:#4A4A4A">
+              <div class="logo">
+                <a href="index.html.erb"></a>
               </div>
             </div>
-            <ul class="cl-vnavigation cl-vnavigation-custom">
-              <li><%= link_to ({:controller => "dashboard", :action => "charts"}) do %><span>Traffic Overview</span><% end %></li>
-              <li><%= link_to ({:controller => "dashboard", :action => "details"}) do %><span>Top Visitor Details</span><% end %></li>
-          </ul>
+          <% end %>
+          <div class="side-user">
+            <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
+            <div class="info info-align">
+              <p>
+                <b><%= @user.company %></b><br/><%= @user.name %>
+              </p>
+            </div>
           </div>
+          <ul class="cl-vnavigation cl-vnavigation-custom">
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "charts", :id => params[:id]}) do %>
+                <span>Traffic Overview</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "users"}) do %>
+                <span>Top Users Details</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "bots"}) do %>
+                <span>Top Bots Details</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "indexing"}) do %>
+                <span>Top Indexing Details</span>
+              <% end %>
+            </li>
+          </ul>
         </div>
-        <div class="text-right collapse-button" style="padding:7px 9px;">
+      </div>
+      <div class="text-right collapse-button" style="padding:7px 9px;">
           <input type="text" class="form-control search" placeholder="Search..." />
           <button id="sidebar-collapse" class="btn btn-default" style=""><i style="color:#fff;" class="fa fa-angle-left"></i></button>
       </div>
@@ -35,7 +53,6 @@
 
   <div class="container-fluid" id="pcont">
    <!-- TOP NAVBAR -->  
-
     <div class="cl-mcont">    
       <div class="page-head">
         <ol class="breadcrumb">
@@ -48,124 +65,92 @@
       <div class="block-flat block-flat-details">
         <div class="row">
           <div class="col-md-12">
-        
-              <div class="header">              
-                <h3 id="visitor-title">Top Visitors</h3>
-              </div>
-              <div class="content content-custom">
-                <div id="scraper_statistics2" style="height: 350px; padding: 20px; position: relative;"></div>    
-              </div>
-            </div>
-            <br>
-            <br>
             <div class="header">              
-              <h3 id="visitor-title">Top Visitor Details</h3>
+              <h3 id="visitor-title"> Top <%= @main_name.capitalize %></h3>
             </div>
-          </div>     
+            <div class="content content-custom">
+              <div id="scraper_statistics2" style="height: 350px; padding: 20px; position: relative;"></div>    
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="header">              
+            <h3 id="visitor-title">Top <%= @main_name.capitalize %> Details</h3>
+          </div>
+        </div>     
         
           
         <!--TOP Visitor 1--> 
-          <!--SCRAPER DETAIL TEXT-->
-            <% i = 0 %>
-            <% @topips.slice(0,10).each do |ip| %>
-              <% i += 1 %>
-              <div class="row left-detail">
-                <div class="col-sm-3 col-md-3">
-                  <div>              
-                    <h5 class="header-details left-detail"> About User #<%= i %></h5>
-                  </div>
-
-                  <div class="content"> 
-                      <div class="detail-text">
-                        <b><%= ip.title %></b> <br>
-                        <%= ip.ipaddress %> <br> 
-                        <% if ip.country.nil? || ip.country == "" %>
-                          <%= 'No country info' %>
-                        <% else %>
-                          <%= ip.country %>
-                        <% end %>
-                        <br>
-                        Total Requests: <%= ip.request %><br>
-                      </div> 
-                  </div>  
-                </div>
-
-                <div class="col-sm-9 col-md-9">
-                  <div>              
-                    <h5 class="header-details">Top URLs Requested</h5>
-                  </div>
-                    <div id="scraper-request-pattern">
-                        <div class="content">
-                          <div class="scraper_statistics3" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>    
-                        </div>
-                    </div>  
-                  </div>
-                </div>
-                 
-
-               <div class="row left-detail">
-                
-                <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
-                <div class="col-sm-6 col-md-6 detail_chart_custom">
-                  <div>              
-                    <h5 class="header-details">Avg Daily Requests</h5>
-                  </div>
-                  <div id="scraper-request-over-time">
-                    <div class="content content-custom">
-                      <div class="scraper_statistics" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>
-                    </div>
-                  </div>  
-                </div>
-
-              <!--BOO <div class="col-sm-4 col-md-4">
-                SCRAPER TOP URL VISITS TEXT
-                <div>              
-                  <h5 class="header-details left-detail">Top URLs Visited</h5>
-                </div>
-                <div id="top-scraper-pages">
-                  <ol class="detail-text">
-                    <% ip.pages.all.sort_by{|e| -e[:freq]}.slice(0,5).each do |page| %>
-                      <li>URL: <%= page.url %><br>
-                      Count: <%= page.freq %></li>
-                    <% end %>
-                  </ol>  
-                </div> -->  
-              
-              
-
-                <div class="col-sm-6 col-md-6 detail_chart_custom">
-                  <div>              
-                    <h5 class="header-details">Avg Hourly Requests</h5>
-                  </div>
-                  <div id="scraper-request-over-time-hour">
-                    <div class="content content-custom">
-                      <div class="scraper_statistics_hour" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>
-                    </div>
-                  </div>  
-                </div>
-
+        <!--SCRAPER DETAIL TEXT-->
+        <% i = 0 %>
+        <% @topips.slice(0,10).each do |ip| %>
+          <% i += 1 %>
+          <div class="row left-detail">
+            <div class="col-sm-3 col-md-3">
+              <div>              
+                <h5 class="header-details left-detail"> About <%= @main_name %> #<%= i %></h5>
+              </div>
+              <div class="content"> 
+                <div class="detail-text">
+                  <b><%= ip.title %></b> <br>
+                  <%= ip.ipaddress %> <br> 
+                  <% if ip.country.nil? || ip.country == "" %>
+                    <%= 'No country info' %>
+                  <% else %>
+                    <%= ip.country %>
+                  <% end %>
+                  <br>
+                  Total Requests: <%= ip.request %><br>
+                </div> 
+              </div>  
             </div>
-            
-            <hr class="detail-separator">
-          <% end %>
-        </div>  
-      </div>
-     
-          
 
-      
-           
+            <div class="col-sm-9 col-md-9">
+              <div>              
+                <h5 class="header-details">Top URLs Requested</h5>
+              </div>
+              <div id="scraper-request-pattern">
+                <div class="content">
+                  <div class="scraper_statistics3" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>    
+                </div>
+              </div>  
+            </div>
           </div>
+               
+          <div class="row left-detail">
+            
+            <!--SCRAPER REQUESTS OVER TIME LINE CHART-->
+            <div class="col-sm-6 col-md-6 detail_chart_custom">
+              <div>              
+                <h5 class="header-details">Avg Daily Requests</h5>
+              </div>
+              <div id="scraper-request-over-time">
+                <div class="content content-custom">
+                  <div class="scraper_statistics" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>
+                </div>
+              </div>  
+            </div>
 
-       
-  
+            <div class="col-sm-6 col-md-6 detail_chart_custom">
+              <div>              
+                <h5 class="header-details">Avg Hourly Requests</h5>
+              </div>
+              <div id="scraper-request-over-time-hour">
+                <div class="content content-custom">
+                  <div class="scraper_statistics_hour" data-index="<%= ip.ipaddress %>" style="height: 200px; padding: 20px; position: relative;"></div>
+                </div>
+              </div>  
+            </div>
 
+          </div>
+          
+          <hr class="detail-separator">
+        <% end %>
+      </div>  
     </div>
   </div>
-</div> 
 </div>
-</div>
-</div>
+
 
   <script type="text/javascript">
     var link = $('link[href="css/style.css"]');
