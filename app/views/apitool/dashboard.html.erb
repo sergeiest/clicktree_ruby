@@ -61,7 +61,7 @@
                     <div class="api-request" id="call-1">
                       <div class="call_title">1. <%= @api_title1 %></div>
                         <br/>
-                        <p class="api-description">This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
+                        <p class="api-description"><%= @api_maindesc1 %></p>
                         <br/>
                         <p class="call_section_title">Request call:</p>
                         <p><pre class="api-call api-call-hover"><%= @raw_request1 %></pre></p>
@@ -105,7 +105,7 @@
                      <div class="api-request" id="call-2">
                         <div class="call_title">2. <%= @api_title2 %></div>
                         <br/>
-                        <p>This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
+                        <p class="api-description"><%= @api_maindesc2 %></p>
                         <br/>
                         <p class = "call_section_title">Request call:</p>
                         <p><pre class="api-call api-call-hover api-description" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=list\&path=top-10-songs-by-savant</pre></p>
@@ -151,7 +151,7 @@
                      <div class="api-request" id="call-3">
                       <div class="call_title">3. <%= @api_title3 %></div>
                       <br/>
-                      <p>This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
+                        <p class="api-description"><%= @api_maindesc3 %></p>
                       <br/>
                       <p class="call_section_title">Request call:</p>
                       <p><pre class="api-call api-call-hover api-description" id="api-request api-call-hover">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=search\&path=fun</pre></p>
