@@ -31,11 +31,9 @@
             </div>
           </div>
           <ul class="cl-vnavigation cl-vnavigation-custom">
-              <li><a href="#call-1">Top Lists</a> </li>
-              <li><a href="#call-2">Top Users</a> </li>
-              <li><a href="#call-3">Search Query</a> </li>
-              <li><a href="#call-4">Top Topics</a> </li>
-              <li><a href="#call-5">Most Viewed</a> </li>
+              <li><a href="#call-1"><%= @api_title1 %></a> </li>
+              <li><a href="#call-2"><%= @api_title2 %></a> </li>
+              <li><a href="#call-3"><%= @api_title3 %></a> </li>
               <br/>
               <li><a href="#call-1"><span class="side_nav_userinfo">Settings</span></a> </li>
               <li><a href="#call-2"><span class="side_nav_userinfo">Logout</span></a> </li>
@@ -60,7 +58,7 @@
   			  <li><%= link_to "Logout", {:controller => "dashboard", :action => "logout"} %></li>
   			</ol>
   		</div>
-      <h2 class="main_header content_custom">Website API Calls</h2>	
+      <h2 class="main_header content_custom"><%= @api_domain %> API Calls</h2>	
        
       <div class="row content_custom">
         <!--API CALL 1-->   
@@ -74,12 +72,12 @@
                 <div class="accordion-group">
                   <div class="accordion-heading">
                     <div class="api-request" id="call-1">
-                      <div class="call_title">1. Top lists</div>
+                      <div class="call_title">1. <%= @api_title1 %></div>
                         <br/>
-                        <p class="api-description">This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
+                        <p class="api-description"><%= @api_maindesc1 %></p>
                         <br/>
                         <p class="call_section_title">Request call:</p>
-                        <p><pre class="api-call api-call-hover">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=frontpage</pre></p>
+                        <p><pre class="api-call api-call-hover"><%= @raw_request1 %></pre></p>
                     </div>       
                   </div>
                   <div class="accordion-inner accord-pad">
@@ -98,30 +96,16 @@
                                 </td>
                          
                             </tr>
-                            <tr>
+                            <% @desc1.each do |key,value| %>
+                              <tr>
                                 <td>
-                                    list_name
+                                  <%= key %>
                                 </td>
                                 <td>
-                                    This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
+                                  <%= value %>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Row 2
-                                </td>
-                                <td>
-                                    This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Row 3
-                                </td>
-                                <td>
-                                    This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
-                                </td>
-                            </tr>
+                              </tr>
+                            <% end %>
                         </table>
                     </div>
                     <br/>
@@ -132,9 +116,9 @@
                 <div class="accordion-group">
                   <div class="accordion-heading">
                      <div class="api-request" id="call-2">
-                        <div class="call_title">2. List Details</div>
+                        <div class="call_title">2. <%= @api_title2 %></div>
                         <br/>
-                        <p>This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
+                        <p class="api-description"><%= @api_maindesc2 %></p>
                         <br/>
                         <p class = "call_section_title">Request call:</p>
                         <p><pre class="api-call api-call-hover api-description" id="api-request">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=list\&path=top-10-songs-by-savant</pre></p>
@@ -156,30 +140,16 @@
                               </td>
                        
                           </tr>
-                          <tr>
-                              <td>
-                                  list_name
-                              </td>
-                              <td>
-                                  This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-                                  Row 2
-                              </td>
-                              <td>
-                                  This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>
-                                  Row 3
-                              </td>
-                              <td>
-                                  This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
-                              </td>
-                          </tr>
+                            <% @desc2.each do |key,value| %>
+                              <tr>
+                                <td>
+                                  <%= key %>
+                                </td>
+                                <td>
+                                  <%= value %>
+                                </td>
+                              </tr>
+                            <% end %>
                       </table>
                     </div>
                   </div>
@@ -192,9 +162,9 @@
                   <div class="accordion-heading">
                     
                      <div class="api-request" id="call-3">
-                      <div class="call_title">3. Search Query</div>
+                      <div class="call_title">3. <%= @api_title3 %></div>
                       <br/>
-                      <p>This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.</p>
+                        <p class="api-description"><%= @api_maindesc3 %></p>
                       <br/>
                       <p class="call_section_title">Request call:</p>
                       <p><pre class="api-call api-call-hover api-description" id="api-request api-call-hover">curl http://ec2-50-18-201-41.us-west-1.compute.amazonaws.com/api/virtualapi/listnerd/?method=search\&path=fun</pre></p>
@@ -216,30 +186,16 @@
                                   </td>
                            
                               </tr>
+                            <% @desc3.each do |key,value| %>
                               <tr>
-                                  <td>
-                                      list_name
-                                  </td>
-                                  <td>
-                                      This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
-                                  </td>
+                                <td>
+                                  <%= key %>
+                                </td>
+                                <td>
+                                  <%= value %>
+                                </td>
                               </tr>
-                              <tr>
-                                  <td>
-                                      Row 2
-                                  </td>
-                                  <td>
-                                      This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Row 3
-                                  </td>
-                                  <td>
-                                      This is the description/documentation of the API. The description is crowdsourced from the community, i.e. you can make the description better. No one contributed to this description yet.
-                                  </td>
-                              </tr>
+                            <% end %>
                           </table>
                       </div>
 
