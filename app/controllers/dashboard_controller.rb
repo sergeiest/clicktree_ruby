@@ -4,11 +4,15 @@ layout "dashboard"
 
 before_filter do
   	case params[:action]
-  	when "charts", "details"
+  	when "charts"
   		if session[:id].nil?
    			redirect_to :action => 'demo' and return
    		else
 			params[:id] = session[:id] if session[:id] != 1 		
+   		end
+  	when "details"
+  		if session[:id].nil?
+  			params[:id] = User.first.authentication_id
    		end
   	end
 end
