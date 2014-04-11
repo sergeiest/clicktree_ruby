@@ -13,6 +13,15 @@
             </div>
           <% end %>
           <div class="side-user">
+            <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
+
+            <div class="info info-align">
+              <p><b class="side-user_custom">User Name</b>
+                <br/>
+                <b class="side-user_custom">Company/Affiliation</b>
+              </p>
+            </div>
+            </div>
           
 
             <div class="info-custom bold_uppercase">
@@ -23,11 +32,14 @@
           </div>
           <ul class="cl-vnavigation cl-vnavigation-custom">
               <li><a href="#call-1">Top Lists</a> </li>
-              <li><a href="#call-2">Top Something Else</a> </li>
-              <li><a href="#call-3">Another Thing</a> </li>
-              <li><a href="#call-4">Top What Else</a> </li>
-              <li><a href="#call-5">More Stuff</a> </li>
-
+              <li><a href="#call-2">Top Users</a> </li>
+              <li><a href="#call-3">Search Query</a> </li>
+              <li><a href="#call-4">Top Topics</a> </li>
+              <li><a href="#call-5">Most Viewed</a> </li>
+              <br/>
+              <li><a href="#call-1"><span class="side_nav_userinfo">Settings</span></a> </li>
+              <li><a href="#call-2"><span class="side_nav_userinfo">Logout</span></a> </li>
+          
           </ul>
         </div>
       </div>
@@ -48,7 +60,7 @@
   			  <li><%= link_to "Logout", {:controller => "dashboard", :action => "logout"} %></li>
   			</ol>
   		</div>
-      <h2 class="main_header content_custom">Listnerd API Calls</h2>	
+      <h2 class="main_header content_custom">Website API Calls</h2>	
        
       <div class="row content_custom">
         <!--API CALL 1-->   

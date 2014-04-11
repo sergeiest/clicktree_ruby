@@ -11,6 +11,23 @@
 }
 
 
+.side-user_custom {
+    font-size: 14px;
+    color: #333;
+    padding-top: 5 px;
+
+}
+
+
+.square-img img{
+    width:50px;
+}
+
+.info-align {
+    margin-top: -30px;
+}
+
+
 .info-custom{
     font-weight: 700;
     text-transform: uppercase;   
@@ -23,10 +40,11 @@
 
 
 .sidebar_title{
-    font-size: 24px;
+    font-size: 18px;
     color: #333;
     font-weight: 700;
     text-transform: uppercase;
+    padding: 20px 7px 10px 25px;
 }
 
 .cl-sidebar_custom{
@@ -40,17 +58,22 @@
     font-size: 16px;
     font-weight: 400;
     color: #333333;
+    padding: 5px 7px 5px 25px;
 }
 
 
 .cl-vnavigation-custom li a:hover {
   color: #333;
-  background-color: rgba(245,130,53,.9);
+  background-color: rgba(245,130,53,.85);
 }
 
 
-
-
+.side_nav_userinfo{
+    font-size: 12px;
+    color: rgba(25, 0, 0,.9);
+    padding-top: 5px;
+    
+}
 .main_header {
     font-size: 36px;
     font-weight:100;
@@ -174,7 +197,7 @@
     margin:0px;
     padding:0px;
     width:100%;
-    border:1px solid #000000;
+    border:1px solid #FFF;
     
     -moz-border-radius-bottomleft:0px;
     -webkit-border-bottom-left-radius:0px;
@@ -224,7 +247,7 @@
 .documentation_table td{
     vertical-align:left;
     background-color:#333;
-    border:1px solid #000000;
+    border:1px solid #FFF;
     border-width:0px 1px 1px 0px;
     text-align:left;
     padding:10px;
@@ -245,7 +268,7 @@
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff");  background: -o-linear-gradient(top,#ffffff,ffffff);
 
     background-color:#ffffff;
-    border:0px solid #000000;
+    border:0px solid #FFF;
     text-align:center;
     border-width:0px 0px 1px 1px;
     font-size:14px;
@@ -274,5 +297,116 @@
     
      overflow: auto;
      z-index: 1;
+}
+
+
+
+
+.settings_table {
+    margin:0px;
+    padding:0px;
+    width:100%;
+    border:0px;
+    
+    -moz-border-radius-bottomleft:0px;
+    -webkit-border-bottom-left-radius:0px;
+    border-bottom-left-radius:0px;
+    
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+    
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+    
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+
+}
+
+.settings_table table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+}
+.settings_table tr:last-child td:last-child {
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+}
+.settings_table table tr:first-child td:first-child {
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+}
+.settings_table table tr:first-child td:last-child {
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+}
+.settings_table tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:0px;
+    -webkit-border-bottom-left-radius:0px;
+    border-bottom-left-radius:0px;
+}
+.settings_table tr:hover td{
+    background-color:#333;
+        
+
+}
+.settings_table td{
+    vertical-align:left;
+    background-color:#333;
+    border:0px;
+    border-width:0px;
+    text-align:left;
+    padding:0px;
+    font-size:14px;
+    font-family: Helvetica, Arial;
+    font-weight:normal;
+    color:#FFF;
+}
+.settings_table tr:last-child td{
+    border-width:0px;
+}
+.settings_table tr td:last-child{
+    border-width:0px;
+}
+.settings_table tr:last-child td:last-child{
+    border-width:0px;
+}
+.settings_table tr:first-child td{
+        background:-o-linear-gradient(bottom, #333 5%, #333 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #333), color-stop(1, #333) );
+    background:-moz-linear-gradient( center top, #333 5%, #333 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff");  background: -o-linear-gradient(top,#333,#333);
+
+    background-color:#333;
+    border:0px;
+    text-align:center;
+    border-width:0px;
+    font-size:14px;
+    font-family:Helvetica, Arial;
+    font-weight:bold;
+    color:#FFF;
+}
+.settings_table tr:first-child:hover td{
+    background:-o-linear-gradient(bottom, #ffffff 5%, #ffffff 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #ffffff) );
+    background:-moz-linear-gradient( center top, #ffffff 5%, #ffffff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff");  background: -o-linear-gradient(top,#ffffff,#ffffff);
+
+    background-color:#333;
+}
+.settings_table tr:first-child td:first-child{
+    border-width:0px;
+}
+.dsettings_table tr:first-child td:last-child{
+    border-width:0px;
+}
+
 
 
