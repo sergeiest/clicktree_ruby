@@ -70,4 +70,11 @@ def new
 	
 end 
 
+
+def settings
+	params[:id] = session[:id] if params[:id].nil?
+	@user = User.find_by_authentication_id(params[:id])
+	
+end
+
 end

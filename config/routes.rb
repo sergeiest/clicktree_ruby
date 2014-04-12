@@ -8,6 +8,7 @@ Clicktree::Application.routes.draw do
   get "apitool/new"
   get "apitool/dashboard"
   get "apitool/login"
+  get "apitool/settings"
 
   get "dashboard" => "dashboard#charts"
   get "dashboard/charts"
@@ -16,6 +17,7 @@ Clicktree::Application.routes.draw do
   post "dashboard/check_login"
   get "dashboard/logout"
   get "dashboard/demo"
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
