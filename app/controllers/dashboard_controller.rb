@@ -8,11 +8,13 @@ before_filter do
   		if session[:id].nil?
    			redirect_to :action => 'demo' and return
    		else
-			params[:id] = session[:id] if session[:id] != 1 		
+   			params[:id] = session[:id] if session[:id] != 1		
    		end
   	when "details"
   		if session[:id].nil?
   			params[:id] = User.first.authentication_id
+   		else
+   			params[:id] = session[:id] if session[:id] != 1
    		end
   	end
 end
