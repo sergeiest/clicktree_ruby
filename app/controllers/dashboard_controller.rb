@@ -45,6 +45,9 @@ def details
 	when 'indexing'
 		type = 3
 		@main_name = "indexing"
+	when 'developers'
+		type = 5
+		@main_name = "developer"
 	else
 		type = 1
 		@main_name = "user"
@@ -93,7 +96,7 @@ def details
 		@dailyip_name_str[ip.ipaddress] = ""
 		ip.dailyips.all.sort_by(&:day).each do |x|
 			@dailyip_str[ip.ipaddress] += '[' + k.to_s + ',' + x.count.to_s + '];'
-			@dailyip_name_str[ip.ipaddress] += '[' + (k).to_s + ',"' + x.day.strftime('%m/%d') + '];'
+			@dailyip_name_str[ip.ipaddress] += '[' + (k).to_s + ',"' + x.day.strftime('%m/%d') + '];' if k % 7 == 1
 			k += 1
 		end
 		@dailyip_name_str[ip.ipaddress] = @dailyip_name_str[ip.ipaddress].html_safe
