@@ -1,3 +1,42 @@
+.signup-nav{
+    background-color:  #555;
+    padding-top: 15px;
+    height: 64px;
+    background: #555 url(/images/dashboard/logo.png) no-repeat 15px 19px;
+}
+
+#signupinblock{
+    border: None;
+    box-shadow: None;
+}
+
+#signuplogin{
+    padding-top: 120px;
+    padding-left: 200px;
+    padding-bottom: 50px;
+}
+
+#signup{
+    float: left;
+    border-right: solid #000 1px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+}
+
+#welcome-header{
+    color: #f58236;
+}
+
+#login{
+    float: left;
+    padding-left: 50px;
+}
+
+#signuppage{
+    background-color: #fff;
+}
+
 .call_title{
     font-weight: 100;
     font-size: 30px;

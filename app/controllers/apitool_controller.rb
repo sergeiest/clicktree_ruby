@@ -4,6 +4,16 @@ class ApitoolController < ApplicationController
 
 layout "dashboard"
 
+#before_filter do
+#  	case params[:action]
+#  	when "dashboard"
+#  		if session[:id].nil?
+#   			redirect_to :action => 'signup' and return
+#   		else
+#			params[:id] = session[:id]		
+#  		end
+#   	end
+#end
 
 def dashboard
 
@@ -76,5 +86,64 @@ def settings
 	@user = User.find_by_authentication_id(params[:id])
 	
 end
+
+def signup
+	@email_signup = ""
+	@name_signup = ""
+	@email_signin = ""
+end
+
+def submitsignup
+	user = Authentication.where("email = ?", params[:email])
+
+	if user.length == 0
+		if not params[:name].blank? and not params[:email_signup].blank? and not params[:password_signup].blank? and not params[:confirm_password].blank?
+			if params[:password_signup] == params[:confirm_password]
+				auth = Authentication.create(email: params[:email_signup], password: params[:password_signup])
+				user = User.create(name: params[:name], status: 2, authentication_id: auth.id)
+
+				session[:id] = user.id
+				redirect_to :action => 'dashboard' and return
+
+			else
+				flash.now[:signup_error] = "Passwords do not match!"
+				@email_signup = params[:email_signup]
+				@name_signup = params[:name]
+				respond_to do |format|
+					format.html {render 'signup'}
+				end
+			end
+		else
+			flash.now[:signup_error] = "Please fill in all values!"
+			@email_signup = params[:email_signup]
+			@name_signup = params[:name]
+			respond_to do |format|
+				format.html {render 'signup'}
+			end
+		end
+	else
+		flash.now[:signup_error] = "Email already exists!"
+		@email_signup = params[:email_signup]
+		@name_signup = params[:name]
+		respond_to do |format|
+			format.html {render 'signup'}
+		end
+	end
+end
+
+def submitsignin
+	user = Authentication.where("email = ? AND password = ?", params[:email], params[:password])
+
+	if user.length > 0
+		session[:id] = user.first.id
+		redirect_to :action => 'dashboard' and return
+	else
+		flash.now[:signin_error] = "Incorrect email and password combination!"
+		@email_signin = params[:email]
+		respond_to do |format|
+			format.html {render 'signup'}
+		end
+	end
+ end
 
 end
