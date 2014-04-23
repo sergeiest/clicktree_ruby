@@ -35,8 +35,8 @@
               <li><a href="#call-2"><%= @api_title2 %></a> </li>
               <li><a href="#call-3"><%= @api_title3 %></a> </li>
               <br/>
-              <li><a href="#call-1"><span class="side_nav_userinfo">Settings</span></a> </li>
-              <li><a href="#call-2"><span class="side_nav_userinfo">Logout</span></a> </li>
+              <!--<li><a href="#call-1"><span class="side_nav_userinfo">Settings</span></a> </li>
+              <li><a href="#call-2"><span class="side_nav_userinfo">Logout</span></a> </li> -->
           
           </ul>
         </div>
@@ -54,8 +54,7 @@
   	<div class="cl-mcont cl-mont_custom main-bkg">		
       <div class="page-head page-head_custom">
   			<ol class="breadcrumb">
-  			  <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
-  			  <li><%= link_to "Logout", {:controller => "dashboard", :action => "logout"} %></li>
+
   			</ol>
   		</div>
       <h2 class="main_header content_custom"><%= @api_domain %> API Calls</h2>	

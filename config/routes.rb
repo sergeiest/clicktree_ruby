@@ -9,6 +9,9 @@ Clicktree::Application.routes.draw do
   get "apitool/dashboard"
   get "apitool/login"
   get "apitool/settings"
+  get "apitool/signup"
+  post "apitool/submitsignup"
+  post "apitool/submitsignin"
 
   get "dashboard" => "dashboard#charts"
   get "dashboard/charts"

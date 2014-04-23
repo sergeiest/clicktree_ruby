@@ -28,12 +28,12 @@
             </li>
             <li>
               <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "users"}) do %>
-                <span>Top Users Details</span>
+                <span>Top User Details</span>
               <% end %>
             </li>
             <li>
               <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "bots"}) do %>
-                <span>Top Bots Details</span>
+                <span>Top Bot Details</span>
               <% end %>
             </li>
             <li>
@@ -65,8 +65,12 @@
       <div class="block-flat block-flat-details">
         <div class="row">
           <div class="col-md-12">
-            <div class="header">              
-              <h3 id="visitor-title"> Top <%= @main_name.capitalize %></h3>
+            <div class="header">  
+              <% if @main_name.capitalize.downcase == 'indexing' %>             
+                <h3 id="visitor-title"> Top <%= @main_name.capitalize %> Bots </h3>
+              <% else %>
+                <h3 id="visitor-title"> Top <%= @main_name.capitalize %>s</h3>
+              <% end %>
             </div>
             <div class="content content-custom">
               <div id="scraper_statistics2" style="height: 350px; padding: 20px; position: relative;"></div>    

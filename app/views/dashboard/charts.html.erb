@@ -29,12 +29,12 @@
             </li>
             <li>
               <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "users"}) do %>
-                <span>Top Users Details</span>
+                <span>Top User Details</span>
               <% end %>
             </li>
             <li>
               <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "bots"}) do %>
-                <span>Top Bots Details</span>
+                <span>Top Bot Details</span>
               <% end %>
             </li>
             <li>
@@ -425,7 +425,7 @@
         i = 1 
         @dailyrequests.select{|x| x.type_id == 1}.each do |dailyrequest|
           dailyrequest_user_str += '[' + i.to_s + ', ' + dailyrequest.value.to_s + '],'
-          if i % 2 == 0
+          if i % 7 == 1
             dailyrequest_ticks_str += '[' + i.to_s + ', "' + dailyrequest.rdate.strftime("%m/%d") + '"],'
           end
           i += 1
