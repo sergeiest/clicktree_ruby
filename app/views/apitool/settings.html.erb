@@ -44,42 +44,31 @@
     </div>
   </div>
 
-  <div class="container-custom" id="pcont">
-    <div class="cl-mcont cl-mont_custom main-bkg"  style="height:100%;" >
-      <div class="row content_custom"  style="height:100%;">
+	<div class="container-fluid" id="pcont">
+   <!-- TOP NAVBAR -->  
+
+  	<div class="cl-mcont cl-mont_custom main-bkg">		
+      <div class="page-head page-head_custom">
+  			<ol class="breadcrumb">
+  			  <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
+  			  <li><%= link_to "Logout", {:controller => "dashboard", :action => "logout"} %></li>
+  			</ol>
+  		</div>
+      	
+       
+      <div class="row content_custom">
         <div class="col-md-12">
-          <div class="content">
-            <h2 class="main_header">Account Settings</h2>
-            <br/> 
-            <div class="settings_table">
-              <table>
-                <tr>
-                  <td>
-                      Username
-                  </td>
-                  <td >
-                      PULL
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                      API Key 
-                  </td>
-                  <td>
-                     ***** Click to reveal
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                      APIs Accessed
-                  </td>
-                  <td>
-                      Top Lists, Etc
-                  </td>
-                </tr>  
-              </table>
-            </div>    
-          </div> 
+
+        <h2 class="main_header">Account Settings</h2>
+        <br/>
+
+          <div class="content"> 
+            <h4>User:</h4> <p>username</p>
+            <h4>API Key:</h4> <p>*********</p>
+            <h4>API Access:</h4> <p>CoolCool</p>
+             
+          </div>
+         
         </div>
       </div>    
     </div>
