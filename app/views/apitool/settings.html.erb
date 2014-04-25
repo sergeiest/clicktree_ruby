@@ -21,25 +21,19 @@
                 <b class="side-user_custom">Company/Affiliation</b>
               </p>
             </div>
-            </div>
+          </div>
           
 
-            <div class="info-custom bold_uppercase">
-             <div class="sidebar_title">
-              Choose an API
-             </div>
-            </div>
+          <div class="info-custom bold_uppercase">
+           <div class="sidebar_title">
+            Choose an API
+           </div>
           </div>
           <ul class="cl-vnavigation cl-vnavigation-custom">
-              <li><a href="#call-1">Top Lists</a> </li>
-              <li><a href="#call-2">Top Something Else</a> </li>
-              <li><a href="#call-3">Another Thing</a> </li>
-              <li><a href="#call-4">Top What Else</a> </li>
-              <li><a href="#call-5">More Stuff</a> </li>
-              <br/>
-              <li><a href="#call-1"><span class="side_nav_userinfo">Settings</span></a> </li>
-              <li><a href="#call-2"><span class="side_nav_userinfo">Logout</span></a> </li>
-          
+            <li><a href="#call-1"><%= @api_title1 %></a> </li>
+            <li><a href="#call-2"><%= @api_title2 %></a> </li>
+            <li><a href="#call-3"><%= @api_title3 %></a> </li>
+            <br/>
           </ul>
         </div>
       </div>
@@ -50,63 +44,44 @@
     </div>
   </div>
 
-	<div class="container-fluid" id="pcont">
-   <!-- TOP NAVBAR -->  
-
-  	<div class="cl-mcont cl-mont_custom main-bkg">		
-      <div class="page-head page-head_custom">
-  			<ol class="breadcrumb">
-  			  <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
-  			  <li><%= link_to "Logout", {:controller => "dashboard", :action => "logout"} %></li>
-  			</ol>
-  		</div>
-      	
-       
-      <div class="row content_custom">
-        
-
-        <!--API CALL 1-->   
+  <div class="container-custom" id="pcont">
+    <div class="cl-mcont cl-mont_custom main-bkg"  style="height:100%;" >
+      <div class="row content_custom"  style="height:100%;">
         <div class="col-md-12">
-        <h2 class="main_header">Account Settings</h2>
-        <br/>
-
-          <div class="content"> 
-           <div class="settings_table">
-                        <table>
-                            <tr>
-                                <td>
-                                    Username
-                                </td>
-                                <td >
-                                    PULL
-                                </td>
-                         
-                            </tr>
-                            <tr>
-                                <td>
-                                    API Key 
-                                </td>
-                                <td>
-                                   ***** Click to reveal
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    APIs Accessed
-                                </td>
-                                <td>
-                                    Top Lists, Etc
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>   
-             
-            </div>
-         
+          <div class="content">
+            <h2 class="main_header">Account Settings</h2>
+            <br/> 
+            <div class="settings_table">
+              <table>
+                <tr>
+                  <td>
+                      Username
+                  </td>
+                  <td >
+                      PULL
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                      API Key 
+                  </td>
+                  <td>
+                     ***** Click to reveal
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                      APIs Accessed
+                  </td>
+                  <td>
+                      Top Lists, Etc
+                  </td>
+                </tr>  
+              </table>
+            </div>    
+          </div> 
         </div>
       </div>    
-  
     </div>
   </div>
 </div> 

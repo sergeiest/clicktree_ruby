@@ -75,6 +75,7 @@
 .cl-mont_custom{
     background-color: #333;
     color:#FFF;
+    padding-bottom: 0;
 }
 
 
@@ -333,13 +334,10 @@
      margin-left: 280px;
      width: auto;
      position: relative;
-    
      overflow: auto;
      z-index: 1;
+     min-height:100%;
 }
-
-
-
 
 .settings_table {
     margin:0px;
@@ -447,5 +445,12 @@
     border-width:0px;
 }
 
+.container-custom{
+    position:absolute;
+    overflow: true;
+    height: 100%;
+    width: -webkit-calc(100% - 280px);
+    width:         calc(100% - 280px);
+}
 
 
