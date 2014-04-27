@@ -76,6 +76,7 @@
     background-color: #333;
     color:#FFF;
     padding-bottom: 0;
+    height: calc(100% + 15px);
 }
 
 
@@ -92,6 +93,12 @@
     position:fixed;
     width:280px;
     height:100%;   
+}
+
+.cl-sidebar_custom_2{
+    background: #FFF;
+    width:280px;
+    height:100%; 
 }
 
 .cl-vnavigation-custom li a{
@@ -439,4 +446,10 @@
     height: 100%;
     width: -webkit-calc(100% - 280px);
     width:         calc(100% - 280px);
+}
+
+.block-flat-apitool{
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
 }
