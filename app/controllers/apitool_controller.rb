@@ -131,6 +131,11 @@ def submitsignup
 	end
 end
 
+def apiexplorer
+	params[:id] = session[:id] if params[:id].nil?
+	@user = User.find_by_authentication_id(params[:id])
+end
+
 def submitsignin
 	user = Authentication.where("email = ? AND password = ?", params[:email], params[:password])
 

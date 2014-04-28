@@ -1,0 +1,100 @@
+<div id="cl-wrapper">
+
+  <div class="cl-sidebar cl-sidebar_custom_2">
+    <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+    <div class="cl-navblock">
+      <div class="menu-space">
+        <div class="content">
+          <%= link_to ({:controller => "home", :action => "index"}) do %>
+            <div class="sidebar-logo" style="background-color:#4A4A4A">
+              <div class="logo">
+                <a href="index.html.erb"></a>
+              </div>
+            </div>
+          <% end %>
+          <div class="side-user">
+            <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
+            <div class="info info-align">
+              <p>
+                <b><%= @user.company %></b><br/><%= @user.name %>
+              </p>
+            </div>
+          </div>
+          <ul class="cl-vnavigation cl-vnavigation-custom">
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "charts", :id => params[:id]}) do %>
+                <span>Traffic Overview</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "users"}) do %>
+                <span>Top User Details</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "bots"}) do %>
+                <span>Top Bot Details</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "indexing"}) do %>
+                <span>Top Indexing Details</span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-right collapse-button" style="padding:7px 9px;">
+          <input type="text" class="form-control search" placeholder="Search..." />
+          <button id="sidebar-collapse" class="btn btn-default" style=""><i style="color:#fff;" class="fa fa-angle-left"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" id="pcont" >
+   <!-- TOP NAVBAR -->  
+    <div class="cl-mcont cl-mont_custom">    
+      <div class="page-head">
+        <ol class="breadcrumb">
+          <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
+          <li><%= link_to "Logout", {:controller => "dashboard", :action => "logout"} %></li>
+        </ol>
+      </div>  
+      <div class="block-flat block-flat-apitool">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="header">  
+              <h2 class="main_header">API Explorer</h2>  
+            </div>
+            <div class="content content-custom">
+              <div class="content"> 
+                <div class="box-menu-top">
+                <ul class="boxrows">
+                  <li class="box-menu" id="box-menu-1"><h3>Discover</h3><p>www.listnerd.com/discover</p></li>
+                  <li class="box-menu" id="box-menu-2"><h3>Search</h3><p>www.listnerd.com/search?q='query'</p></li>
+                  <li class="box-menu" id="box-menu-3"><h3>Specific List</h3><p>www.listnerd.com/list/'list name'<p></li>
+                </ul>
+              </div>
+                <div class="box-attributes"> 
+                  <h2>Listnerd URL:</h2>
+                  <div class="url-box">www.listnerd.com/list/games</div>
+                  <div class="content-available-box"><h3>Content Available:</h3>
+                    <div class="color-box"><span class="box-yellow">&nbsp;</span><span class="color-box-text">URL</span></div><br>
+                    <div class="color-box"><span class="box-purple">&nbsp;</span><span class="color-box-text">List Image</span></div><br>
+                    <div class="color-box"><span class="box-green">&nbsp;</span><span class="color-box-text">Votes</span></div><br>
+                    <div class="color-box"><span class="box-lightblue">&nbsp;</span><span class="color-box-text">Views</span></div><br>
+                    <div class="color-box"><span class="box-orange">&nbsp;</span><span class="color-box-text">List Title</span></div><br>
+                  </div>
+                </div>
+                <div class="box-htmldisplay">
+                  <img src="/images/apitool/games_Listnerd.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

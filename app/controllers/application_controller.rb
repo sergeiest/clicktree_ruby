@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   		http = Net::HTTP.new(uri.host,uri.port)
   		data = {"userid"=>"-1", "host"=>"clicktreelabs.com", "url"=>request.original_url, "method"=>request.request_method, "useragent"=>request.user_agent, "ip"=>request.remote_ip}.to_json
 
-  		response = http.post("#{uri.path}?#{uri.query}",data,headers)
+  		#response = http.post("#{uri.path}?#{uri.query}",data,headers)
 
       @allblocks = Blockedip.pluck(:ip)
 

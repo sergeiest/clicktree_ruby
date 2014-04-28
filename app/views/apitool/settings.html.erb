@@ -1,6 +1,6 @@
 <div id="cl-wrapper">
 
-  <div class="cl-sidebar cl-sidebar_custom">
+  <div class="cl-sidebar cl-sidebar_custom_2">
     <div class="cl-toggle"><i class="fa fa-bars"></i></div>
     <div class="cl-navblock">
       <div class="menu-space">
@@ -8,76 +8,141 @@
           <%= link_to ({:controller => "home", :action => "index"}) do %>
             <div class="sidebar-logo" style="background-color:#4A4A4A">
               <div class="logo">
-                  <a href="index.html.erb"></a>
-                </div>
+                <a href="index.html.erb"></a>
+              </div>
             </div>
           <% end %>
           <div class="side-user">
             <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
-
             <div class="info info-align">
-              <p><b class="side-user_custom">User Name</b>
-                <br/>
-                <b class="side-user_custom">Company/Affiliation</b>
+              <p>
+                <b><%= @user.company %></b><br/><%= @user.name %>
               </p>
-            </div>
-            </div>
-          
-
-            <div class="info-custom bold_uppercase">
-             <div class="sidebar_title">
-              Choose an API
-             </div>
             </div>
           </div>
           <ul class="cl-vnavigation cl-vnavigation-custom">
-              <li><a href="#call-1">Top Lists</a> </li>
-              <li><a href="#call-2">Top Something Else</a> </li>
-              <li><a href="#call-3">Another Thing</a> </li>
-              <li><a href="#call-4">Top What Else</a> </li>
-              <li><a href="#call-5">More Stuff</a> </li>
-              <br/>
-              <li><a href="#call-1"><span class="side_nav_userinfo">Settings</span></a> </li>
-              <li><a href="#call-2"><span class="side_nav_userinfo">Logout</span></a> </li>
-          
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "charts", :id => params[:id]}) do %>
+                <span>Traffic Overview</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "users"}) do %>
+                <span>Top User Details</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "bots"}) do %>
+                <span>Top Bot Details</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "indexing"}) do %>
+                <span>Top Indexing Details</span>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="text-right collapse-button" style="padding:7px 9px;">
-        <input type="text" class="form-control search" placeholder="Search..." />
-        <button id="sidebar-collapse" class="btn btn-default" style=""><i style="color:#fff;" class="fa fa-angle-left"></i></button>
+    </div>
+  </div>
+
+  <div class="container-fluid" id="pcont" >
+    <div class="cl-mcont cl-mont_custom_apitool main-bkg">    
+      <div class="row">
+        <div class="col-sm-6 col-md-6">
+          <div class="block-flat block-flat-apitool-white">
+            <div class="header">  
+              <h2 class="main_header">API Accessed</h2>  
+            </div>
+            <div class="content content-custom"> 
+              <h4 class="apitool-h4">LISTNERD.COM</h4>
+              <h4 class="apitool-h4">PICTUREGR.AM</h4>
+              <h4 class="apitool-h4">SNIP2CODE.COM</h4>
+              <button class="btn btn-primary submit-but" style="margin-top:20px; margin-right: 0; float:right; background-color:#F58236">VIEW ALL</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+          <div class="block-flat block-flat-apitool-white">
+            <div class="header">  
+              <h2 class="main_header">Account Settings</h2>  
+            </div>
+            <div class="content content-custom">
+              <h4>LISTNERD.COM</h4>
+              <p class="apitool-p"><b>API KEY:</b> ********** (click to reveal)</p>
+              <p class="apitool-p"><b>USER NAME:</b> team@clicktreelabs.com</p>
+              <p class="apitool-p"><b>PASSWORD:</b> **********</p>
+              <button class="btn btn-primary submit-but" style="margin-top:20px; margin-right: 0; float:right; background-color:#F58236">EDIT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="block-flat block-flat-apitool-white">
+            <div class="header">  
+              <h2 class="main_header">Daily API Calls</h2>  
+            </div>
+            <div class="content content-custom">
+              <div id="api-call-statistics"  style="height: 200px; padding: 20px; position: relative;"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-	<div class="container-fluid" id="pcont">
-   <!-- TOP NAVBAR -->  
+<script>
+$(window).load(function(){
 
-  	<div class="cl-mcont cl-mont_custom main-bkg">		
-      <div class="page-head page-head_custom">
-  			<ol class="breadcrumb">
-  			  <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
-  			  <li><%= link_to "Logout", {:controller => "dashboard", :action => "logout"} %></li>
-  			</ol>
-  		</div>
-      	
-       
-      <div class="row content_custom">
-        <div class="col-md-12">
 
-        <h2 class="main_header">Account Settings</h2>
-        <br/>
 
-          <div class="content"> 
-            <h4>User:</h4> <p>username</p>
-            <h4>API Key:</h4> <p>*********</p>
-            <h4>API Access:</h4> <p>CoolCool</p>
-             
-          </div>
-         
-        </div>
-      </div>    
-  
-    </div>
-  </div>
-</div> 
+  var api_chart = $.plot($("#api-call-statistics"), [{
+          data: [[1, 3137.74043410085],[2, 3249.2402031552],[3, 3106.06444040313],[4, 3120.66825418733],[5, 3171.35041183792],[6, 3119.11715380847],[7, 3287.48716176488],[8, 3090.81525388174],[9, 3177.86339758895],[10, 3285.44667349197],[11, 3004.02030218393],[12, 3113.33856079727],[13, 3246.44316988997],[14, 3210.89014546014],[15, 3038.25838859193],[16, 3250.29211426154],[17, 3063.72533747926],[18, 3271.31926752627],[19, 3163.05794287473],[20, 3089.10013698041],[21, 3034.89010697231],[22, 3276.49333127774],[23, 3205.41324508376],[24, 3086.74617195502],[25, 3044.99265505001],[26, 3026.06454226188],[27, 3116.11221428029],[28, 3227.57320166565],[29, 3106.4842466265],[30, 3117.66129559837],[31, 3231.29669995978],],
+          label: "API Calls"
+        }
+        ], {
+          series: {
+            bars: {
+              show: true,
+              barWidth: 0.6,
+              lineWidth: 0,
+              fill: true,
+              hoverable: true,
+              fillColor: {
+                colors: [{
+                  opacity: 1
+                }, {
+                  opacity: 1
+                }
+                ]
+              } 
+            },
+            shadowSize: 2
+          },
+          legend:{
+            show: false
+          },
+          grid: {
+          labelMargin: 10,
+             axisMargin: 500,
+            hoverable: true,
+            clickable: true,
+            tickColor: "rgba(0,0,0,0.15)",
+            borderWidth: 0
+          },
+          colors: ["#F58236"],
+          xaxis: {
+            ticks: [],
+            tickDecimals: 0
+          },
+          yaxis: {
+            ticks: 6,
+            tickDecimals: 0
+          }
+        });
+  });
+
+</script>

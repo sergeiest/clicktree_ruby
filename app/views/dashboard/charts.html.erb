@@ -42,6 +42,9 @@
                 <span>Top Indexing Details</span>
               <% end %>
             </li>
+            <li>
+              <%= link_to "Logout", {:action => "logout"} %>
+            </li>
           </ul>
         </div>
       </div>
@@ -56,13 +59,7 @@
    <!-- TOP NAVBAR -->  
 
   	<div class="cl-mcont">		
-      <div class="page-head">
-  			<ol class="breadcrumb">
-  			  <li><%= link_to "Home", {:controller => "home", :action => "index"} %></li>
-  			  <li><%= link_to "Logout", {:action => "logout"} %></li>
-  			</ol>
-  		</div>	
-    
+ 
 
       <!-- PIE CHARTS COLUMN -->
       <div class="row">
@@ -311,56 +308,6 @@
       document.getElementById("top-visitors-0-more").hidden = false;
     }
   }
-
-
-  // function changeType(elementNode){
-
-  //   document.getElementById("top-visitors-0").hidden = true;
-  //   document.getElementById("top-visitors-1").hidden = true;
-  //   document.getElementById("top-visitors-2").hidden = true;
-  //   document.getElementById("top-visitors-3").hidden = true;
-  //   document.getElementById("top-visitors-4").hidden = true;
-  //   document.getElementById("top-visitors-5").hidden = true;
-
-  //   document.getElementById("top-visitors-0-more").hidden = true;
-  //   document.getElementById("top-visitors-1-more").hidden = true;
-  //   document.getElementById("top-visitors-2-more").hidden = true;
-  //   document.getElementById("top-visitors-3-more").hidden = true;
-  //   document.getElementById("top-visitors-4-more").hidden = true;
-  //   document.getElementById("top-visitors-5-more").hidden = true;
-
-    
-  //   // FUNCTION
-  //   // {
-  //   // case "1":
-  //   //   document.getElementById("legend").innerHTML = "Users";
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   break;
-  //   // case "2":
-  //   //   document.getElementById('visitor-details-title').innerHTML = "Bots";
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   break;
-  //   // case "3":
-  //   //   document.getElementById('visitor-details-title').innerHTML = "Indexing";
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   document.getElementById("legend").hidden = false; 
-  //   //   break;
-  //   // case "4":
-  //   //   document.getElementById('visitor-details-title').innerHTML = "Automated";
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   break;
-  //   // case "5":
-  //   //   document.getElementById('visitor-details-title').innerHTML = "Dev";
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   document.getElementById("legend").hidden = false;
-  //   //   break;
-    
-  //   // }
-  // }
-
 
   $(window).load(function(){
 
@@ -818,7 +765,7 @@
             var x = item.datapoint[0].toFixed(2),
             y = item.datapoint[1].toFixed(2);
             showTooltip(item.pageX, item.pageY,
-            item.series.label + ": "  + y);
+            item.series.label + ": " + Math.round(y));
           }
         } else {
           $("#tooltip").remove();
@@ -844,8 +791,27 @@
           previousPoint = null;
         }
       }); 
-      
+
       $("#site_statistics3").bind("plothover", function (event, pos, item) {
+      
+        var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+
+        if (item) {
+          if (previousPoint != item.dataIndex) {
+            previousPoint = item.dataIndex;
+            $("#tooltip").remove();
+            var x = item.datapoint[0],
+            y = item.datapoint[1];
+            showTooltip(item.pageX, item.pageY,
+            item.series.label + ": " + Math.round(y));
+          }
+        } else {
+          $("#tooltip").remove();
+          previousPoint = null;
+        }
+      }); 
+      
+      $("#chart3").bind("plothover", function (event, pos, item) {
       
         var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
         
@@ -871,7 +837,8 @@
 
 
     /*Map*/
-     var gdpData = {
+
+    var gdpData = {
       "US": 50,
       "CA": 20,
       "FR": 10,
@@ -897,7 +864,7 @@
             normalizeFunction: 'polynomial'
           }],
         },
-      });  
+      });      
 
   });
 </script>
