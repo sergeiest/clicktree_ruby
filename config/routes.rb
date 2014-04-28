@@ -10,6 +10,7 @@ Clicktree::Application.routes.draw do
   get "apitool/login"
   get "apitool/settings"
   get "apitool/signup"
+  get "apitool/apiexplorer"
   post "apitool/submitsignup"
   post "apitool/submitsignin"
 

@@ -1,3 +1,118 @@
+.color-box{
+    padding-right: 15px;
+}
+
+.box-yellow{
+    background-color: #ffef3e;
+    color: #ffef3e;
+    padding-right: 15px;
+}
+
+.box-purple{
+    background-color: #de25ff;
+    color: #de25ff;
+    padding-right: 15px;
+}
+
+.box-green{
+    background-color: #31d126;
+    color: #31d126;
+    padding-right: 15px;
+}
+
+.box-lightblue{
+    background-color: #7792c7;
+    color: #7792c7;
+    padding-right: 15px;
+}
+
+.box-darkblue{
+    background-color: #3025ff;
+    color: #3025ff;
+    padding-right: 15px;
+}
+
+.box-orange{
+    background-color: #f58236;
+    color: #f58236;
+    padding-right: 15px;
+}
+
+.box-pink{
+    background-color: #ffa3f1;
+    color: #ffa3f1;
+    padding-right: 15px;
+}
+
+.color-box-text{
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.box-menu-top{
+    display:block;
+}
+
+.content-available-box{
+    background-color: #fff;
+    margin-top: 20px;
+    color: #000;
+    padding: 15px;
+}
+
+.content-available-box h3{
+    margin-top: 3px;
+    margin-bottom: 20px;
+}
+
+.url-box{
+    background-color: #fff;
+    width: 270px;
+    font-size: 16px;
+    color: #000;
+    padding: 10px;
+}
+
+.box-attributes{
+    float:left;
+    margin-left: 50px;
+}
+
+.box-htmldisplay{
+    float:left;
+    margin-left: 20px;
+}
+
+.box-htmldisplay img{
+    width: 560px;
+}
+
+.box-menu{
+    height: 120px;
+    width: 270px;
+    background-color: #BFDAD7;
+    float: left;
+    display: table-cell;
+    margin-left: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+    font-size: 20px;
+}
+
+.box-menu p{
+    font-size: 14px;
+}
+
+.box-menu:hover{
+    background-color: #f58236; 
+}
+
+.boxrows{
+    list-style-type: none;
+    display:table;
+}
+
 .signup-nav{
     background-color:  #555;
     padding-top: 15px;
