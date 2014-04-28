@@ -25,17 +25,59 @@ p {font-size: 11px;
 }
 
 .login-form {
-	width:260px;
+	width:460px;
 	height: 200px;
-	background-color:white;
-	border: 1px gray solid;
 	position:absolute;
-	top:calc(50% - 100px);
-	top:-webkit-calc(50% - 100px);
-	left:calc(50% - 130px);
-	left:-webkit-calc(50% - 130px);
-	padding:20px 50px;
+	top:calc(50% - 200px);
+	top:-webkit-calc(50% - 200px);
+	left:calc(50% - 230px);
+	left:-webkit-calc(50% - 230px);
+	padding:20px 0px;
+    color:white;
 }
+
+.login-form .logo{
+    width:400px;
+    margin-left:30px; 
+}
+
+.login-form p {
+    font-size: 12px; 
+    margin-left: 5%;
+    margin-top: 30px;
+}
+
+.login-form a {
+    font-size: 12px; 
+    margin-left: 5%;
+    margin-top: 30px;
+    color:white;
+}
+
+.login-form .input-field {
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border linear .2s,box-shadow linear .2s;
+    -moz-transition: border linear .2s,box-shadow linear .2s;
+    -o-transition: border linear .2s,box-shadow linear .2s;
+    transition: border linear .2s,box-shadow linear .2s;
+    background-color: #ccc;
+    color: #666;
+    font-size: 20px;
+
+    width:90%;
+    margin-left: 5%;
+}
+
+.background-class {
+    height: 100%;
+    width: 100%;
+    background-color: #4A4A4A;
+}
+
+
 
 .block-flat {
 	margin: 7px 7px 14px 7px;
