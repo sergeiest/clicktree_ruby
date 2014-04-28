@@ -1,9 +1,15 @@
-<div class="login-form">
-	<%= form_tag({:action => "check_login"}) do %>
-		<p> Email: </p>
-		<%= text_field_tag :email, @email %>
-		<p> Password: </p>
-		<%= password_field_tag :password %>
-		<%= submit_tag "login", :class => "btn btn-primary submit-but", :style => "margin-top:10px; float:right" %>
-	<% end %>
+<div class="background-class">
+	<div class="login-form">
+		<img src="../images/landing/CTlogowhite.png" class="logo">
+		<%= form_tag({:action => "check_login"}) do %>
+			<p> EMAIL ADDRESS </p>
+			<%= text_field_tag :email, @email, :class=>"input-field" %>
+			<p> PASSWORD </p>
+			<%= password_field_tag :password, "", :class=>"input-field" %>
+			<%= submit_tag "LOGIN", :class => "btn btn-primary submit-but", :style => "margin-top:20px; margin-right: 5%; float:right; background-color:#F58236"%>
+			<div style="clear:both"></div>
+			<%= link_to "<< BACK TO HOME PAGE", {:controller => "home"} %>
+		<% end %>
+
+	</div>
 </div>

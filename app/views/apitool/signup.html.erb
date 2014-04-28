@@ -1,73 +1,76 @@
 <div id="cl-wrapper">
 
-<div class="navbar navbar-fixed-top signup-nav" role="navigation">
-  <div class="navbar-inner">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <div class="whatstuff" style="background-color:#4A4A4A">
-          <div class="logo sidebar-logo">
+  <div class="navbar navbar-fixed-top signup-nav" role="navigation">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="whatstuff" style="background-color:#4A4A4A">
+            <div class="logo sidebar-logo">
               <a href="index.html.erb"></a>
             </div> 
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
-<div class="container-fluid">
-  <div class="cl-mcont" id='signuppage'>
-    <div id='signuplogin'>
-    <div class="block-flat" id="signupinblock" style="height: 440px;">
-    <h2 id="welcome-header"> Welcome to Clicktree! </h2>
 
-    <div id="signup">
-        <h3> Create an account to get started </h3>
-        <br>
-        <% if not flash.nil? and flash.key?(:signup_error) %>
-          <p style='color:red'> <%= flash[:signup_error] %></p>
-        <% end %>
-        <%= form_tag('submitsignup') do %>
-        <p>
-          <%= label_tag('name', nil, class: 'signup-label') %> <br>
-          <%= text_field_tag(:name, @name_signup, class: 'signup-input' ) %>
-        </p>
-        <p>
-          <%= label_tag(:email, nil, class: 'signup-label') %> <br>
-          <%= text_field_tag(:email_signup, @email_signup, class: 'signup-input') %>
-        </p>
-        <p>
-          <%= label_tag('password', nil, class: 'signup-label') %> <br>
-          <%= password_field_tag(:password_signup, nil, class: 'signup-input') %>
-        </p>
-        <p>
-          <%= label_tag('confirm_password', nil, class: 'signup-label') %> <br>
-          <%= password_field_tag(:confirm_password, nil, class: 'signup-input') %>
-        </p>
-        <br>
-        <button> Submit </button>
-        <% end %> 
-    </div>
-    <div id="login">
-      <h3> Already have an account? </h3>
-      <br>
-      <% if not flash.nil? and flash.key?(:signin_error) %>
-        <p style='color:red'> <%= flash[:signin_error] %></p>
-      <% end %>
-        <%= form_tag('submitsignin') do %>
-        <p>
-          <%= label_tag('email', nil, class: 'signin-label') %> <br>
-          <%= text_field_tag(:email, @email_signin, class: 'signin-input') %>
-        </p>
-        <p>
-          <%= label_tag('password', nil, class: 'signin-label') %> <br>
-          <%= password_field_tag(:password, nil, class: 'signin-input') %>
-        </p>
-        <br>
-        <button> Submit </button>
-        <% end %>
+  <div class="container-fluid" style="height: 100%">
+    <div class="cl-mcont" id='signuppage'>
+      <div id='signuplogin'>
+        <div class="block-flat" id="signupinblock" style="height: 440px;">
+          <h2 id="welcome-header"> Welcome to Clicktree! </h2>
+          <h3>LISTNERD.COM content is avaible through our API amanger. <br>Sign in or create an account to get access.</h3>
+
+          <div id="signup">
+              <h5> Create an account to get started </h5>
+              <br>
+
+              <% if not flash.nil? and flash.key?(:signup_error) %>
+                <p style='color:red'> <%= flash[:signup_error] %></p>
+              <% end %>
+              <%= form_tag('submitsignup') do %>
+              <p>
+                <%= label_tag('name', nil, class: 'signup-label') %> <br>
+                <%= text_field_tag(:name, @name_signup, class: 'signup-input' ) %>
+              </p>
+              <p>
+                <%= label_tag(:email, nil, class: 'signup-label') %> <br>
+                <%= text_field_tag(:email_signup, @email_signup, class: 'signup-input') %>
+              </p>
+              <p>
+                <%= label_tag('password', nil, class: 'signup-label') %> <br>
+                <%= password_field_tag(:password_signup, nil, class: 'signup-input') %>
+              </p>
+              <p>
+                <%= label_tag('confirm_password', nil, class: 'signup-label') %> <br>
+                <%= password_field_tag(:confirm_password, nil, class: 'signup-input') %>
+              </p>
+              <br>
+              <%= submit_tag "CREATE ACCOUNT", :class => "btn btn-primary submit-but", :style => "margin-top:20px; margin-right: 0; float:right; background-color:#F58236"%>
+              <% end %> 
+          </div>
+
+          <div id="login">
+            <h5> Already have an account? </h5>
+            <br>
+            <% if not flash.nil? and flash.key?(:signin_error) %>
+              <p style='color:red'> <%= flash[:signin_error] %></p>
+            <% end %>
+            <%= form_tag('submitsignin') do %>
+              <p>
+                <%= label_tag('email', nil, class: 'signin-label') %> <br>
+                <%= text_field_tag(:email, @email_signin, class: 'signin-input') %>
+              </p>
+              <p>
+                <%= label_tag('password', nil, class: 'signin-label') %> <br>
+                <%= password_field_tag(:password, nil, class: 'signin-input') %>
+              </p>
+              <br>
+              <%= submit_tag "LOGIN", :class => "btn btn-primary submit-but", :style => "margin-top:20px; margin-right: 0px; float:right; background-color:#F58236"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
- </div>
-</div>
 </div>
