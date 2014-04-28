@@ -8,6 +8,33 @@
 
 }
 
+.login a{
+	color: #fff;
+	font-size: 12pt;
+	font-weight: 700;
+	line-height: 18pt;
+	text-transform: uppercase;
+}
+
+.login a:hover{
+	color: #F58236;
+	text-decoration: none;
+}
+
+
+.login{
+	color: #fff;
+	font-size: 12pt;
+	font-weight: 700;
+	padding: 30px;
+	line-height: 18pt;
+	text-align: right;
+	position: relative;
+	z-index: 1;
+
+}
+
+
 
 
 .tagline{
@@ -40,7 +67,7 @@
 }
 
 .alternate{
-	text align: center;
+	text-align: center;
 }
 
 .logo-custom{
@@ -75,3 +102,9 @@
 	background-size:100% 100%;
 
 }
+
+.about_product_img img{
+	width:300px;
+	height:200px;
+}
+

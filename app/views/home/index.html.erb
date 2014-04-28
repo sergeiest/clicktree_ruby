@@ -21,21 +21,22 @@
                 <!-- MAIN MENU -->
                 <ul id="main-menu" class="nav-collapse collapse">
                     <li><a href="#page-welcome">Home</a></li>
-               
                     <li><a href="#page-features">What</a></li>
                     <li><a href="#page-about">Who</a></li>
-                 
                     <li><a href="#page-contact">Contact</a></li>
+                   
                 </ul>
                 <!-- END MAIN MENU -->
-                <!-- SOCIAL ICONS -->
+                <!-- SOCIAL ICONS 
                     <div class="social-icons hover-big pull-right">
                         
                         <a href="http://www.twitter.com/clicktree" class="sicon-twitter"><i>Twitter</i></a>
+                        <a href="http://www.angel.co/clicktree"><i>Angel List</i></a>  
                         <a href="http://www.facebook.com/clicktree" class="sicon-facebook"><i>Twitter</i></a>
                         
-                    </div>
-                
+                    </div> -->
+
+                   
             </div>
         </div>
     </div>
@@ -45,9 +46,29 @@
 <!-- PAGE | WELCOME -->
 <div class="pages white paralax page-welcome" id="page-welcome">
     <div class="overlay"></div>
+    <div class = "login">
+   
+        <%= link_to ({:controller => "apitool", :action => "signup"}) do %>
+           <a href="signup.html.erb"><span>Beta Customer Login</span></a>
+        <% end %>
+        //
+        <%= link_to ({:controller => "dashboard", :action => "login"}) do %>
+           <a href="login.html.erb"><span>Developer Login</span></a>
+        <% end %>
+        
+   </div>
+
+    
+    
+
+ 
     <!-- Centralized content -->
+
     <div class="centralized">
         <div class="container">
+            
+                    
+
             <div class="row-fluid">
                 <div class="span12 center">
                     <div class="line-divider" id="welcome-messages">
@@ -60,9 +81,11 @@
                  </div>
                     <div class="social-icons sicon-white bordered">
                         <a href="http://www.twitter.com/clicktree" class="sicon-twitter"><i>Twitter</i></a>
-                        <a href="http://www.facebook.com/clicktree" class="sicon-facebook"><i>Facebook</i></a>
+                        <!--<a href="http://www.facebook.com/clicktree" class="sicon-facebook"><i>Facebook</i></a>-->
                         <a href="http://www.angel.co/clicktree"><i>Angel List</i></a>
                     </div>
+                   
+                   
                 </div>
             </div>
         </div>
@@ -87,12 +110,17 @@
             <!-- Features blocks -->
             <div class="row-fluid">
                 <div class="span4 center">
+                    <div class="about_product_img">
                     <img src="/images/landing/about1.png" width="300" height="200">
+                    </div>
+                    
                     <h5 class="about_title">Virtual API Deployment</h5>
                     <p class="smallFontBy08 cutBy10" width="300">We empower your partners and affiliates to design APIs from your content by establishing a virtual, secure connection to share your content with third parties.</p>
                 </div>
                 <div class="span4 center">
+                    <div class="about_product_img">
                     <img src="/images/landing/about2.png" width="300" height="200">
+                    </div>
                     <h5 class="about_title">API Usage Analytics</h5>
                     <p class="smallFontBy08 cutBy10" width="300">We provide you with API analytics so that you understand who is using your API, how often your content is accessed, and how valuable your content is.</p>
                 </div>
@@ -101,6 +129,8 @@
                     <h5 class="about_title">Manage Content Access</h5>
                     <p class="smallFontBy08 cutBy10" width="300">We analyze the traffic logs and apply machine learning algorithms to track web scraping activity so you maintain control over who can access your data.</p> 
                 </div>
+
+
             </div>
             <br/>
             <br/>
@@ -109,6 +139,10 @@
         <!-- End Article -->
     </div>
 </div>
+
+
+
+
 
 <!-- END PAGE | FEATURES -->
 

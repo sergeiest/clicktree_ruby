@@ -97,14 +97,14 @@
               <div class="content"> 
                 <div class="detail-text">
                   <b><%= ip.title %></b> <br>
-                  <%= ip.ipaddress %> <br> 
-                  <% if ip.country.nil? || ip.country == "" %>
+                  <b>IP Address:</b><%= ip.ipaddress %> <br> 
+                  <b>Location:</b><% if ip.country.nil? || ip.country == "" %>
                     <%= 'No country info' %>
                   <% else %>
                     <%= ip.country %>
                   <% end %>
                   <br>
-                  Total Requests: <%= ip.request %><br>
+                  <b>Total Requests:</b> <%= ip.request %><br>
                 </div> 
               </div>  
             </div>
@@ -635,7 +635,7 @@
       /*Tooltips*/
       
       var previousPoint = null;
-      $(".scraper_statistics")[0].bind("plothover", function (event, pos, item) {
+      $("#scraper_statistics")[0].bind("plothover", function (event, pos, item) {
       
         var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
 
@@ -673,10 +673,11 @@
         }
       }); 
       
-      $("#chart3").bind("plothover", function (event, pos, item) {
+      $("#scraper_statistics3").bind("plothover", function (event, pos, item) {
       
         var str = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
-
+        
+        
         if (item) {
           if (previousPoint != item.dataIndex) {
             previousPoint = item.dataIndex;
@@ -684,7 +685,7 @@
             var x = item.datapoint[0].toFixed(2),
             y = item.datapoint[1].toFixed(2);
             showTooltip(item.pageX, item.pageY,
-            item.series.label + " of " + x + " = " + y);
+            item.series.label + ": " + y);
           }
         } else {
           $("#tooltip").remove();
@@ -692,6 +693,8 @@
         }
       }); 
     };
+
+
 
 
   });

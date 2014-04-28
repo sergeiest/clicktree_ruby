@@ -1,3 +1,17 @@
+
+.cl-sidebar_custom{
+    position:fixed;
+    height:100%;
+    width:280px
+}
+
+.container-fluid_custom{
+margin-left:280px;
+width: auto;
+position: relative;
+z-index: 0;
+} 
+
 ol {
 font-size: 10px;
 
