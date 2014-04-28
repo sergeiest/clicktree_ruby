@@ -123,6 +123,7 @@
 #signupinblock{
     border: None;
     box-shadow: None;
+    background-color: transparent;
 }
 
 #signuplogin{
