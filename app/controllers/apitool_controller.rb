@@ -20,6 +20,14 @@ def dashboard
 	params[:id] = session[:id] if params[:id].nil?
 	@user = User.find_by_authentication_id(params[:id])
 
+	if not @user.nil?
+		@username = @user.name
+		@company = @user.company
+	else
+		@username = "Demo"
+		@company = "Clicktree"
+	end
+
 	domain = params[:api_domain]
 	if domain == "picturegram"
 		@api_domain = "Picturegram"
@@ -84,6 +92,14 @@ end
 def settings
 	params[:id] = session[:id] if params[:id].nil?
 	@user = User.find_by_authentication_id(params[:id])
+
+	if not @user.nil?
+		@username = @user.name
+		@company = @user.company
+	else
+		@username = "Demo"
+		@company = "Clicktree"
+	end
 	
 end
 
@@ -134,6 +150,14 @@ end
 def apiexplorer
 	params[:id] = session[:id] if params[:id].nil?
 	@user = User.find_by_authentication_id(params[:id])
+
+	if not @user.nil?
+		@username = @user.name
+		@company = @user.company
+	else
+		@username = "Demo"
+		@company = "Clicktree"
+	end
 end
 
 def submitsignin

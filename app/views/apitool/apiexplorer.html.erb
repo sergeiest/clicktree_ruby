@@ -8,47 +8,41 @@
           <%= link_to ({:controller => "home", :action => "index"}) do %>
             <div class="sidebar-logo" style="background-color:#4A4A4A">
               <div class="logo">
-                <a href="index.html.erb"></a>
-              </div>
+                  <a href="index.html.erb"></a>
+                </div>
             </div>
           <% end %>
           <div class="side-user">
             <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
+
             <div class="info info-align">
-              <p>
-                <b><%= @user.company %></b><br/><%= @user.name %>
+              <p><b class="side-user_custom"><%= @username %></b>
+                <br/>
+                <b class="side-user_custom"><%= @company %></b>
               </p>
             </div>
+            </div>
+          
+
+            <div class="info-custom bold_uppercase">
+              <div class="sidebar_title cl-vnavigation-custom">
+                <%= link_to "API Content", {:action => 'apiexplorer'}, :class => "black_link" %>
+                </div>
+             <div class="sidebar_title">
+              <%= link_to "API Documentation", {:action => 'dashboard'}, :class => "black_link" %>
+             </div>
+            </div>
           </div>
-          <ul class="cl-vnavigation cl-vnavigation-custom">
-            <li>
-              <%= link_to ({:controller => "dashboard", :action => "charts", :id => params[:id]}) do %>
-                <span>Traffic Overview</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "users"}) do %>
-                <span>Top User Details</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "bots"}) do %>
-                <span>Top Bot Details</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to ({:controller => "dashboard", :action => "details", :id => params[:id], :class_botuser => "indexing"}) do %>
-                <span>Top Indexing Details</span>
-              <% end %>
-            </li>
-          </ul>
+            <div class="sidebar_title">
+              </div>
+              <div class="sidebar_title_logset">
+                <%= link_to "Settings and Usage", {:action => 'settings'}, :class =>"logout_settings" %>
+              </div>
+              <div class="sidebar_title_logset">
+               <%= link_to 'Logout', {:controller => 'dashboard', :action => 'logout'}, :class => "logout_settings" %>
+              </div>
         </div>
       </div>
-      <div class="text-right collapse-button" style="padding:7px 9px;">
-          <input type="text" class="form-control search" placeholder="Search..." />
-          <button id="sidebar-collapse" class="btn btn-default" style=""><i style="color:#fff;" class="fa fa-angle-left"></i></button>
-      </div>
-    </div>
   </div>
 
   <div class="container-fluid" id="pcont" >

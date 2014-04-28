@@ -16,17 +16,20 @@
             <div class="avatar square-img"><img src="/images/dashboard/useravatar.png" alt="Avatar" style="border-radius:0" /></div>
 
             <div class="info info-align">
-              <p><b class="side-user_custom">User Name</b>
+              <p><b class="side-user_custom"><%= @username %></b>
                 <br/>
-                <b class="side-user_custom">Company/Affiliation</b>
+                <b class="side-user_custom"><%= @company %></b>
               </p>
             </div>
             </div>
           
 
             <div class="info-custom bold_uppercase">
+              <div class="sidebar_title cl-vnavigation-custom">
+                <%= link_to "API Content", {:action => 'apiexplorer'}, :class => "black_link" %>
+                </div>
              <div class="sidebar_title">
-              Choose an API
+              API Documentation
              </div>
             </div>
           </div>
@@ -39,6 +42,14 @@
               <li><a href="#call-2"><span class="side_nav_userinfo">Logout</span></a> </li> -->
           
           </ul>
+            <div class="sidebar_title">
+              </div>
+              <div class="sidebar_title_logset">
+                <%= link_to "Settings and Usage", {:action => 'settings'}, :class =>"logout_settings" %>
+              </div>
+              <div class="sidebar_title_logset">
+               <%= link_to 'Logout', {:controller => 'dashboard', :action => 'logout'}, :class => "logout_settings" %>
+              </div>
         </div>
       </div>
       <div class="text-right collapse-button" style="padding:7px 9px;">

@@ -1,3 +1,16 @@
+.black_link{
+    color: #333;
+}
+
+.black_link:visited{
+    color: #333;
+}
+
+.black_link:hover{
+    color:#f58236;
+}
+
+
 .color-box{
     padding-right: 15px;
 }
@@ -226,6 +239,30 @@
     padding-bottom: 0;
     height: calc(100% + 15px);
     height: -webkit-calc(100% + 15px);
+}
+
+.sidebar_title_logset{
+    font-size: 14px;
+    color: #333;
+    font-weight: 700;
+    padding: 20px 7px 1px 25px;
+}
+
+.logout_settings:visited{
+    color: #333;
+}
+
+.logout_settings{
+    color: #333;
+}
+
+.logout_settings:hover{
+    color: #f58236
+}
+
+.sidebar_title_logset:hover{
+    color:#f58236;
+    cursor:pointer;
 }
 
 
