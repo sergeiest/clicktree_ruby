@@ -1,8 +1,25 @@
 @charset "UTF-8";
 /* CSS Document */
 
+.navbar-howitworks{
+	background-color: #fff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}	
+
 .profile-img_small{
     max-width: 30%;
+}
+
+.fix-top{
+	width: 100%;
+	position:fixed;
+}
+
+.how-it-works-mini{
+	cursor: pointer;
 }
 
 .span_howitworks{
@@ -122,7 +139,7 @@
 .howitworks-title {
 
 	background-color: #333;
-
+	padding-top: 20px;
 
 }
 
