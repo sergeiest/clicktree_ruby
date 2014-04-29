@@ -158,6 +158,10 @@
 	width:200px;
 }
 
+#detail-content-last{
+	margin-top: -40px;
+}
+
 .howitworks-details .right-detail, .howitworks-details .left-detail{
 	margin:40px;
 	display: block;
@@ -166,6 +170,7 @@
 .howitworks-details .right-detail .detail-content{
 	width: 400px;
 	float:right;
+	margin-top: -20px;
 }
 
 .howitworks-details .left-detail .detail-content{
