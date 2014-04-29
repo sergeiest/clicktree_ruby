@@ -3,6 +3,7 @@ Clicktree::Application.routes.draw do
   get "home" => "home#index"
   get "home/index"
   get "home/blog"
+  get "home/howitworks"
 
   get "apitool" => "apitool#dashboard"
   get "apitool/new"

@@ -7,5 +7,8 @@ end
 def blog
 end
 
+def howitworks
+end
+
 
 end
