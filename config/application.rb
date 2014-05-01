@@ -23,5 +23,6 @@ module Clicktree
     config.assets.precompile += %w( landing/* )
     config.assets.precompile += %w( dashboard/* )
     config.assets.precompile += %w( apitool/* )
+    config.assets.precompile += %w( home.js )
   end
 end
