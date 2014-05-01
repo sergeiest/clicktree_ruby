@@ -49,9 +49,9 @@
     <div class = "login">
    
         <%= link_to ({:controller => "dashboard", :action => "login"}) do %>
-           <span>Beta Customer Login</span>
+           <span>Beta Customer Login </span>
         <% end %>
-
+        //
         <%= link_to ({:controller => "apitool", :action => "signup"}) do %>
            <span>Developer Login</span>
         <% end %>
@@ -128,6 +128,8 @@
                     <img src="/images/landing/about3.png" width="300" height="200">
                     <h5 class="about_title">Manage Content Access</h5>
                     <p class="smallFontBy08 cutBy10" width="300">We analyze the traffic logs and apply machine learning algorithms to track web scraping activity so you maintain control over who can access your data.</p> 
+                    <br>
+                    <h5 class="about_title  last-box-about"><%= link_to 'LEARN MORE >>', :action=>'howitworks' %></h5>
                 </div>
 
 

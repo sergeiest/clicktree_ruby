@@ -1,6 +1,27 @@
 @charset "UTF-8";
 /* CSS Document */
 
+.mini-img-label-span{
+	width:94px;
+	margin: 0px 0px 0 10px;
+}
+
+.mini-img-label{
+	margin: auto 0px  0px 0;
+}
+
+.mini-img-label-span-first{
+	width:94px;
+	margin: 0px 0px 0 8px;
+
+}
+
+.mini-img-label-span-last{
+	width:94px;
+	margin: 0px 0px 0 12px;
+
+}
+
 .navbar-howitworks{
 	background-color: #fff;
 	padding-top: 5px;
@@ -133,14 +154,23 @@
 	height:200px;
 }
 
+.last-box-about {
+	margin-bottom:0;
+}
+
 
 /* --- How it works page --- */
 
 .howitworks-title {
 
 	background-color: #333;
-	padding-top: 20px;
+	padding: 30px 0 50px 0;
 
+}
+
+.howitworks-footer{
+	background-color: #333;
+	padding: 10px 0 50px 0;
 }
 
 .howitworks-title .title {
