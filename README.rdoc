@@ -1,7 +1,18 @@
-== README
+== Web application for Clicktree
+www.clicktreelabs.com
 
-Clicktree Inc. 
-We turn your web scrapers into partners.
+We deploy an API solution for content-rich and ecommerce websites instantly, 
+empowering their partners and affiliates to design APIs from the content. 
 
-We track web scraping activities on your site to let you know how much data is scraped. 
-Our analytics tools help you establish partnerships with companies using your info to generate additional revenue.
+Developers can choose what specific content they want to see in a customized 
+API and Clicktree then deploys this API. Thus our APIs provide significantly 
+more flexibility than traditional affiliate marketing programs. In addition, 
+we track and block unauthorized web scraping and redirect these scrapers to 
+use the deployed API. Our clients are in complete control of who can access 
+their data. We are currently running a pilot with several companies.
+
+Our API solution is built on top of a web application, so it does not require 
+any modifications from the website, i.e. does not require additional application 
+architecture or development and can be deployed instantly. We also use machine 
+learning to analyze the customer’s traffic logs and on-site user behavior to 
+identify and block web scraping.
